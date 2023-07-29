@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/directoryButtonText"
+        android:id="@+id/directoryButton"
+        android:icon="@drawable/outline_account_tree_24"/>
+    <item android:title="@string/ocrButtonText"
+        android:id="@+id/OCRButton"
+        android:icon="@drawable/baseline_document_scanner_24"/>
+    <item android:title="@string/accountButtonText"
+        android:id="@+id/AccountButton"
+        android:icon="@drawable/baseline_person_outline_24"/>
+
+</menu>
