@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.notes2text.R;
@@ -12,6 +13,7 @@ import com.example.notes2text.adapters.fragments.AccountViewController;
 import com.example.notes2text.adapters.fragments.DirectoryAccessController;
 import com.example.notes2text.adapters.fragments.OCRFragmentController;
 import com.example.notes2text.databinding.ActivityViewBinding;
+import com.example.notes2text.ui.accountsettings.SettingsActivity;
 
 public class ActivitySwitchController extends AppCompatActivity {
 
