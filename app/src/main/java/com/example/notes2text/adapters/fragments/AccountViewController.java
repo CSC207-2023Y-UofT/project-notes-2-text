@@ -1,13 +1,26 @@
 package com.example.notes2text.adapters.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
+import com.example.notes2text.ui.accountsettings.PopUpEmailView;
+import com.example.notes2text.ui.accountsettings.PopUpPasswordView;
+import com.example.notes2text.ui.accountsettings.PopUpUsernameView;
+import com.example.notes2text.ui.accountsettings.SettingsActivity;
+
+import java.io.File;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,26 +53,48 @@ public class AccountViewController extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static AccountViewController newInstance(String param1, String param2) {
         AccountViewController fragment = new AccountViewController();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account_controller, container, false);
+        return inflater.inflate(R.layout.fragment_account_view, container, false);
     }
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        Button UsernameView = (Button) view.findViewById(R.id.PopUpUsernameView);
+
+        Button PasswordView = (Button) view.findViewById(R.id.PopUpPasswordView);
+
+
+        Button EmailView = (Button) view.findViewById(R.id.PopUpEmailView);
+
+        UsernameView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity().getApplicationContext(), PopUpUsernameView.class));
+            }
+        });
+
+        PasswordView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity().getApplicationContext(), PopUpPasswordView.class));
+            }
+        });
+
+        EmailView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity().getApplicationContext(), PopUpEmailView.class));
+            }
+        });
+    }
+
 }

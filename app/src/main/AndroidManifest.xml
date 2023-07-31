@@ -28,6 +28,18 @@
             android:name=".adapters.ActivitySwitchController"
             android:exported="false" />
         <activity
+            android:name=".ui.accountsettings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.accountsettings.PopUpUsernameView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.accountsettings.PopUpPasswordView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.accountsettings.PopUpEmailView"
+            android:exported="false" />
+        <activity
             android:name=".adapters.DirectoryActivity"
             android:exported="false" />
         <activity
