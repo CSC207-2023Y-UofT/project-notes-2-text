@@ -7,7 +7,7 @@ import android.net.Uri;
 import androidx.core.content.FileProvider;
 
 
-public class ThirdParShareUseCase implements ThirdParShareInputBoundary {
+public class ThirdParShareUseCase {
     private final ThirdPartyOutputBoundary outputBoundary;
 
     public ThirdParShareUseCase(ThirdPartyOutputBoundary outputBoundary) {
@@ -22,8 +22,7 @@ public class ThirdParShareUseCase implements ThirdParShareInputBoundary {
      * @param inputFiles A model containing a list of IO.File, and a Context.
      * @return ThirdPartyOutputModel A model containing a list of Uri, and a Context.
      */
-    @Override
-    public ThirdPartyOutputModel create(FileSharingModel inputFiles) {
+    public ThirdPartyOutputModel share(FileSharingModel inputFiles) {
 
         ArrayList<File> files = inputFiles.getFile();
         ArrayList<Uri> fileUris = new ArrayList<>();

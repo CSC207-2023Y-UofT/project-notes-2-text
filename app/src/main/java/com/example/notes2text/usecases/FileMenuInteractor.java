@@ -7,13 +7,18 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.notes2text.adapters.DirectoryActivity;
+import com.example.notes2text.file_sharing.use_case.ShareObserver;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class FileMenuInteractor implements FileMenuInputBoundary {
 
     File keyFile;
     PopupMenu fileMenu;
+
+    /* Initialize an observer for initiating sharing function */
+    private final ShareObserver sharing = new ShareObserver();
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
     public FileMenuInteractor(PopupMenu fileMenu, File keyFile){
@@ -52,6 +57,10 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
 
     @Override
     public boolean share(Context context, View view) {
+        /* Implementation of Share function */
+        ArrayList<File> files = new ArrayList<>();
+        files.add(keyFile);
+        sharing.share(context, files);
         Toast.makeText(context.getApplicationContext(), "File shared", Toast.LENGTH_SHORT).show();
         return true;
     }
