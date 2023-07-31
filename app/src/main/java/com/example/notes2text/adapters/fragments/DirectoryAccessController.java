@@ -2,15 +2,27 @@ package com.example.notes2text.adapters.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
+import com.example.notes2text.adapters.DirectoryAccessOutputBoundary;
+import com.example.notes2text.adapters.DirectoryAccessPresenter;
 import com.example.notes2text.adapters.FileListAdaptor;
 
 import java.io.File;
@@ -22,9 +34,13 @@ import java.io.File;
  */
 public class DirectoryAccessController extends Fragment {
 
+    //Required collaborators
+    private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_FILE_PATH = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
@@ -46,7 +62,7 @@ public class DirectoryAccessController extends Fragment {
     public static DirectoryAccessController newInstance(String rootPath) {
         DirectoryAccessController fragment = new DirectoryAccessController();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, rootPath);
+        args.putString(ARG_FILE_PATH, rootPath);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,7 +71,7 @@ public class DirectoryAccessController extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            filePath = getArguments().getString(ARG_PARAM1);
+            filePath = getArguments().getString(ARG_FILE_PATH);
         }
 
     }
@@ -67,8 +83,13 @@ public class DirectoryAccessController extends Fragment {
         return inflater.inflate(R.layout.directory_access_view_fragment, container, false);
     }
 
+    // NullPointerException thrown since it is a runtime error.
+    //Called automatically after DirectoryAccessController.onCreateView. If files present in filePath,
+    // sets the recyclerview to display the list of lists. Otherwise, shows the "no files" condition.
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) throws NullPointerException {
+        super.onViewCreated(view, savedInstanceState);
+
         // Retrieve the file path from the intent.
 //        String path = this.getArguments().getString("path");
         //Use the filepath local variable as source.
@@ -91,5 +112,47 @@ public class DirectoryAccessController extends Fragment {
             //Assign the custom adaptor to the View elements.
             fileListView.setAdapter(new FileListAdaptor(getActivity().getApplicationContext(), filesDirectory));
         }
+
+        //Add top menu and on click listener for top menu buttons.
+        // Put functionality of top menu items in separate use case.
+        // select listener goes in this class.
+//        Toolbar directoryToolbar = view.findViewById(R.id.file_manager_toolbar);
+//
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(directoryToolbar);
+
+        //call method to
+        setFragmentToolbar(view);
+
+        setToolbarMenu();
+
+
+        }
+
+    private void setToolbarMenu() {
+        requireActivity().addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                //Inflate the menu
+                menuInflater.inflate(R.menu.directory_toolbar, menu);
+            }
+
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.select_button){
+                    Toast.makeText(getActivity(), "Switch to Selection Screen", Toast.LENGTH_SHORT).show();
+                } else if (menuItem.getItemId() == R.id.back_button) {
+                    directoryPresenter.BackLayerSuccess(getActivity());
+                } else if (menuItem.getItemId() == R.id.create_folder_button) {
+                    directoryPresenter.FolderCreationSuccess(getActivity());
+                }
+                return true;
+            }
+        }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
+    }
+
+    //helper method that sets the tool bar from view.
+    private void setFragmentToolbar(View view) throws NullPointerException {
+        Toolbar directoryToolbar = view.findViewById(R.id.file_manager_toolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(directoryToolbar);
     }
 }
