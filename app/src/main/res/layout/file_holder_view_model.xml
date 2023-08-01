@@ -6,19 +6,11 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <CheckBox
-        android:id="@+id/file_select_check"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:padding="30dp"
-        />
-
     <ImageView
         android:id="@+id/icon_view"
         tools:src="@drawable/baseline_folder_24"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_toEndOf="@id/file_select_check"
         android:contentDescription="@string/file_type_icon" />
 
     <TextView
