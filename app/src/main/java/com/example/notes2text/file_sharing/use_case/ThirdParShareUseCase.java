@@ -5,6 +5,7 @@ import java.io.File;
 
 import android.net.Uri;
 import androidx.core.content.FileProvider;
+import android.util.Log;
 
 
 public class ThirdParShareUseCase {
@@ -37,6 +38,11 @@ public class ThirdParShareUseCase {
             Uri uri = FileProvider.getUriForFile(inputFiles.getContext(),
                     "com.example.notes2text.file_sharing.use_case.MyFileProvider", newFile);
             fileUris.add(uri);
+
+            /* Since this method cannot be unit tested, Log is used to monitor output at runtime
+            with Android Logcat instead.
+             */
+            Log.v("File conversion", String.valueOf(uri));
         }
         ThirdPartyOutputModel outputUri = new ThirdPartyOutputModel(inputFiles.getContext(),
                 fileUris);
