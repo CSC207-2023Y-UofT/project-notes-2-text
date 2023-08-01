@@ -34,6 +34,8 @@ import java.io.File;
  */
 public class DirectoryAccessController extends Fragment {
 
+    private boolean selectionToggle = false;
+
     //Required collaborators
     private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
 
