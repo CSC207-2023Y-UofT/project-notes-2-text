@@ -23,7 +23,11 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
      */
     public ThirdPartyOutputModel intentShare(ThirdPartyOutputModel outputModel){
         ArrayList<Uri> fileUris = outputModel.getFileUris();
+
         Intent sendIntent = new Intent();
+
+        /* FLAG_ACTIVITY_NEW_TASK needed for using context outside of an Activity class */
+        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         sendIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
         sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, fileUris);
 
@@ -33,7 +37,14 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
 
         /* Send any type of text file */
         sendIntent.setType("text/*");
-        outputModel.getContext().startActivity(Intent.createChooser(sendIntent, null));
+
+        /* Made separate intent variable for creating chooser for ShareSheet, as permission need to
+        be granted using FLAG_ACTIVITY_NEW_TASK.
+         */
+        Intent chooserIntent = Intent.createChooser(sendIntent, null);
+        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        outputModel.getContext().startActivity(chooserIntent);
+
         return outputModel;
     }
 }

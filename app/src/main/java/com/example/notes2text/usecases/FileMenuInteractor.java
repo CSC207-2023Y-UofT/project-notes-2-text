@@ -7,7 +7,6 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.notes2text.adapters.ActivitySwitchController;
-import com.example.notes2text.adapters.DirectoryActivity;
 import com.example.notes2text.file_sharing.use_case.ShareObserver;
 
 import java.io.File;
