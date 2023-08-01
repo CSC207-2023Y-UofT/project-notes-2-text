@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.adapters.DirectoryActivity;
 import com.example.notes2text.file_sharing.use_case.ShareObserver;
 
@@ -31,7 +32,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     public boolean open(Context context, View view) {
         if(keyFile.isDirectory()){
             // If the file is a directory(folder), enter the folder.
-            Intent intent = new Intent(context, DirectoryActivity.class);
+            Intent intent = new Intent(context, ActivitySwitchController.class);
             String path = keyFile.getAbsolutePath();
             intent.putExtra("path",path);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
