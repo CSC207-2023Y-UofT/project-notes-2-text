@@ -10,7 +10,7 @@ android {
         applicationId "com.example.notes2text"
         minSdk 23
         //noinspection ExpiredTargetSdkVersion
-        targetSdk 30
+        targetSdk 29
         versionCode 1
         versionName "1.0"
 
