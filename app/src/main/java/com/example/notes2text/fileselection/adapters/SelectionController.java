@@ -21,9 +21,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notes2text.R;
+import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.adapters.DirectoryAccessOutputBoundary;
 import com.example.notes2text.adapters.DirectoryAccessPresenter;
 import com.example.notes2text.adapters.FileListAdaptor;
+import com.example.notes2text.adapters.fragments.DirectoryAccessController;
+import com.example.notes2text.fileselection.usecases.SelectionInputBoundary;
+import com.example.notes2text.fileselection.usecases.SelectionInteractor;
 
 import java.io.File;
 
@@ -39,6 +43,8 @@ public class SelectionController extends Fragment {
     //Required collaborators
     private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
     private SelectionPresenter selectionPresenter = new SelectionPresenter();
+
+    private SelectionInputBoundary selectionUseCase = new SelectionInteractor();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -109,7 +115,7 @@ public class SelectionController extends Fragment {
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //Assign the custom adaptor to the View elements.
-            fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory));
+            fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase));
         }
 
         //Add top menu and on click listener for top menu buttons.
@@ -144,7 +150,10 @@ public class SelectionController extends Fragment {
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
                 if (menuItem.getItemId() == R.id.cancel_selection_button){
+                    selectionUseCase.cancel();
                     Toast.makeText(getActivity(), "Switch to Directory Access Screen", Toast.LENGTH_SHORT).show();
+                    Fragment fragment = DirectoryAccessController.newInstance(filePath);
+                    ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
                 } else if (menuItem.getItemId() == R.id.back_button) {
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.move_here_button) {
