@@ -34,16 +34,17 @@ public class ThirdParShareUseCase {
         for (String filePath : filePaths) {
             File newFile = new File(filePath);
 
-            /* Authority can be found in AndroidManifest Provider section */
+            // Authority can be found in AndroidManifest Provider section
             Uri uri = FileProvider.getUriForFile(inputFiles.getContext(),
                     "com.example.notes2text.file_sharing.use_case.MyFileProvider", newFile);
             fileUris.add(uri);
 
             /* Since this method cannot be unit tested, Log is used to monitor output at runtime
-            with Android Logcat instead.
-             */
+            with Android Logcat instead. */
             Log.v("File conversion", String.valueOf(uri));
         }
+
+        // Make a new outputModel with the new uris and the original context to pass a layer outward.
         ThirdPartyOutputModel outputUri = new ThirdPartyOutputModel(inputFiles.getContext(),
                 fileUris);
         return outputBoundary.intentShare(outputUri);

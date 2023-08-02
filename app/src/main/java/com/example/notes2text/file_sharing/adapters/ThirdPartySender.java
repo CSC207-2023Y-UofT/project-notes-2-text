@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.content.Intent;
 
 
-
 public class ThirdPartySender implements ThirdPartyOutputBoundary {
 
 
@@ -26,23 +25,24 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
 
         Intent sendIntent = new Intent();
 
-        /* FLAG_ACTIVITY_NEW_TASK needed for using context outside of an Activity class */
+        // FLAG_ACTIVITY_NEW_TASK needed for using context outside of an Activity class.
         sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         sendIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
         sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, fileUris);
 
-        /* Grants per-use permission for other app to receive files */
+        // Grants per-use permission for other app to receive files.
         sendIntent.addFlags(
                 Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
-        /* Send any type of text file */
+        // Send any type of text file.
         sendIntent.setType("text/*");
 
         /* Made separate intent variable for creating chooser for ShareSheet, as permission need to
-        be granted using FLAG_ACTIVITY_NEW_TASK.
-         */
+        be granted using FLAG_ACTIVITY_NEW_TASK. */
         Intent chooserIntent = Intent.createChooser(sendIntent, null);
         chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Create the Share Sheet.
         outputModel.getContext().startActivity(chooserIntent);
 
         return outputModel;

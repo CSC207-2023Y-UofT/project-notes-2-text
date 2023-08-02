@@ -7,6 +7,7 @@ import android.content.Context;
 import java.io.File;
 import java.util.ArrayList;
 
+// Used to better accommodate to Android workflow. The method has same role as main.java.
 public class ShareObserver {
 
     /**
