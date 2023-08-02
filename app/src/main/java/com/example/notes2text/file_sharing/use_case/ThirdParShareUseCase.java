@@ -21,9 +21,8 @@ public class ThirdParShareUseCase {
      * a list of content Uri. Using the list of Uri and the original Context, construct
      * and return an instance of ThirdPartyOutputModel.
      * @param inputFiles A model containing a list of IO.File, and a Context.
-     * @return ThirdPartyOutputModel A model containing a list of Uri, and a Context.
      */
-    public ThirdPartyOutputModel share(FileSharingModel inputFiles) {
+    public void share(FileSharingModel inputFiles) {
 
         ArrayList<File> files = inputFiles.getFile();
         ArrayList<Uri> fileUris = new ArrayList<>();
@@ -47,6 +46,6 @@ public class ThirdParShareUseCase {
         // Make a new outputModel with the new uris and the original context to pass a layer outward.
         ThirdPartyOutputModel outputUri = new ThirdPartyOutputModel(inputFiles.getContext(),
                 fileUris);
-        return outputBoundary.intentShare(outputUri);
+        outputBoundary.intentShare(outputUri);
     }
 }

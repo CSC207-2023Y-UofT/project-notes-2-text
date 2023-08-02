@@ -18,9 +18,8 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
      * is returned so that context may be used to check the results of the action.
      *
      * @param outputModel A model containing a list of Uri, and a Context.
-     * @return ThirdPartyOutputModel A model containing a list of Uri, and a Context.
      */
-    public ThirdPartyOutputModel intentShare(ThirdPartyOutputModel outputModel){
+    public void intentShare(ThirdPartyOutputModel outputModel){
         ArrayList<Uri> fileUris = outputModel.getFileUris();
 
         Intent sendIntent = new Intent();
@@ -44,7 +43,5 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
 
         // Create the Share Sheet.
         outputModel.getContext().startActivity(chooserIntent);
-
-        return outputModel;
     }
 }
