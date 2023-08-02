@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
 import com.example.notes2text.adapters.ActivitySwitchController;
+import com.example.notes2text.adapters.CreateFolderController;
 import com.example.notes2text.adapters.DirectoryAccessOutputBoundary;
 import com.example.notes2text.adapters.DirectoryAccessPresenter;
 import com.example.notes2text.adapters.FileListAdaptor;
@@ -149,11 +150,26 @@ public class DirectoryAccessController extends Fragment {
                 } else if (menuItem.getItemId() == R.id.back_button) {
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.create_folder_button) {
-                    directoryPresenter.FolderCreationSuccess(getActivity());
+
+                    //create a new dialogue using openDialog when button is clicked.
+                    menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
+                            openDialog();
+                            return false;
+                        }
+                    });
                 }
                 return true;
             }
         }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
+    }
+
+    /* Helper method that create a new CreateFolderController, which inherits
+    AppCompatDialogFragment and can create a new dialogue. */
+    public void openDialog() {
+        CreateFolderController createFolder = new CreateFolderController(getActivity());
+        createFolder.show(getActivity().getSupportFragmentManager(), "Create Folder Dialogue");
     }
 
     //helper method that sets the tool bar from view.
