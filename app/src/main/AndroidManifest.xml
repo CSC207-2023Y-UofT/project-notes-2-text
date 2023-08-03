@@ -19,14 +19,31 @@
             android:name=".adapters.ActivitySwitchController"
             android:exported="false" />
         <activity
+            android:name=".ui.accountsettings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.accountsettings.PopUpUsernameView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.accountsettings.PopUpPasswordView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.accountsettings.PopUpEmailView"
+            android:exported="false" />
+        <activity
             android:name=".adapters.DirectoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adapters.FileEditingAdapters.SavePopUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adapters.FileEditingAdapters.FileEditorActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
