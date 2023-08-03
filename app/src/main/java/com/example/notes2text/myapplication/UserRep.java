@@ -4,16 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserRep {
-    private Map<User, String> users = new HashMap<User, String>();
+    private static UserRep instance;
+    private Map<User, String> users = new HashMap<>();
+
+    public static UserRep getInstance() {
+        if (instance == null){
+            instance = new UserRep();
+        }
+        return instance;
+    }
 
     public void addUser(User newUser) {
         users.put(newUser, newUser.password);
     }
 
     public User getUser(String username) {
-        for (User user : users.keySet()) {
-            if (user.username.equals(username)) {
-                return user;
+        for (Map.Entry<User, String> userEntry: users.entrySet()) {
+            if (username.equals(userEntry.getValue())){
+                return userEntry.getKey();
             }
         }
         return null;
@@ -23,5 +31,14 @@ public class UserRep {
             return true;
         }
         return false;
+    }
+
+    public User getUser2(String email){
+        for (User user: users.keySet()) {
+            if (user.equals(user.email)){
+                return user;
+            }
+        }
+        return null;
     }
 }

@@ -9,10 +9,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.notes2text.MainActivity;
 import com.example.notes2text.R;
 
 public class LoginView extends AppCompatActivity {
 
+    DBHelper MyDB1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class LoginView extends AppCompatActivity {
         TextView login = (TextView) findViewById(R.id.login);
         TextView user = (TextView) findViewById(R.id.username);
         TextView password = (TextView) findViewById(R.id.password);
+
+        MyDB1 = new DBHelper(this);
 
         TextView signup = (TextView) findViewById(R.id.newuser);
         signup.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +41,22 @@ public class LoginView extends AppCompatActivity {
         LoginUseCase loginAttempt = new LoginUseCase();
         EditText username = findViewById(R.id.username);
         EditText password = findViewById(R.id.password);
-        if (loginAttempt.checkUser(username.getText().toString(), password.getText().toString()))
+
+        String user = username.getText().toString();
+        String pswrd = password.getText().toString();
+
+        Boolean checkuserpassword = MyDB1.checkUserPassword(user, pswrd);
+
+        if (checkuserpassword){
+            Toast.makeText(this, "Login successful",
+                Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginView.this, MainActivity.class);
+            startActivity(intent);
+        }
+        else{
             Toast.makeText(this, "Incorrect Login. Please try again.",
                 Toast.LENGTH_SHORT).show();
+        }
+
+        }
     }
-}
