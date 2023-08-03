@@ -13,13 +13,13 @@ import java.io.File;
 
 public class FileMenuController {
 
-    Context context;
-    View view;
-    PopupMenu fileMenu;
+    protected Context context;
+    protected View view;
+    protected PopupMenu fileMenu;
 
-    FileMenuInputBoundary fileMenuUseCase;
+    protected FileMenuInputBoundary fileMenuUseCase;
 
-    FileMenuFactory menuFactory;
+    protected FileMenuFactory menuFactory;
 
 
     public FileMenuController(Context context, View view, FileMenuFactory menuFactory){
@@ -50,7 +50,24 @@ public class FileMenuController {
         return true;
     }
 
-    private void redirect(MenuItem menuItem){
+//    public boolean create(File menuFile, FileMenuInputBoundary fileMenuUseCase) {
+//        fileMenu = menuFactory.create(context, view);
+//
+//        this.fileMenuUseCase = fileMenuUseCase;
+//        fileMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem menuItem) {
+//                redirect(menuItem);
+//
+//                return true;
+//            }
+//        });
+//
+//        fileMenu.show();
+//        return true;
+//    }
+
+    protected void redirect(MenuItem menuItem){
         if (menuItem.getTitle().equals("OPEN")){
             //open file or folder.
             fileMenuUseCase.open(context, view);
