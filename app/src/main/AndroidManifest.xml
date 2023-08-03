@@ -46,14 +46,13 @@
             android:name=".adapters.DirectoryActivity"
             android:exported="false" />
         <activity
-
             android:name=".adapters.FileEditingAdapters.SavePopUpActivity"
             android:exported="false" />
         <activity
             android:name=".adapters.FileEditingAdapters.FileEditorActivity"
-
+            android:exported="false" />
+        <activity
             android:name=".myapplication.RegisterView"
-
             android:exported="false" />
         <activity
             android:name=".MainActivity"
