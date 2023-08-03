@@ -25,6 +25,9 @@
                 android:resource="@xml/file_paths"/>
         </provider>
         <activity
+            android:name=".myapplication.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".adapters.ActivitySwitchController"
             android:exported="false" />
         <activity
@@ -43,7 +46,13 @@
             android:name=".adapters.DirectoryActivity"
             android:exported="false" />
         <activity
+            android:name=".myapplication.RegisterView"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".myapplication.LoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
