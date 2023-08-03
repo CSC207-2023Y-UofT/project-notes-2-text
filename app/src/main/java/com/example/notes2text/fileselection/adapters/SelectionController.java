@@ -24,12 +24,13 @@ import com.example.notes2text.R;
 import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.adapters.DirectoryAccessOutputBoundary;
 import com.example.notes2text.adapters.DirectoryAccessPresenter;
-import com.example.notes2text.adapters.FileListAdaptor;
 import com.example.notes2text.adapters.fragments.DirectoryAccessController;
 import com.example.notes2text.fileselection.usecases.SelectionInputBoundary;
 import com.example.notes2text.fileselection.usecases.SelectionInteractor;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,11 +50,11 @@ public class SelectionController extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_FILEPATH = "filepath";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_FILELIST = "initialfileList";
 
     // TODO: Rename and change types of parameters
     private String filePath;
-    private String mParam2;
+    private ArrayList<File> fileList;
 
     public SelectionController() {
         // Required empty public constructor
@@ -71,6 +72,16 @@ public class SelectionController extends Fragment {
         SelectionController fragment = new SelectionController();
         Bundle args = new Bundle();
         args.putString(ARG_FILEPATH, rootPath);
+        args.putSerializable(ARG_FILELIST, new ArrayList<File>());
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static SelectionController newInstance(String rootPath, ArrayList<File> inputfileList) {
+        SelectionController fragment = new SelectionController();
+        Bundle args = new Bundle();
+        args.putString(ARG_FILEPATH, rootPath);
+        args.putSerializable(ARG_FILELIST, inputfileList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -80,6 +91,8 @@ public class SelectionController extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             filePath = getArguments().getString(ARG_FILEPATH);
+            ArrayList<File> inputList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
+            fileList = inputList;
         }
     }
 
@@ -115,7 +128,14 @@ public class SelectionController extends Fragment {
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //Assign the custom adaptor to the View elements.
-            fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase));
+            if (fileList != null & fileList.isEmpty()){
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
+            } else if (fileList != null ) {
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
+                selectionPresenter.InheritFilesSuccess(getActivity());
+            } else{
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase));
+            }
         }
 
         //Add top menu and on click listener for top menu buttons.

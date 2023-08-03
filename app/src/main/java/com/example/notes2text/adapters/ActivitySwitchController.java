@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.notes2text.R;
 import com.example.notes2text.adapters.fragments.AccountViewController;
@@ -49,8 +50,9 @@ public class ActivitySwitchController extends AppCompatActivity {
             SelectionController sltnCntrl = SelectionController.newInstance(initialPath);
             replaceFragment(sltnCntrl);
         } else{
-            SelectionController sltnCntrl = SelectionController.newInstance(initialPath);
+            SelectionController sltnCntrl = SelectionController.newInstance(initialPath, initialFileList);
             replaceFragment(sltnCntrl);
+            Toast.makeText(getApplicationContext(), "ActivitySwitchController received files", Toast.LENGTH_SHORT).show();
         }
 //        DirectoryAccessController dirAcCntrl = DirectoryAccessController.newInstance(initialPath);
 //        //Create a new instance of the directory controller and send the arguments to it.

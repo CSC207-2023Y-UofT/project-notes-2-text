@@ -21,6 +21,7 @@ import com.example.notes2text.fileselection.usecases.SelectionMenuInteractor;
 import com.example.notes2text.usecases.FileMenuFactory;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHolder> {
@@ -39,6 +40,16 @@ public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHold
         this.context = context;
         selectedFiles = new ArrayList<>();
         this.selectionUseCase = selectionUseCase;
+    }
+    public SelectionListAdapter(Context context, File[] fileList, SelectionInputBoundary selectionUseCase, ArrayList<File> inputFileList) {
+        super();
+        this.fileList = fileList;
+        this.context = context;
+        selectedFiles = new ArrayList<>();
+        this.selectionUseCase = selectionUseCase;
+        for (File file:inputFileList) {
+            this.selectionUseCase.addItem(file);
+        }
     }
 
     @NonNull
@@ -114,7 +125,7 @@ public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHold
 
     //Public API method to access the list of selected files from another class.
     public ArrayList<File> getSelectedFiles(){
-        return selectedFiles;
+        return selectionUseCase.getSelectedFiles();
     }
 
 
