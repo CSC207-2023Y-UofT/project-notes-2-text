@@ -20,6 +20,7 @@ import com.example.notes2text.ui.accountsettings.SettingsActivity;
 import java.io.File;
 import java.util.ArrayList;
 
+
 public class ActivitySwitchController extends AppCompatActivity {
 
     ActivityViewBinding binding;
