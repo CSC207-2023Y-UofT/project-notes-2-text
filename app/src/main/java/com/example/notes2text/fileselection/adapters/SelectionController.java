@@ -29,7 +29,6 @@ import com.example.notes2text.fileselection.usecases.SelectionInputBoundary;
 import com.example.notes2text.fileselection.usecases.SelectionInteractor;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -39,7 +38,6 @@ import java.util.ArrayList;
  */
 public class SelectionController extends Fragment {
 
-    private boolean selectionToggle = false;
 
     //Required collaborators
     private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
@@ -91,8 +89,7 @@ public class SelectionController extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             filePath = getArguments().getString(ARG_FILEPATH);
-            ArrayList<File> inputList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
-            fileList = inputList;
+            fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
         }
     }
 
