@@ -1,4 +1,4 @@
-package com.example.notes2text.myapplication;
+package com.example.notes2text.UserLogin;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -44,9 +44,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean checkUserPassword(String username, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from user where name = ? and pasword = ?", new String[]{username, password});
+        Cursor cursor = MyDB.rawQuery("Select * from user where name = ? and password = ?", new String[]{username, password});
+        int count = cursor.getCount();
         cursor.close();
-        return cursor.getCount() > 0;
+        return count > 0;
     }
 
     public boolean uniqueEmail(String email){
@@ -57,6 +58,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return count > 0;
     }
 }
+
+
 //    public void addUser(User user) {
 //
 //    }

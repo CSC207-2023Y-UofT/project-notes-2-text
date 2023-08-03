@@ -1,4 +1,4 @@
-package com.example.notes2text.myapplication;
+package com.example.notes2text.UserLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.notes2text.R;
 
-public class MainActivity extends AppCompatActivity {
+public class delete extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

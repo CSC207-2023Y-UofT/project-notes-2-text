@@ -1,4 +1,4 @@
-package com.example.notes2text.myapplication;
+package com.example.notes2text.UserLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,8 +25,6 @@ public class LoginView extends AppCompatActivity {
         TextView user = (TextView) findViewById(R.id.username);
         TextView password = (TextView) findViewById(R.id.password);
 
-        MyDB1 = new DBHelper(this);
-
         TextView signup = (TextView) findViewById(R.id.newuser);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,11 +43,16 @@ public class LoginView extends AppCompatActivity {
         String user = username.getText().toString();
         String pswrd = password.getText().toString();
 
-        Boolean checkuserpassword = MyDB1.checkUserPassword(user, pswrd);
+
+        MyDB1 = new DBHelper(this);
+        boolean checkuserpassword = MyDB1.checkUserPassword(user, pswrd);
 
         if (checkuserpassword){
             Toast.makeText(this, "Login successful",
                 Toast.LENGTH_SHORT).show();
+//            UserFactory userFactory = new UserFactory();
+//            CurrentUser.setUser(userFactory.createUser("hi","hi","hi"));
+
             Intent intent = new Intent(LoginView.this, MainActivity.class);
             startActivity(intent);
         }

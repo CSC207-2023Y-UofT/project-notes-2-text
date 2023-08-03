@@ -25,7 +25,7 @@
                 android:resource="@xml/file_paths"/>
         </provider>
         <activity
-            android:name=".myapplication.MainActivity"
+            android:name=".UserLogin.delete"
             android:exported="false" />
         <activity
             android:name=".adapters.ActivitySwitchController"
@@ -46,13 +46,13 @@
             android:name=".adapters.DirectoryActivity"
             android:exported="false" />
         <activity
-            android:name=".myapplication.RegisterView"
+            android:name=".UserLogin.RegisterView"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".myapplication.LoginView"
+            android:name=".UserLogin.LoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

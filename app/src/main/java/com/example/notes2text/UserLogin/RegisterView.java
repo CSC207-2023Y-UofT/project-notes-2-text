@@ -1,4 +1,4 @@
-package com.example.notes2text.myapplication;
+package com.example.notes2text.UserLogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.notes2text.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,7 +56,7 @@ public class RegisterView extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
             else {
-                Boolean insert = MyDB1.insertData(userid, pswrd, emailid);
+                boolean insert = MyDB1.insertData(userid, pswrd, emailid);
                 if (insert) {
                     Toast.makeText(this, "Registration Successful",
                             Toast.LENGTH_SHORT).show();
