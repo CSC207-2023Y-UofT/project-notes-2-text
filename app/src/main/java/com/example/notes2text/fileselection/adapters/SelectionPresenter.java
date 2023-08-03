@@ -7,4 +7,8 @@ public class SelectionPresenter {
     public void MoveFileSuccess(Context context) {
         Toast.makeText(context, "File moved successfully", Toast.LENGTH_SHORT).show();
     }
+
+    public void InheritFilesSuccess(Context context){
+        Toast.makeText(context, "Inherited files from previous", Toast.LENGTH_SHORT).show();
+    }
 }
