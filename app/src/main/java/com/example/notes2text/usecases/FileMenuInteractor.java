@@ -6,14 +6,19 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.notes2text.adapters.DirectoryActivity;
+import com.example.notes2text.adapters.ActivitySwitchController;
+import com.example.notes2text.file_sharing.use_case.ShareObserver;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class FileMenuInteractor implements FileMenuInputBoundary {
 
-    File keyFile;
-    PopupMenu fileMenu;
+    private File keyFile;
+    private PopupMenu fileMenu;
+
+    /* Initialize an observer for initiating sharing function */
+    private final ShareObserver sharing = new ShareObserver();
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
     public FileMenuInteractor(PopupMenu fileMenu, File keyFile){
@@ -26,7 +31,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     public boolean open(Context context, View view) {
         if(keyFile.isDirectory()){
             // If the file is a directory(folder), enter the folder.
-            Intent intent = new Intent(context, DirectoryActivity.class);
+            Intent intent = new Intent(context, ActivitySwitchController.class);
             String path = keyFile.getAbsolutePath();
             intent.putExtra("path",path);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -52,6 +57,10 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
 
     @Override
     public boolean share(Context context, View view) {
+        /* Implementation of Share function */
+        ArrayList<File> files = new ArrayList<>();
+        files.add(keyFile);
+        sharing.share(context, files);
         Toast.makeText(context.getApplicationContext(), "File shared", Toast.LENGTH_SHORT).show();
         return true;
     }
@@ -72,5 +81,16 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
             view.setVisibility(View.GONE);
         }
         return isDeleted;
+    }
+
+    public File getKeyFile(){
+        return keyFile;
+    }
+    public PopupMenu getFileMenu(){
+        return fileMenu;
+    }
+
+    public FileOpenInteractor getFileOpener(){
+        return fileOpener;
     }
 }

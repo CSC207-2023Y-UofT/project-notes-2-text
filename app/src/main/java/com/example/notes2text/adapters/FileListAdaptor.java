@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
 import com.example.notes2text.adapters.fragments.DirectoryAccessController;
+import com.example.notes2text.usecases.FileMenuFactory;
 import com.example.notes2text.usecases.FileMenuInputBoundary;
 import com.example.notes2text.usecases.FileMenuInteractor;
 import com.example.notes2text.usecases.FileOpenInteractor;
@@ -25,7 +26,7 @@ import java.io.File;
 public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHolder> {
 
     Context context;
-    File[] fileList;
+    protected File[] fileList;
 
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
@@ -91,51 +92,57 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
             }
         });
 
+
+
         // Sets the holder object to listen for the user long clicking the file/folder
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
-                PopupMenu fileMenu = new PopupMenu(context, view);
-                fileMenu.getMenu().add("OPEN");
-                fileMenu.getMenu().add("MOVE");
-                fileMenu.getMenu().add("SHARE");
-                fileMenu.getMenu().add("RENAME");
-                fileMenu.getMenu().add("DELETE");
+                FileMenuController fileMenuController = new FileMenuController(context, view, new FileMenuFactory());
+                return fileMenuController.create(chosenFile);
 
-                // Set the use case interactor for the newly created file menu.
-                FileMenuInputBoundary fileMenuUseCase = new FileMenuInteractor(fileMenu, chosenFile);
-
-                fileMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        if (menuItem.getTitle().equals("OPEN")){
-                            //open file or folder.
-                            fileMenuUseCase.open(context, view);
-                        } else if (menuItem.getTitle().equals("MOVE")){
-                            // move item.
-                            fileMenuUseCase.move(context, view);
-                        }
-                        if (menuItem.getTitle().equals("SHARE")){
-                            // Redirect to third party share.
-                            fileMenuUseCase.share(context, view);
-                        }
-                        if (menuItem.getTitle().equals("RENAME")){
-                            // Bring up a rename menu.
-                            fileMenuUseCase.rename(context, view);
-                        }
-                        if (menuItem.getTitle().equals("DELETE")){
-                            // Delete the item.
-                            fileMenuUseCase.delete(context, view);
-                        }
-
-
-                        return true;
-                    }
-                });
-
-                fileMenu.show();
-                return true;
+//
+//                PopupMenu fileMenu = new PopupMenu(context, view);
+//                fileMenu.getMenu().add("OPEN");
+//                fileMenu.getMenu().add("MOVE");
+//                fileMenu.getMenu().add("SHARE");
+//                fileMenu.getMenu().add("RENAME");
+//                fileMenu.getMenu().add("DELETE");
+//
+//                // Set the use case interactor for the newly created file menu.
+//                FileMenuInputBoundary fileMenuUseCase = new FileMenuInteractor(fileMenu, chosenFile);
+//
+//                fileMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//                    @Override
+//                    public boolean onMenuItemClick(MenuItem menuItem) {
+//                        if (menuItem.getTitle().equals("OPEN")){
+//                            //open file or folder.
+//                            fileMenuUseCase.open(context, view);
+//                        } else if (menuItem.getTitle().equals("MOVE")){
+//                            // move item.
+//                            fileMenuUseCase.move(context, view);
+//                        }
+//                        if (menuItem.getTitle().equals("SHARE")){
+//                            // Redirect to third party share.
+//                            fileMenuUseCase.share(context, view);
+//                        }
+//                        if (menuItem.getTitle().equals("RENAME")){
+//                            // Bring up a rename menu.
+//                            fileMenuUseCase.rename(context, view);
+//                        }
+//                        if (menuItem.getTitle().equals("DELETE")){
+//                            // Delete the item.
+//                            fileMenuUseCase.delete(context, view);
+//                        }
+//
+//
+//                        return true;
+//                    }
+//                });
+//
+//                fileMenu.show();
+//                return true;
             }
         });
 
@@ -148,8 +155,8 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView textElement;
-        ImageView imageElement;
+        public TextView textElement;
+        public ImageView imageElement;
 
         public ViewHolder(View holderView){
             super(holderView);
