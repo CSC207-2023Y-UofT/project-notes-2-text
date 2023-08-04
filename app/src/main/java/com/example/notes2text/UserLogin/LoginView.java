@@ -48,10 +48,11 @@ public class LoginView extends AppCompatActivity {
         boolean checkuserpassword = MyDB1.checkUserPassword(user, pswrd);
 
         if (checkuserpassword){
-            Toast.makeText(this, "Login successful",
+            String email = MyDB1.getEmail(user);
+            Toast.makeText(this, "Login Successful",
                 Toast.LENGTH_SHORT).show();
-//            UserFactory userFactory = new UserFactory();
-//            CurrentUser.setUser(userFactory.createUser("hi","hi","hi"));
+            UserFactory userFactory = new UserFactory();
+            CurrentUser.setUser(userFactory.createUser(email,user,pswrd));
 
             Intent intent = new Intent(LoginView.this, MainActivity.class);
             startActivity(intent);

@@ -57,6 +57,21 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
+
+    public String getEmail(String username){
+        String email = null;
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select email from user WHERE name =?", new String[]{username});
+        int i = cursor.getColumnIndex("email");
+        if (cursor.moveToFirst() && i !=-1){
+            email = cursor.getString(i);
+        }
+        return email;
+
+
+
+
+    }
 }
 
 

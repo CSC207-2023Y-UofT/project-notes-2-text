@@ -25,9 +25,6 @@
                 android:resource="@xml/file_paths"/>
         </provider>
         <activity
-            android:name=".UserLogin.delete"
-            android:exported="false" />
-        <activity
             android:name=".adapters.ActivitySwitchController"
             android:exported="false" />
         <activity
