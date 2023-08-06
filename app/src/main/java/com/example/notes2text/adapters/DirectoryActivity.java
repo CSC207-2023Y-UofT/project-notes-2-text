@@ -1,6 +1,7 @@
 package com.example.notes2text.adapters;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +41,8 @@ public class DirectoryActivity extends AppCompatActivity {
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this));
             //Assign the custom adaptor to the View elements.
-            fileListView.setAdapter(new FileListAdaptor(getApplicationContext(), filesDirectory));
+            FragmentManager fragManager = getSupportFragmentManager();
+            fileListView.setAdapter(new FileListAdaptor(getApplicationContext(), filesDirectory, fragManager));
         }
 
 

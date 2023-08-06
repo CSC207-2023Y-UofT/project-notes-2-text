@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -115,7 +116,9 @@ public class DirectoryAccessController extends Fragment {
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //Assign the custom adaptor to the View elements.
-            fileListView.setAdapter(new FileListAdaptor(getActivity().getApplicationContext(), filesDirectory));
+            //Fragment Manager needed for transaction of activity for renaming file in FileListAdaptor.
+            FragmentManager fragManager = requireActivity().getSupportFragmentManager();
+            fileListView.setAdapter(new FileListAdaptor(getActivity().getApplicationContext(), filesDirectory, fragManager));
         }
 
         //Add top menu and on click listener for top menu buttons.

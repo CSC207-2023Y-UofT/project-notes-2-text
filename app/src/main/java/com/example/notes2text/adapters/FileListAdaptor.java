@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
@@ -31,10 +32,16 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
 
-    public FileListAdaptor(Context context, File[] fileList){
+    //Required for transaction of Activity.
+    private final FragmentManager fragManager;
+
+
+    //Updated as downstream FileMenuController will require a FragmentManager for transaction of Activity for renaming file Dialog.
+    public FileListAdaptor(Context context, File[] fileList, FragmentManager fragManager){
         super();
         this.context = context;
         this.fileList = fileList;
+        this.fragManager = fragManager;
     }
 
     //A function that creates the ViewHolder required for the recyclerview for file list.
@@ -99,7 +106,7 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
             @Override
             public boolean onLongClick(View view) {
 
-                FileMenuController fileMenuController = new FileMenuController(context, view, new FileMenuFactory());
+                FileMenuController fileMenuController = new FileMenuController(context, view, new FileMenuFactory(), fragManager);
                 return fileMenuController.create(chosenFile);
 
 //

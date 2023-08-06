@@ -33,27 +33,29 @@ public class CreateFolderController extends AppCompatDialogFragment {
         // Create a new dialogue builder.
         AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
 
-        // Link to the dialogue xml file.
+        // Link to the dialogue xml file, and inflate pop up.
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_folder_create, null);
 
 
         // Build the pop up dialogue.
-        // Empty as it should not do anything, simply ends the dialogue.
-        // Should get the user input for folder name, and pass them to the interactor.
         builder.setView(view)
                 .setTitle("Create Folder")
 
-                // Button for cancelling folder creation.
+                // Button for cancelling folder creation. Empty as it should not do anything, simply ends the dialogue.
                 .setNegativeButton("cancel", (dialogInterface, i) -> {
                 })
 
                 // Button for confirming folder creation.
+                // Should get the user input for folder name, and pass them to the interactor.
                 .setPositiveButton("create", (dialogInterface, i) -> {
                     String folderName = editTextFolderName.getText().toString();
                     String filePath = String.valueOf(Environment.getExternalStorageDirectory());
                     createFolder.create(folderName, filePath);
                 });
+        // Dialogue closes.
+
+        // Obtain user input of the folder name.
         editTextFolderName = view.findViewById(R.id.create_folder_name);
 
         return builder.create();

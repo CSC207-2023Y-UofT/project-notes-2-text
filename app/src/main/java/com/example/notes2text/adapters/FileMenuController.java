@@ -5,6 +5,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 
+import androidx.fragment.app.FragmentManager;
+
 import com.example.notes2text.usecases.FileMenuFactory;
 import com.example.notes2text.usecases.FileMenuInputBoundary;
 import com.example.notes2text.usecases.FileMenuInteractor;
@@ -21,11 +23,23 @@ public class FileMenuController {
 
     protected FileMenuFactory menuFactory;
 
+    //Needed for transaction of Activity to creating Dialog for renaming files.
+    private FragmentManager fragManager;
+
 
     public FileMenuController(Context context, View view, FileMenuFactory menuFactory){
         this.context = context;
         this.view = view;
         this.menuFactory = menuFactory;
+
+    }
+
+    //For when FragmentManager is needed for renaming Files.
+    public FileMenuController(Context context, View view, FileMenuFactory menuFactory, FragmentManager fragManager){
+        this.context = context;
+        this.view = view;
+        this.menuFactory = menuFactory;
+        this.fragManager = fragManager;
 
     }
 
@@ -81,12 +95,17 @@ public class FileMenuController {
         }
         if (menuItem.getTitle().equals("RENAME")){
             // Bring up a rename menu.
-            fileMenuUseCase.rename(context, view);
+            openDialog();
+            //fileMenuUseCase.rename(context, view);
         }
         if (menuItem.getTitle().equals("DELETE")){
             // Delete the item.
             fileMenuUseCase.delete(context, view);
         }
 
+    }
+    public void openDialog() {
+        RenameController renameFile = new RenameController(context);
+        renameFile.show(fragManager, "Create Rename File Dialogue");
     }
 }
