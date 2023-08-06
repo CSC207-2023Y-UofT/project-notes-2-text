@@ -24,11 +24,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+
         <activity
             android:name=".adapters.ActivitySwitchController"
-            android:exported="false" />
-        <activity
-            android:name=".ui.accountsettings.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.accountsettings.PopUpUsernameView"
@@ -50,7 +48,8 @@
             android:exported="true" />
         <activity
             android:name=".UserLogin.LoginView"
-            android:exported="true">
+            android:exported="true"
+            android:noHistory = "true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

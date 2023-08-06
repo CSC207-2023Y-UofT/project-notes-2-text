@@ -30,6 +30,7 @@ public class RegisterView extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RegisterView.this, LoginView.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -56,7 +57,7 @@ public class RegisterView extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
             else {
-                boolean insert = MyDB1.insertData(userid, pswrd, emailid);
+                boolean insert = MyDB1.insertData(userid, emailid, pswrd);
                 if (insert) {
                     Toast.makeText(this, "Registration Successful",
                             Toast.LENGTH_SHORT).show();

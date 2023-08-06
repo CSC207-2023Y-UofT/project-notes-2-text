@@ -38,8 +38,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean uniqueUsername(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from user where name = ?", new String[]{username});
+        int count = cursor.getCount();
         cursor.close();
-        return false;
+        return count > 0;
     }
 
     public boolean checkUserPassword(String username, String password) {
@@ -68,10 +69,40 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return email;
 
-
-
+    }
+    public String getPassword(String username){
+        String password = null;
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select password from user WHERE name =?", new String[]{username});
+        int i = cursor.getColumnIndex("password");
+        if (cursor.moveToFirst() && i !=-1){
+            password = cursor.getString(i);
+        }
+        return password;
 
     }
+
+    public void updateUsername(String username, String newUsername){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", newUsername);
+        MyDB.update("user", values, "name = ?", new String[]{username});
+    }
+
+    public void updatePassword(String password, String newPassword){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("password", newPassword);
+        MyDB.update("user", values, "password = ?", new String[]{password});
+    }
+
+    public void updateEmail(String email, String newEmail){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("email", newEmail);
+        MyDB.update("user", values, "email = ?", new String[]{email});
+    }
+
 }
 
 
