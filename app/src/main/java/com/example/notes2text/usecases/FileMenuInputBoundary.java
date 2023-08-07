@@ -15,7 +15,7 @@ public interface FileMenuInputBoundary {
 
     public boolean share(Context context, View view);
 
-    public boolean rename(Context context, View view);
+    public boolean rename(Context context, String fileName);
 
     public boolean delete(Context context, View view);
 

@@ -96,7 +96,6 @@ public class FileMenuController {
         if (menuItem.getTitle().equals("RENAME")){
             // Bring up a rename menu.
             openDialog();
-            //fileMenuUseCase.rename(context, view);
         }
         if (menuItem.getTitle().equals("DELETE")){
             // Delete the item.
@@ -105,7 +104,7 @@ public class FileMenuController {
 
     }
     public void openDialog() {
-        RenameController renameFile = new RenameController(context);
+        RenameController renameFile = new RenameController(context, fileMenuUseCase);
         renameFile.show(fragManager, "Create Rename File Dialogue");
     }
 }

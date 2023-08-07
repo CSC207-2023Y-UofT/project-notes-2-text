@@ -21,6 +21,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     private final ShareObserver sharing = new ShareObserver();
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
+    FileRenameInteractor fileRenamer = new FileRenameInteractor();
     public FileMenuInteractor(PopupMenu fileMenu, File keyFile){
         this.keyFile = keyFile;
         this.fileMenu = fileMenu;
@@ -66,7 +67,8 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     }
 
     @Override
-    public boolean rename(Context context, View view) {
+    public boolean rename(Context context, String fileName) {
+        fileRenamer.setNewFileName(keyFile, fileName);
         Toast.makeText(context.getApplicationContext(), "File renamed", Toast.LENGTH_SHORT).show();
         return true;
     }
