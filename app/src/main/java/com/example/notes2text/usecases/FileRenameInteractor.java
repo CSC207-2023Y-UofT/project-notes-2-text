@@ -19,12 +19,23 @@ public class FileRenameInteractor {
         String directoryPath = keyFile.getParent();
         assert directoryPath != null;
         File directory = new File(directoryPath);
-        File newFile = new File(directory, fileName.trim() + "." + extension);
-        keyFile.renameTo(newFile);
+        if (keyFile.isDirectory()){
+            // Does not need the ".extension" if its a directory path.
+            File newFile = new File(directory, fileName.trim() + extension);
+            keyFile.renameTo(newFile);
+            // In place for testing, monitor path used in runtime.
+            Log.i("newFile path is", newFile.toString());
+        } else {
+            // Needs the "." if it is a file.
+            File newFile = new File(directory, fileName.trim() + "." + extension);
+            keyFile.renameTo(newFile);
+            // In place for testing, monitor path used in runtime.
+            Log.i("newFile path is", newFile.toString());
+        }
+
 
         // In place for testing, monitor path used in runtime.
         Log.i("Directory is", directory.toString());
         Log.i("Default path is", keyFile.toString());
-        Log.i("newFile path is", newFile.toString());
     }
 }
