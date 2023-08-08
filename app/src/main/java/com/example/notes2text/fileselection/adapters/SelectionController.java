@@ -125,7 +125,7 @@ public class SelectionController extends Fragment {
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //Assign the custom adaptor to the View elements.
-            if (fileList != null & fileList.isEmpty()){
+            if (fileList != null && fileList.isEmpty()){
                 fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
             } else if (fileList != null ) {
                 fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
@@ -145,7 +145,7 @@ public class SelectionController extends Fragment {
         //call method to
         setFragmentToolbar(view);
 
-        setToolbarMenu();
+        setToolbarMenu(fileListView);
 
 
     }
@@ -156,7 +156,8 @@ public class SelectionController extends Fragment {
         ((AppCompatActivity) requireActivity()).setSupportActionBar(selectionToolbar);
     }
 
-    private void setToolbarMenu() {
+    //Adjusted to take in RecyclerView input.
+    private void setToolbarMenu(RecyclerView recyclerView) {
         requireActivity().addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
@@ -172,6 +173,27 @@ public class SelectionController extends Fragment {
                     Fragment fragment = DirectoryAccessController.newInstance(filePath);
                     ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
                 } else if (menuItem.getItemId() == R.id.back_button) {
+                    //attempts to go back a layer while keeping list of selected files.
+                    String higherPath = filePath;
+                    File currLayerFile = new File(filePath);
+                    File parentLayerFile = currLayerFile.getParentFile();
+                    // This appears to work correctly: selecting a file and going back displays the file inheritance message
+                    // and going back without selecting any files does not, so fileList is non-empty and has received the file correctly.
+                    try {
+                        higherPath = parentLayerFile.getAbsolutePath();
+                        //gets the adapter that was set to the selectionView.
+                        SelectionListAdapter selectionAdapter =  (SelectionListAdapter) recyclerView.getAdapter();
+                        //assumes the adapter is a selectionAdapter. Actually goes back, so this is probably fine.
+                        ArrayList<File> goBackFileList = selectionAdapter.getSelectedFiles();
+                        Fragment fragment = SelectionController.newInstance(higherPath, goBackFileList);
+                        ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
+                        directoryPresenter.BackLayerSuccess(getActivity());
+//                        selectionPresenter.InheritFilesSuccess(getActivity());
+                        //If the above line is commented out, and the file inheritence message is
+                        // still shown, the files are being passed along correctly.
+                    } catch (NullPointerException e){
+                        directoryPresenter.BackLayerFailure(getActivity());
+                    }
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.move_here_button) {
                     selectionPresenter.MoveFileSuccess(getActivity());

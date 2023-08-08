@@ -34,7 +34,9 @@ public class FileEditorActivity extends AppCompatActivity {
         original = textToEdit.getText();
 
         // Receiving file from ActivitySwitchController
-        file = (File)getIntent().getSerializableExtra("file");
+//        file = (File)getIntent().getSerializableExtra("file");
+        Bundle bundle = getIntent().getExtras();
+        file = (File)bundle.getSerializable("file");
         OpenTextEditorInteractor openTextEditor = new OpenTextEditorInteractor(file);
         String content = openTextEditor.extractContent();
         // Display text from txt file

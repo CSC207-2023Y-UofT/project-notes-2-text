@@ -50,6 +50,7 @@ public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHold
         for (File file:inputFileList) {
             this.selectionUseCase.addItem(file);
         }
+        //Selected file list is stored within the usecase, not the adapter..
     }
 
     @NonNull
@@ -124,6 +125,11 @@ public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHold
     }
 
     //Public API method to access the list of selected files from another class.
+
+    /**
+     *
+     * @return the list of selected files, stored within the selection usecase.
+     */
     public ArrayList<File> getSelectedFiles(){
         return selectionUseCase.getSelectedFiles();
     }
