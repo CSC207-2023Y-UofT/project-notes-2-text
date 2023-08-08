@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,16 +42,18 @@ public class SelectionController extends Fragment {
 
     //Required collaborators
     private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
+
+    //TODO: Implement SelectionOutputBoundary
     private SelectionPresenter selectionPresenter = new SelectionPresenter();
 
     private SelectionInputBoundary selectionUseCase = new SelectionInteractor();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // Bundle navigation keys to locate and retrieve parameters.
+    // the fragment initialization parameters, e.g. ARG_FILEPATH
     private static final String ARG_FILEPATH = "filepath";
     private static final String ARG_FILELIST = "initialfileList";
 
-    // TODO: Rename and change types of parameters
+    // Parameter types
     private String filePath;
     private ArrayList<File> fileList;
 
@@ -89,7 +92,13 @@ public class SelectionController extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             filePath = getArguments().getString(ARG_FILEPATH);
-            fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
+            try {
+                //this is type-safe.
+                //Bundles can only use Serializable to store lists of files.
+                fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
+            } catch (ClassCastException classE){
+                Log.e("cast", classE.getMessage());
+            }
         }
     }
 
@@ -189,14 +198,29 @@ public class SelectionController extends Fragment {
                         ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
                         directoryPresenter.BackLayerSuccess(getActivity());
 //                        selectionPresenter.InheritFilesSuccess(getActivity());
-                        //If the above line is commented out, and the file inheritence message is
+                        //If the above line is commented out, and the file inheritance message is
                         // still shown, the files are being passed along correctly.
                     } catch (NullPointerException e){
                         directoryPresenter.BackLayerFailure(getActivity());
                     }
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.move_here_button) {
-                    selectionPresenter.MoveFileSuccess(getActivity());
+                    //moves the selected files to the current location, provided it is possible to do so.
+                    selectionUseCase.move(filePath);
+                    //since the view only updates when entering or leaving a folder,
+                    // the new addresses of the moved files are also displayed to the user.
+                    SelectionListAdapter selectionAdapter =  (SelectionListAdapter) recyclerView.getAdapter();
+                    ArrayList<File> printFileList = selectionAdapter.getSelectedFiles();
+                    for (File file: printFileList){
+                        //TODO: Move this dialogue to the selection presenter.
+                        Toast.makeText(getActivity(), filePath + "/" + file.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                    if(!printFileList.isEmpty()){
+                        selectionPresenter.MoveFileSuccess(getActivity());
+                    } else {
+                        selectionPresenter.MoveFileNoFiles(getActivity());
+                    }
+                    //Moves the selected files to this location.
                 }
                 return true;
             }

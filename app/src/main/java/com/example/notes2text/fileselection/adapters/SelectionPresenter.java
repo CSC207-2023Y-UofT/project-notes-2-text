@@ -7,6 +7,13 @@ public class SelectionPresenter {
     public void MoveFileSuccess(Context context) {
         Toast.makeText(context, "File moved successfully", Toast.LENGTH_SHORT).show();
     }
+    public void MoveFileFailure(Context context) {
+        Toast.makeText(context, "File movement error", Toast.LENGTH_SHORT).show();
+    }
+
+    public void MoveFileNoFiles(Context context) {
+        Toast.makeText(context, "No files have been selected.", Toast.LENGTH_SHORT).show();
+    }
 
     public void InheritFilesSuccess(Context context){
         Toast.makeText(context, "Inherited files from previous", Toast.LENGTH_SHORT).show();
