@@ -47,44 +47,9 @@ public class SelectionInteractor implements SelectionInputBoundary {
 
     @Override
     public void move(String moveToAddress) {
-        // Attempt 1
 
-//        for (File selectedFile: selectedFiles) {
-//            InputStream in = null;
-//            OutputStream out = null;
-//            try{
-//                File moveToFolder = new File(moveToAddress);
-//                if(!moveToFolder.exists()){
-//                    moveToFolder.mkdirs();
-//                }
-//
-//                in = new FileInputStream(selectedFile.getAbsolutePath());
-//                out =  new FileOutputStream(moveToAddress + "\\" + selectedFile.getName());
-//
-//                byte[] buffer = new byte[1024];
-//                int read;
-//                while ((read = in.read(buffer)) != -1){
-//                    out.write(buffer, 0, read);
-//                }
-//                in.close();
-//
-//                out.flush();
-//                out.close();
-//                out = null;
-//
-//                //deleting the original file
-////                selectedFile.delete();
-//            } catch (FileNotFoundException fnfE){
-//                Log.e("tag", fnfE.getMessage());
-//                fnfE.printStackTrace();
-//            } catch (IOException ioE){
-//                Log.e("tag", ioE.getMessage());
-//                ioE.printStackTrace();
-//            }
-//        }
-
-        //Attempt 2
-
+        //creates a temporary file with the same name at the new file location, and
+        // overwrites the old file to the new file, moving the file to the new file spot.
         for (File selectedFile: selectedFiles) {
 
             String fileName = selectedFile.getName();
