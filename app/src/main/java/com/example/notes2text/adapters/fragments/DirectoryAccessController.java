@@ -164,12 +164,8 @@ public class DirectoryAccessController extends Fragment {
                     }
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.create_folder_button) {
-
                     //create a new dialogue using openDialog when button is clicked.
-                    menuItem.setOnMenuItemClickListener(menuItem1 -> {
-                        openDialog();
-                        return false;
-                    });
+                    openDialog();
                 }
                 return true;
             }
