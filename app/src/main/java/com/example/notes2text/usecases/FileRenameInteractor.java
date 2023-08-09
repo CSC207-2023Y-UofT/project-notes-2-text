@@ -6,6 +6,12 @@ import java.io.File;
 
 public class FileRenameInteractor {
 
+    /**
+     * Change the selected file's name according to user input.
+     *
+     * @param keyFile A IO.File pointing to the file/folder that the user selected.
+     * @param fileName A String for the user input of the new name.
+     */
     public void setNewFileName(File keyFile, String fileName) {
         // Get the file type.
         String oldFileName = keyFile.getName();
@@ -23,18 +29,18 @@ public class FileRenameInteractor {
             // Does not need the ".extension" if its a directory path.
             File newFile = new File(directory, fileName.trim() + extension);
             keyFile.renameTo(newFile);
-            // In place for testing, monitor path used in runtime.
+            // Monitor path used in runtime.
             Log.i("newFile path is", newFile.toString());
         } else {
             // Needs the "." if it is a file.
             File newFile = new File(directory, fileName.trim() + "." + extension);
             keyFile.renameTo(newFile);
-            // In place for testing, monitor path used in runtime.
+            // Monitor path used in runtime.
             Log.i("newFile path is", newFile.toString());
         }
 
 
-        // In place for testing, monitor path used in runtime.
+        // Monitor path used in runtime.
         Log.i("Directory is", directory.toString());
         Log.i("Default path is", keyFile.toString());
     }

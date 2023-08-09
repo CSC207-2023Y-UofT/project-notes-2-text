@@ -26,6 +26,16 @@ public class RenameController extends AppCompatDialogFragment {
         this.fileMenuUseCase = fileMenuUseCase;
     }
 
+    /**
+     * A default method in AppCompatDialogFragment that can be used to create a new Dialog. Overrode
+     * to add specific actions to perform according to user's interaction witht he Dialog.
+     *
+     * @param savedInstanceState The last saved instance state of the Fragment,
+     * or null if this is a freshly created Fragment.
+     *
+     * @return Returns the AlertDialog, this method call is used to construct the AlertDialog, which
+     * is displayed when .show() method is called.
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
