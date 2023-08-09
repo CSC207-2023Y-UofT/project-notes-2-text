@@ -29,6 +29,7 @@ import com.example.notes2text.adapters.FileListAdaptor;
 import com.example.notes2text.fileselection.adapters.SelectionController;
 
 import java.io.File;
+import java.nio.file.Paths;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -144,10 +145,23 @@ public class DirectoryAccessController extends Fragment {
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
                 if (menuItem.getItemId() == R.id.select_button){
+                    //Switch to the selection screen if select_button is pressed on.
                     Toast.makeText(getActivity(), "Switch to Selection Screen", Toast.LENGTH_SHORT).show();
                     Fragment fragment = SelectionController.newInstance(filePath);
                     ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
                 } else if (menuItem.getItemId() == R.id.back_button) {
+                    //goes up a layer in the displayed files in the File List recycler view.
+                    String higherPath = filePath;
+                    File currLayerFile = new File(filePath);
+                    File parentLayerFile = currLayerFile.getParentFile();
+                    try {
+                        higherPath = parentLayerFile.getAbsolutePath();
+                        Fragment fragment = DirectoryAccessController.newInstance(higherPath);
+                        ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
+                        directoryPresenter.BackLayerSuccess(getActivity());
+                    } catch (NullPointerException e){
+                        directoryPresenter.BackLayerFailure(getActivity());
+                    }
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.create_folder_button) {
 

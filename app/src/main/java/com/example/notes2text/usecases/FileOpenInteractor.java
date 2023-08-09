@@ -3,7 +3,10 @@ package com.example.notes2text.usecases;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.widget.Toast;
+
+import com.example.notes2text.adapters.FileEditingAdapters.FileEditorActivity;
 
 import java.io.File;
 
@@ -33,18 +36,21 @@ public class FileOpenInteractor {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             String fileType = getFileType(fileToOpen);
-            if (fileType != "N/A") {
-                intent.setDataAndType(Uri.parse(fileToOpen.getAbsolutePath()), fileType);
+            if (fileType.equals("text/plain")) {
+                Intent docIntent = new Intent(context, FileEditorActivity.class);
+//                docIntent.putExtra("file", fileToOpen);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("file", fileToOpen);
+                docIntent.putExtras(bundle);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            } else if (fileType != "text/plain") {
+                context.startActivity(docIntent);
+            } else if (fileType.equals("image/*")) {
                 // Pushes the file object to FileEditorActivity.
                 // Use intent system with the calling context (which is presumably the current activity context)
                 // Push to the text file editor activity.
-//                Intent docIntent = new Intent(context, FileEditorActivity.class);
-//                docIntent.putExtra("file", fileToOpen);
-//                context.startActivity(docIntent);
-
+                intent.setDataAndType(Uri.parse(fileToOpen.getAbsolutePath()), fileType);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
                 // On the way back, need to send the subdirectory path as extra object "path".
             } else {
                 Toast.makeText(context.getApplicationContext(), "File not openable through Notes2Text", Toast.LENGTH_SHORT).show();

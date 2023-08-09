@@ -24,11 +24,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+
         <activity
             android:name=".adapters.ActivitySwitchController"
-            android:exported="false" />
-        <activity
-            android:name=".ui.accountsettings.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.accountsettings.PopUpUsernameView"
@@ -43,12 +41,35 @@
             android:name=".adapters.DirectoryActivity"
             android:exported="false" />
         <activity
+            android:name=".UserLogin.RegisterView"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" />
+        <activity
+            android:name=".UserLogin.LoginView"
+            android:exported="true"
+            android:noHistory = "true">
+        <activity
+            android:name=".adapters.FileEditingAdapters.SavePopUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adapters.FileEditingAdapters.FileEditorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".myapplication.RegisterView"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".myapplication.LoginView"
+            android:exported="true">
         </activity>
     </application>
 
