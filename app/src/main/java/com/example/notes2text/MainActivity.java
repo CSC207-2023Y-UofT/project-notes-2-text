@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.notes2text.UserLogin.LoginView;
 import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.adapters.DirectoryActivity;
 import com.google.android.material.button.MaterialButton;
@@ -67,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
             //Interact with this activity to create a temporary window asking for storage access permission
             ActivityCompat.requestPermissions(MainActivity.this,new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},111);
         }
+    }
+
+    public void onBackPressed(){
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+        finish();
     }
 
 
