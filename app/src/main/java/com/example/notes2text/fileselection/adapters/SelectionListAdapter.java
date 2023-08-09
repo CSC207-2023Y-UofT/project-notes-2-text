@@ -27,10 +27,10 @@ import java.util.ArrayList;
 public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHolder> {
 
     private ArrayList<File> selectedFiles;
-    private Context context;
+    protected Context context;
     protected File[] fileList;
 
-    private SelectionInputBoundary selectionUseCase;
+    protected SelectionInputBoundary selectionUseCase;
 
 
 
