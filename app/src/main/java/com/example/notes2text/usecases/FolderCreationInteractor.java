@@ -12,11 +12,30 @@ public class FolderCreationInteractor {
     private final DirectoryAccessOutputBoundary output;
     private final Context context;
 
+    /**
+     * Constructor for the class. Obtains an Output Boundary to access a presenter and alert user of
+     * actions performed in this class. Obtains a context to use the presenter methods.
+     *
+     * @param output An instance of DirectoryAccessOutputBoundary, which is implemented by
+     *               DirectoryAccessPresenter. Contains methods to alert users of certain status of
+     *               an action. 
+     * @param context A context, needed to use the methods in the Output Boundary.
+     */
     public FolderCreationInteractor (DirectoryAccessOutputBoundary output, Context context) {
         this.output = output;
         this.context = context;
     }
 
+    /**
+     * Creates a new folder. Test if the folder already exist, if exist, alert user and does not make
+     * the folder. Then test if the input will lead to an error , and alert the user that input is
+     * invalid if it is invalid. If folder does not exist and file name is valid, makes the new folder
+     * with the name and alert the user that folder has been made.
+     *
+     * @param fileName A String input from user obtained from the dialog box for folder creation.
+     *                 Used for the name of the folder.
+     * @param filePath The path to the directory in which the folder will be added to.
+     */
     public void create(String fileName, String filePath) {
         File file = new File(filePath, fileName);
 

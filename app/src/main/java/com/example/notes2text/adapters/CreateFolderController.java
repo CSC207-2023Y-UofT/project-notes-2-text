@@ -21,12 +21,27 @@ public class CreateFolderController extends AppCompatDialogFragment {
 
     private final FolderCreationInteractor createFolder;
 
+    /**
+     * Constructor for the controller class. Obtains context to initiate a new FolderCreationInterator.
+     * The Interactor will be used for making the folder according to user input.
+     *
+     * @param context A Context, needed for initiating a new FolderCreationInteractor.
+     */
     public CreateFolderController(Context context) {
         //Initialize the folder creation use case class with its required presenter to display message.
         DirectoryAccessOutputBoundary output = new DirectoryAccessPresenter();
         createFolder = new FolderCreationInteractor(output, context);
     }
 
+    /**
+     * A Default method in the AppCompatDialogFragment which can be used to create the Dialog for
+     * user input. Overrode to add specific actions according to user input.
+     *
+     * @param savedInstanceState The last saved instance state of the Fragment,
+     * or null if this is a freshly created Fragment.
+     *
+     * @return Returns the builder. This call is used to construct and show the Dialog.
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -54,8 +69,10 @@ public class CreateFolderController extends AppCompatDialogFragment {
                     String filePath = String.valueOf(Environment.getExternalStorageDirectory());
                     createFolder.create(folderName, filePath);
                 });
+        // Obtain the user input.
         editTextFolderName = view.findViewById(R.id.create_folder_name);
 
+        // This call allow construction and display of the Dialog.
         return builder.create();
     }
 }

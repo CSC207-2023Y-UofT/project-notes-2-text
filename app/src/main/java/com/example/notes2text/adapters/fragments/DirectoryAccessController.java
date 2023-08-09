@@ -176,8 +176,10 @@ public class DirectoryAccessController extends Fragment {
         }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
     }
 
-    /* Helper method that create a new CreateFolderController, which inherits
-    AppCompatDialogFragment and can create a new dialogue. */
+    /**
+     * Helper method that create a new CreateFolderController, which inherits
+     * AppCompatDialogFragment and can create a new dialogue.
+     */
     public void openDialog() {
         CreateFolderController createFolder = new CreateFolderController(getActivity());
         createFolder.show(requireActivity().getSupportFragmentManager(), "Create Folder Dialogue");
