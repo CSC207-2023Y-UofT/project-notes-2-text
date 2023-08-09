@@ -6,7 +6,6 @@ import com.example.notes2text.usecases.FolderCreationInteractor;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
