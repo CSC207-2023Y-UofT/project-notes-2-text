@@ -21,6 +21,14 @@ public class RenameController extends AppCompatDialogFragment {
     private final Context context;
     private final FileMenuInputBoundary fileMenuUseCase;
 
+    /**
+     * Constructor for RenameController class.
+     *
+     * @param context Needed to use the method in fileMenuUseCase.
+     * @param fileMenuUseCase An instance of FileMenuInputBoundary, which is implemented by
+     *                        FileMenuInteractor. Used to access the use case for renaming file,
+     *                        and alerting the user.
+     */
     public RenameController (Context context, FileMenuInputBoundary fileMenuUseCase) {
         this.context = context;
         this.fileMenuUseCase = fileMenuUseCase;
