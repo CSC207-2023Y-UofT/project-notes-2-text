@@ -50,23 +50,6 @@ public class FileMenuController {
         return true;
     }
 
-//    public boolean create(File menuFile, FileMenuInputBoundary fileMenuUseCase) {
-//        fileMenu = menuFactory.create(context, view);
-//
-//        this.fileMenuUseCase = fileMenuUseCase;
-//        fileMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                redirect(menuItem);
-//
-//                return true;
-//            }
-//        });
-//
-//        fileMenu.show();
-//        return true;
-//    }
-
     protected void redirect(MenuItem menuItem){
         if (menuItem.getTitle().equals("OPEN")){
             //open file or folder.

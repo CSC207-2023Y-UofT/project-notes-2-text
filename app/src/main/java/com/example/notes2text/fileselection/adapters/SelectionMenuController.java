@@ -8,8 +8,6 @@ import android.widget.PopupMenu;
 import com.example.notes2text.adapters.FileMenuController;
 import com.example.notes2text.fileselection.usecases.SelectionMenuInteractor;
 import com.example.notes2text.usecases.FileMenuFactory;
-import com.example.notes2text.usecases.FileMenuInputBoundary;
-import com.example.notes2text.usecases.FileMenuInteractor;
 
 import java.io.File;
 import java.util.ArrayList;

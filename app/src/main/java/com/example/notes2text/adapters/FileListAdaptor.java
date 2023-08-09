@@ -3,27 +3,22 @@ package com.example.notes2text.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
-import com.example.notes2text.adapters.fragments.DirectoryAccessController;
+import com.example.notes2text.entities.FileViewHolder;
 import com.example.notes2text.usecases.FileMenuFactory;
-import com.example.notes2text.usecases.FileMenuInputBoundary;
-import com.example.notes2text.usecases.FileMenuInteractor;
 import com.example.notes2text.usecases.FileOpenInteractor;
 
 import java.io.File;
 
-public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHolder> {
+public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
+    //Adjusted to use FileViewHolder rather than inner class viewholder.
 
     Context context;
     protected File[] fileList;
@@ -38,16 +33,17 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
     }
 
     //A function that creates the ViewHolder required for the recyclerview for file list.
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup source, int ViewType){
+    public FileViewHolder onCreateViewHolder(@NonNull ViewGroup source, int ViewType){
 
         View view = LayoutInflater.from(context).inflate(R.layout.file_holder_view_model, source, false);
-        return new ViewHolder(view);
+        return new FileViewHolder(view);
     }
 
-    //Binds elements to the created viewholder, and attaches actions to them.
+    //Binds elements to the created view holder, and attaches actions to them.
     @Override
-    public void onBindViewHolder(@NonNull FileListAdaptor.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FileViewHolder holder, int position) {
 
         File chosenFile = fileList[position];
         //Changes the text element of the holder to match the name of the file.
@@ -153,16 +149,16 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
         return fileList.length;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        public TextView textElement;
-        public ImageView imageElement;
-
-        public ViewHolder(View holderView){
-            super(holderView);
-            // the textElement and imageElement will determine the appearance of each holder item in the RecyclerView.
-            textElement = holderView.findViewById(R.id.file_label_view);
-            imageElement = holderView.findViewById(R.id.icon_view);
-        }
-    }
+//    public class ViewHolder extends RecyclerView.ViewHolder{
+//
+//        public TextView textElement;
+//        public ImageView imageElement;
+//
+//        public ViewHolder(View holderView){
+//            super(holderView);
+//            // the textElement and imageElement will determine the appearance of each holder item in the RecyclerView.
+//            textElement = holderView.findViewById(R.id.file_label_view);
+//            imageElement = holderView.findViewById(R.id.icon_view);
+//        }
+//    }
 }

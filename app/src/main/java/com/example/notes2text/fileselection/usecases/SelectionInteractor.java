@@ -1,13 +1,11 @@
 package com.example.notes2text.fileselection.usecases;
 
-import android.util.Log;
-
 import java.io.File;
 import java.util.ArrayList;
 
 public class SelectionInteractor implements SelectionInputBoundary {
 
-    private ArrayList<File> selectedFiles;
+    private final ArrayList<File> selectedFiles;
 
     public SelectionInteractor(){
         selectedFiles = new ArrayList<File>();
@@ -27,9 +25,7 @@ public class SelectionInteractor implements SelectionInputBoundary {
 
     @Override
     public void removeItem(File file) {
-        if (selectedFiles.contains(file)){
-            selectedFiles.remove(file);
-        }
+        selectedFiles.remove(file);
     }
 
     @Override

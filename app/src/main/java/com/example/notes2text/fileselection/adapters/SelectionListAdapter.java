@@ -1,32 +1,22 @@
 package com.example.notes2text.fileselection.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;;import com.example.notes2text.R;
-import com.example.notes2text.adapters.ActivitySwitchController;
-import com.example.notes2text.adapters.FileListAdaptor;
-import com.example.notes2text.adapters.FileMenuController;
-import com.example.notes2text.entities.FileViewHolder;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.notes2text.R;
 import com.example.notes2text.entities.SelectionViewHolder;
 import com.example.notes2text.fileselection.usecases.SelectionInputBoundary;
-import com.example.notes2text.fileselection.usecases.SelectionInteractor;
-import com.example.notes2text.fileselection.usecases.SelectionMenuInteractor;
 import com.example.notes2text.usecases.FileMenuFactory;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHolder> {
 
-    private ArrayList<File> selectedFiles;
     protected Context context;
     protected File[] fileList;
 
@@ -38,14 +28,12 @@ public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHold
         super();
         this.fileList = fileList;
         this.context = context;
-        selectedFiles = new ArrayList<>();
         this.selectionUseCase = selectionUseCase;
     }
     public SelectionListAdapter(Context context, File[] fileList, SelectionInputBoundary selectionUseCase, ArrayList<File> inputFileList) {
         super();
         this.fileList = fileList;
         this.context = context;
-        selectedFiles = new ArrayList<>();
         this.selectionUseCase = selectionUseCase;
         for (File file:inputFileList) {
             this.selectionUseCase.addItem(file);

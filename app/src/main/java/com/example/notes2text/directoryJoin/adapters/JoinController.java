@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuProvider;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,8 +23,6 @@ import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.adapters.DirectoryAccessOutputBoundary;
 import com.example.notes2text.adapters.DirectoryAccessPresenter;
 import com.example.notes2text.adapters.FileEditingAdapters.FileEditorActivity;
-import com.example.notes2text.adapters.FileListAdaptor;
-import com.example.notes2text.fileselection.adapters.SelectionController;
 import com.example.notes2text.fileselection.adapters.SelectionListAdapter;
 import com.example.notes2text.fileselection.adapters.SelectionPresenter;
 import com.example.notes2text.fileselection.usecases.SelectionInputBoundary;
@@ -34,13 +31,16 @@ import com.example.notes2text.fileselection.usecases.SelectionInteractor;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * An activity that
+ */
 public class JoinController extends AppCompatActivity {
     //Required collaborators
-    private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
+    private final DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
 
-    private SelectionPresenter selectionPresenter = new SelectionPresenter();
+    private final SelectionPresenter selectionPresenter = new SelectionPresenter();
 
-    private SelectionInputBoundary selectionUseCase = new SelectionInteractor();
+    private final SelectionInputBoundary selectionUseCase = new SelectionInteractor();
 
     private String filePath;
     private ArrayList<File> fileList;
@@ -121,16 +121,18 @@ public class JoinController extends AppCompatActivity {
                     startActivity(intent);
                 } else if (menuItem.getItemId() == R.id.back_button) {
                     //attempts to go back a layer while keeping list of selected files.
-                    String higherPath = filePath;
+                    String higherPath;
                     File currLayerFile = new File(filePath);
                     File parentLayerFile = currLayerFile.getParentFile();
                     // This appears to work correctly: selecting a file and going back displays the file inheritance message
                     // and going back without selecting any files does not, so fileList is non-empty and has received the file correctly.
                     try {
+                        assert parentLayerFile != null;
                         higherPath = parentLayerFile.getAbsolutePath();
                         //gets the adapter that was set to the selectionView.
                         SelectionListAdapter selectionAdapter =  (SelectionListAdapter) recyclerView.getAdapter();
                         //assumes the adapter is a selectionAdapter. Actually goes back, so this is probably fine.
+                        assert selectionAdapter != null;
                         ArrayList<File> goBackFileList = selectionAdapter.getSelectedFiles();
                         //TODO: Implement back button functionality.
                         Intent intent = new Intent(getApplicationContext(), JoinController.class);
@@ -147,6 +149,7 @@ public class JoinController extends AppCompatActivity {
                 } else if (menuItem.getItemId() == R.id.join_button) {
                     try{
                         SelectionListAdapter selectionAdapter =  (SelectionListAdapter) recyclerView.getAdapter();
+                        assert selectionAdapter != null;
                         ArrayList<File> selectedFilesList = selectionAdapter.getSelectedFiles();
                         ArrayList<File> txtFilesList = new ArrayList<File>();
                         //get just the selected text files.
