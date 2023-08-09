@@ -181,7 +181,9 @@ public class DirectoryAccessController extends Fragment {
      * AppCompatDialogFragment and can create a new dialogue.
      */
     public void openDialog() {
-        CreateFolderController createFolder = new CreateFolderController(getActivity());
+        // Obtain the current directory.
+        File currentLayerFile = new File(filePath);
+        CreateFolderController createFolder = new CreateFolderController(getActivity(), currentLayerFile);
         createFolder.show(requireActivity().getSupportFragmentManager(), "Create Folder Dialogue");
     }
 

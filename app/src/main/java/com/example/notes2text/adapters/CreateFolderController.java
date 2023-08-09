@@ -16,21 +16,26 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import java.io.File;
+
 public class CreateFolderController extends AppCompatDialogFragment {
     private EditText editTextFolderName;
-
     private final FolderCreationInteractor createFolder;
+    private final File currentLayer;
 
     /**
      * Constructor for the controller class. Obtains context to initiate a new FolderCreationInterator.
      * The Interactor will be used for making the folder according to user input.
      *
      * @param context A Context, needed for initiating a new FolderCreationInteractor.
+     * @param currentLayer A File that indicates the current directory user sees. Used to obtain a path
+     *                     to create the folder in.
      */
-    public CreateFolderController(Context context) {
+    public CreateFolderController(Context context, File currentLayer) {
         //Initialize the folder creation use case class with its required presenter to display message.
         DirectoryAccessOutputBoundary output = new DirectoryAccessPresenter();
         createFolder = new FolderCreationInteractor(output, context);
+        this.currentLayer = currentLayer;
     }
 
     /**
@@ -66,7 +71,7 @@ public class CreateFolderController extends AppCompatDialogFragment {
                 // Button for confirming folder creation.
                 .setPositiveButton("create", (dialogInterface, i) -> {
                     String folderName = editTextFolderName.getText().toString();
-                    String filePath = String.valueOf(Environment.getExternalStorageDirectory());
+                    String filePath = currentLayer.getAbsolutePath();
                     createFolder.create(folderName, filePath);
                 });
         // Obtain the user input.
