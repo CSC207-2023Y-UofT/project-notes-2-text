@@ -42,8 +42,14 @@ public class FileOpenInteractor {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("file", fileToOpen);
                 docIntent.putExtras(bundle);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(docIntent);
+                docIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                try {
+                    context.startActivity(docIntent);
+                } catch (Exception e){
+//                    String exceptionMessage = e.getMessage();
+//                    int mid = exceptionMessage.length()/2;
+                    Toast.makeText(context.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                }
             } else if (fileType.equals("image/*")) {
                 // Pushes the file object to FileEditorActivity.
                 // Use intent system with the calling context (which is presumably the current activity context)

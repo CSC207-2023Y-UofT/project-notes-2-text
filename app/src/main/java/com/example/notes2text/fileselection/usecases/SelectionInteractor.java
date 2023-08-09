@@ -47,6 +47,7 @@ public class SelectionInteractor implements SelectionInputBoundary {
             String fileName = selectedFile.getName();
             File destFile = new File(moveToAddress + "/" + fileName);
             selectedFile.renameTo(destFile);
+            selectedFiles.clear();
 
         }
 

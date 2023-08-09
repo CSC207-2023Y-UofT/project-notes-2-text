@@ -128,6 +128,19 @@ public class SelectionController extends Fragment {
         // of files as view holder objects.
         if (filesDirectory == null || filesDirectory.length == 0){
             noFiles.setVisibility(View.VISIBLE);
+
+            //This portion is duplicated since otherwise files could not be moved to empty directories(due to lack of adapter).
+            //Assign Linear layout to file list.
+            fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+            //Assign the custom adaptor to the View elements.
+            if (fileList != null && fileList.isEmpty()){
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
+            } else if (fileList != null ) {
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
+                selectionPresenter.InheritFilesSuccess(getActivity());
+            } else{
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase));
+            }
         } else{
             // set noFiles to Invisible
             noFiles.setVisibility(View.INVISIBLE);
