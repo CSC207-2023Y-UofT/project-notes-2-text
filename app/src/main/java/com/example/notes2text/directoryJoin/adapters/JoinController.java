@@ -149,7 +149,7 @@ public class JoinController extends AppCompatActivity {
                         SelectionListAdapter selectionAdapter =  (SelectionListAdapter) recyclerView.getAdapter();
                         ArrayList<File> selectedFilesList = selectionAdapter.getSelectedFiles();
                         ArrayList<File> txtFilesList = new ArrayList<File>();
-                        //get just the selected textfiles.
+                        //get just the selected text files.
                         for (File file: selectedFilesList) {
                             if(file.getName().endsWith(".txt")){
                                 txtFilesList.add(file);
