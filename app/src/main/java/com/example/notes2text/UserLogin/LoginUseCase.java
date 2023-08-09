@@ -1,4 +1,4 @@
-package com.example.notes2text.myapplication;
+package com.example.notes2text.UserLogin;
 
 public class LoginUseCase {
 
@@ -6,7 +6,7 @@ public class LoginUseCase {
         UserRep repository = UserRep.getInstance();
         User activeUser = repository.getUser(username);
         if (activeUser != null){
-            if (activeUser.password.equals(password)) {
+            if (activeUser.getPassword().equals(password)) {
                 return true;
             }
         }

@@ -76,8 +76,8 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="352dp"
-                android:layout_height="75dp"
+                android:layout_width="385dp"
+                android:layout_height="67dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Change Email Address"
                 android:textColor="#F4EFEF"

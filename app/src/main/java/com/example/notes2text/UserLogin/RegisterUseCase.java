@@ -1,4 +1,4 @@
-package com.example.notes2text.myapplication;
+package com.example.notes2text.UserLogin;
 
 public class RegisterUseCase {
     UserRep repo = UserRep.getInstance();

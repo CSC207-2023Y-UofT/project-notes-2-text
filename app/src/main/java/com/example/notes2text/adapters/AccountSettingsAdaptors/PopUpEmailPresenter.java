@@ -5,21 +5,22 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.notes2text.usecases.UserUpdateInfo;
+import com.example.notes2text.UserLogin.UserUpdateInfo;
 
 public class PopUpEmailPresenter extends AppCompatActivity {
+    UserUpdateInfo user = new UserUpdateInfo();
 
     public PopUpEmailPresenter(){}
 
-    public void showEmail(UserUpdateInfo user, TextView text){
+    public void showEmail(TextView text){
         text.setText(user.getEmail());
     }
-    public boolean showNewEmail(UserUpdateInfo user, TextView text, EditText input){
+    public boolean showNewEmail(TextView text, EditText input){
         text.setText(user.getEmail());
         input.setText("");
         return true;
     }
-    public boolean showEmailError(UserUpdateInfo user, TextView text, EditText input){
+    public boolean showEmailError(TextView text, EditText input){
         input.setText("");
         return false;
     }
