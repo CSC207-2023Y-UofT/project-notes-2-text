@@ -1,7 +1,10 @@
 package com.example.notes2text.UserLogin;
 
+// Creates Users
 public class UserFactory {
-    public User createUser(String email, String user, String password){
-        return new User(email, user, password);
+
+    //Returns a User object given an email, username and password
+    public User createUser(String email, String username, String password){
+        return new User(email, username, password);
     }
 }
