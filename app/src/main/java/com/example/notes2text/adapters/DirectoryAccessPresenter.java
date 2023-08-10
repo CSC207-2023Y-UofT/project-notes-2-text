@@ -21,14 +21,19 @@ public class DirectoryAccessPresenter implements DirectoryAccessOutputBoundary{
      * @param context The activity where the message should be displayed to.
      */
     @Override
-    public void FolderCreationFailure(Context context) {
-        Toast.makeText(context, "Invalid file name for new folder", Toast.LENGTH_SHORT).show();
+    public void FolderCreationFailureInvalid(Context context) {
+        Toast.makeText(context, "Invalid file name", Toast.LENGTH_SHORT).show();
     }
 
     /**
      * Informs the user of successful return to parent folder.
      * @param context The activity where the message should be displayed to.
      */
+    @Override
+    public void FolderCreationFailureSameName(Context context) {
+        Toast.makeText(context, "Folder already exists", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void BackLayerSuccess(Context context) {
         Toast.makeText(context, "Returned to parent folder", Toast.LENGTH_SHORT).show();
