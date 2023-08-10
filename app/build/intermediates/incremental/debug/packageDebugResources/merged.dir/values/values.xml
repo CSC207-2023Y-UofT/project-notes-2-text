@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="file_selection_color">#008080</color>
+    <color name="light_blue">#ADD8E6</color>
+    <color name="light_green">#D1FFBD</color>
+    <color name="pink">#FFD8E9</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="accountButtonText">Account</string>
+    <string name="app_name">Notes2Text</string>
+    <string name="bold">Bold</string>
+    <string name="cancel">Cancel</string>
+    <string name="capitalize">Capitalize</string>
+    <string name="confirm">Confirm</string>
+    <string name="directoryButtonText">Directory</string>
+    <string name="directory_fragment">Directory Fragment</string>
+    <string name="enter_file_name">Enter file name</string>
+    <string name="file_type_icon">file type icon</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="italic">Italic</string>
+    <string name="join">Join</string>
+    <string name="login_placeholder">Login Placeholder</string>
+    <string name="lowercase">Lowercase</string>
+    <string name="noFiles">No files in current folder</string>
+    <string name="ocrButtonText">OCR</string>
+    <string name="ocr_fragment_text">OCR Fragment</string>
+    <string name="reset">Reset</string>
+    <string name="save">Save</string>
+    <string name="title_activity_directory_access_controller">DirectoryAccessController</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="type_here">Type here</string>
+    <style name="Base.Theme.Notes2Text" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Notes2Text" parent="Base.Theme.Notes2Text"/>
+</resources>

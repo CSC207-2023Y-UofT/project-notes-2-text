@@ -1,0 +1,134 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121111"
+    android:backgroundTint="#52AAD6">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="267dp"
+        android:layout_height="29dp"
+        android:layout_weight="1"
+        android:text="Current Username:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.207"
+        tools:text="Current Username" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0C0C0C"
+        android:backgroundTint="@color/light_blue"
+        android:backgroundTintMode="add">
+
+
+        <TextView
+            android:id="@+id/CurrentEmail"
+            android:layout_width="146dp"
+            android:layout_height="28dp"
+            android:backgroundTint="#F1F1F1"
+            android:text="TextView"
+            android:textColor="#FAF8F8"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.135"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.268" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="267dp"
+            android:layout_height="29dp"
+            android:text="Current Email Address:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.207"
+            tools:text="Current Email Address:" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="409dp"
+            android:layout_height="110dp"
+            android:background="#0C0C0C"
+            android:backgroundTint="#52AAD6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="385dp"
+                android:layout_height="67dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Change Email Address"
+                android:textColor="#F4EFEF"
+                android:textSize="34sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3F51B5"
+            android:text="Confirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.467"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.556" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="267dp"
+            android:layout_height="29dp"
+            android:text="Type new email address here"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.344"
+            tools:text="Type new email address here" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="232dp"
+            android:layout_height="57dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="#FDFCFC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.201"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.431" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.notes2text"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="23"
+        android:targetSdkVersion="29" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <permission
+        android:name="com.example.notes2text.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.notes2text.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:debuggable="true"
+        android:extractNativeLibs="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.Notes2Text" >
+        <activity
+            android:name="com.example.notes2text.directoryJoin.adapters.JoinController"
+            android:exported="false" />
+
+        <provider
+            android:name="com.example.notes2text.file_sharing.use_case.MyFileProvider"
+            android:authorities="com.example.notes2text.file_sharing.use_case.MyFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name="com.example.notes2text.adapters.ActivitySwitchController"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.ui.accountsettings.PopUpUsernameView"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.ui.accountsettings.PopUpPasswordView"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.ui.accountsettings.PopUpEmailView"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.adapters.DirectoryActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.UserLogin.RegisterView"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.notes2text.adapters.FileEditingAdapters.SavePopUpActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.adapters.FileEditingAdapters.FileEditorActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.notes2text.UserLogin.LoginView"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.example.notes2text.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false" />
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false" />
+
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.DUMP" >
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

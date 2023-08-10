@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.notes2text.ui.accountsettings.SettingsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/accountsettings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0C0C0C"
+        android:backgroundTint="@color/light_blue"
+        android:backgroundTintMode="add">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="133dp"
+            android:layout_height="63dp"
+            android:backgroundTint="#F40333"
+            android:text="logout"
+            app:iconTint="#2196F3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.878" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="115dp"
+            android:layout_height="101dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.192"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.714"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="205dp"
+            android:layout_height="37dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Display Picture"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.276"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.576" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/PopUpEmailView"
+            android:layout_width="297dp"
+            android:layout_height="70dp"
+            android:backgroundTint="#FAF9F9"
+            android:text="Change Email Address"
+            android:textColor="#101010"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.459" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/PopUpPasswordView"
+            android:layout_width="297dp"
+            android:layout_height="70dp"
+            android:backgroundTint="#F1EBEB"
+            android:text="Change Password"
+            android:textColor="#101010"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.334" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/PopUpUsernameView"
+            android:layout_width="297dp"
+            android:layout_height="70dp"
+            android:background="#F4F3F3"
+            android:backgroundTint="#F6F5F5"
+            android:buttonTint="#979191"
+            android:text="Change Username"
+            android:textColor="#101010"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.201" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="409dp"
+            android:layout_height="110dp"
+            android:background="#100F0F"
+            android:backgroundTint="#52AAD6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="284dp"
+                android:layout_height="54dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Account Settings"
+                android:textColor="#F4EFEF"
+                android:textSize="34sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

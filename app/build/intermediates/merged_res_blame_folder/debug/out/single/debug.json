@@ -1,0 +1,246 @@
+[
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/layout_activity_file_editor.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_file_editor.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-pngs-41:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_ic_dashboard_black_24dp.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/ic_dashboard_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_selection_holder_view_model.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/selection_holder_view_model.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_main3.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main3.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_pop_up_password_view.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_pop_up_password_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_baseline_person_outline_24.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/baseline_person_outline_24.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_fragment_dashboard.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_view.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_view.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/layout_join_view.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/layout/join_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/xml_backup_rules.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/menu_selection_toolbar.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/menu/selection_toolbar.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_main4.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main4.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_baseline_folder_24.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/baseline_folder_24.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_ic_home_black_24dp.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_main.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/xml_file_paths.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/xml/file_paths.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_selection_view_fragment.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/selection_view_fragment.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_settings_activity.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/settings_activity.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_fragment_home.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_fragment_notifications.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_notifications.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_baseline_insert_drive_file_24.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/baseline_insert_drive_file_24.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_baseline_document_scanner_24.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/baseline_document_scanner_24.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/layout_activity_main2.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_main2.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_baseline_library_add_check_24.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/baseline_library_add_check_24.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/menu_bottom_nav_menu.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/drawable_baseline_exit_to_app_24.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/drawable/baseline_exit_to_app_24.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/layout_activity_save_pop_up.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_save_pop_up.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_pop_up_email_view.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_pop_up_email_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_file_holder_view_model.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/file_holder_view_model.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/drawable_baseline_join_full_24.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/drawable/baseline_join_full_24.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/layout_activity_pop_up_email_view.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_pop_up_email_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_directory_access_view_fragment.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/directory_access_view_fragment.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/layout_settings_activity.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/layout/settings_activity.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/menu_directory_toolbar.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/menu/directory_toolbar.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_directory.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_directory.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/drawable_baseline_arrow_back_24.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/drawable/baseline_arrow_back_24.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_main2.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main2.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_fragment_o_c_r_controller.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_o_c_r_controller.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_activity_pop_up_username_view.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_pop_up_username_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_fragment_account_controller.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_account_controller.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/menu_activity_view_bar.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/menu/activity_view_bar.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/drawable_outline_account_tree_24.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/drawable/outline_account_tree_24.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/layout_fragment_account_view.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_account_view.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-merged_res-45:/menu_join_toolbar.xml.flat",
+        "source": "com.example.notes2text.app-main-47:/menu/join_toolbar.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/navigation_mobile_navigation.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/navigation/mobile_navigation.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-merged_res-45:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    }
+]

@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/fragment_account_view.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_account_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/selection_view_fragment.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/selection_view_fragment.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/fragment_o_c_r_controller.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_o_c_r_controller.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/selection_holder_view_model.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/selection_holder_view_model.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/fragment_account_controller.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_account_controller.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_pop_up_username_view.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_pop_up_username_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_main4.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main4.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_pop_up_email_view.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_pop_up_email_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/fragment_home.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/settings_activity.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/settings_activity.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/directory_access_view_fragment.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/directory_access_view_fragment.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-mergeDebugResources-44:/layout/activity_main2.xml",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_main2.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_pop_up_password_view.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_pop_up_password_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_main3.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main3.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-mergeDebugResources-44:/layout/activity_pop_up_email_view.xml",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_pop_up_email_view.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-mergeDebugResources-44:/layout/activity_save_pop_up.xml",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_save_pop_up.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-mergeDebugResources-44:/layout/activity_file_editor.xml",
+        "source": "com.example.notes2text.app-main-47:/layout/activity_file_editor.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_view.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/fragment_dashboard.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-mergeDebugResources-44:/layout/join_view.xml",
+        "source": "com.example.notes2text.app-main-47:/layout/join_view.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_main.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/fragment_notifications.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/fragment_notifications.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/file_holder_view_model.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/file_holder_view_model.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_main2.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_main2.xml"
+    },
+    {
+        "merged": "com.example.notes2text.app-mergeDebugResources-44:/layout/settings_activity.xml",
+        "source": "com.example.notes2text.app-main-47:/layout/settings_activity.xml"
+    },
+    {
+        "merged": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-mergeDebugResources-44:/layout/activity_directory.xml",
+        "source": "/Users/thishor/.gradle/daemon/8.0/com.example.notes2text.app-main-47:/layout/activity_directory.xml"
+    }
+]
