@@ -63,9 +63,10 @@ public class JoinController extends AppCompatActivity {
 
         filePath = getIntent().getStringExtra("path");
 
-        if(filePath != null){
+        if(filePath == null){
             filePath = Environment.getExternalStorageDirectory().getPath();
         }
+
 
         //get the current list of selected files from the intent.
         Bundle bundle = getIntent().getExtras();
