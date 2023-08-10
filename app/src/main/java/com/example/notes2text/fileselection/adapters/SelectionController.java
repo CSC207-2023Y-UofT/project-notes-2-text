@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,16 +42,18 @@ public class SelectionController extends Fragment {
 
     //Required collaborators
     private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
+
+    //TODO: Implement SelectionOutputBoundary
     private SelectionPresenter selectionPresenter = new SelectionPresenter();
 
     private SelectionInputBoundary selectionUseCase = new SelectionInteractor();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // Bundle navigation keys to locate and retrieve parameters.
+    // the fragment initialization parameters, e.g. ARG_FILEPATH
     private static final String ARG_FILEPATH = "filepath";
     private static final String ARG_FILELIST = "initialfileList";
 
-    // TODO: Rename and change types of parameters
+    // Parameter types
     private String filePath;
     private ArrayList<File> fileList;
 
@@ -89,7 +92,13 @@ public class SelectionController extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             filePath = getArguments().getString(ARG_FILEPATH);
-            fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
+            try {
+                //this is type-safe.
+                //Bundles can only use Serializable to store lists of files.
+                fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
+            } catch (ClassCastException classE){
+                Log.e("cast", classE.getMessage());
+            }
         }
     }
 
@@ -119,13 +128,26 @@ public class SelectionController extends Fragment {
         // of files as view holder objects.
         if (filesDirectory == null || filesDirectory.length == 0){
             noFiles.setVisibility(View.VISIBLE);
+
+            //This portion is duplicated since otherwise files could not be moved to empty directories(due to lack of adapter).
+            //Assign Linear layout to file list.
+            fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+            //Assign the custom adaptor to the View elements.
+            if (fileList != null && fileList.isEmpty()){
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
+            } else if (fileList != null ) {
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
+                selectionPresenter.InheritFilesSuccess(getActivity());
+            } else{
+                fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase));
+            }
         } else{
             // set noFiles to Invisible
             noFiles.setVisibility(View.INVISIBLE);
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //Assign the custom adaptor to the View elements.
-            if (fileList != null & fileList.isEmpty()){
+            if (fileList != null && fileList.isEmpty()){
                 fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
             } else if (fileList != null ) {
                 fileListView.setAdapter(new SelectionListAdapter(getActivity().getApplicationContext(), filesDirectory, selectionUseCase, fileList));
@@ -145,7 +167,7 @@ public class SelectionController extends Fragment {
         //call method to
         setFragmentToolbar(view);
 
-        setToolbarMenu();
+        setToolbarMenu(fileListView);
 
 
     }
@@ -156,7 +178,8 @@ public class SelectionController extends Fragment {
         ((AppCompatActivity) requireActivity()).setSupportActionBar(selectionToolbar);
     }
 
-    private void setToolbarMenu() {
+    //Adjusted to take in RecyclerView input.
+    private void setToolbarMenu(RecyclerView recyclerView) {
         requireActivity().addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
@@ -172,9 +195,45 @@ public class SelectionController extends Fragment {
                     Fragment fragment = DirectoryAccessController.newInstance(filePath);
                     ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
                 } else if (menuItem.getItemId() == R.id.back_button) {
+                    //attempts to go back a layer while keeping list of selected files.
+                    String higherPath = filePath;
+                    File currLayerFile = new File(filePath);
+                    File parentLayerFile = currLayerFile.getParentFile();
+                    // This appears to work correctly: selecting a file and going back displays the file inheritance message
+                    // and going back without selecting any files does not, so fileList is non-empty and has received the file correctly.
+                    try {
+                        higherPath = parentLayerFile.getAbsolutePath();
+                        //gets the adapter that was set to the selectionView.
+                        SelectionListAdapter selectionAdapter =  (SelectionListAdapter) recyclerView.getAdapter();
+                        //assumes the adapter is a selectionAdapter. Actually goes back, so this is probably fine.
+                        ArrayList<File> goBackFileList = selectionAdapter.getSelectedFiles();
+                        Fragment fragment = SelectionController.newInstance(higherPath, goBackFileList);
+                        ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
+                        directoryPresenter.BackLayerSuccess(getActivity());
+//                        selectionPresenter.InheritFilesSuccess(getActivity());
+                        //If the above line is commented out, and the file inheritance message is
+                        // still shown, the files are being passed along correctly.
+                    } catch (NullPointerException e){
+                        directoryPresenter.BackLayerFailure(getActivity());
+                    }
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.move_here_button) {
-                    selectionPresenter.MoveFileSuccess(getActivity());
+                    //moves the selected files to the current location, provided it is possible to do so.
+                    selectionUseCase.move(filePath);
+                    //since the view only updates when entering or leaving a folder,
+                    // the new addresses of the moved files are also displayed to the user.
+                    SelectionListAdapter selectionAdapter =  (SelectionListAdapter) recyclerView.getAdapter();
+                    ArrayList<File> printFileList = selectionAdapter.getSelectedFiles();
+                    for (File file: printFileList){
+                        //TODO: Move this dialogue to the selection presenter.
+                        Toast.makeText(getActivity(), filePath + "/" + file.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                    if(!printFileList.isEmpty()){
+                        selectionPresenter.MoveFileSuccess(getActivity());
+                    } else {
+                        selectionPresenter.MoveFileNoFiles(getActivity());
+                    }
+                    //Moves the selected files to this location.
                 }
                 return true;
             }
