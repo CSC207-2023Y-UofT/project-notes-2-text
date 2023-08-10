@@ -2,10 +2,21 @@ package com.example.notes2text.usecases.FileEditingUseCases;
 
 import java.io.File;
 
+/**
+ * Interface for the OpenTextEditorInteractor. OpenTextEditorInteractor extracts the text from the
+ * selected text file to display to the user on the text editor page
+ */
 public interface OpenTextEditorBoundary {
 
-    public String extractContent();
+    /**
+     * Extract the content of a text file.
+     * @return Returns the content of the text file as a String
+     */
+    String extractContent();
 
-    public File getLastOpened();
-
+    /**
+     * Get the file object of the text file that is open in the text editor
+     * @return Returns the file object of the last opened text file
+     */
+    File getLastOpened();
 }
