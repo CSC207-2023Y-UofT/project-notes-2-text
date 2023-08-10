@@ -52,8 +52,6 @@ public class FileEditorActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         // Receiving file from ActivitySwitchController
         file = (File)bundle.getSerializable("file");
-        // Receiving text from SavePopUpActivity
-        String text = (String) bundle.getSerializable("text");
         // Receiving array of selected files from JoinController
         ArrayList<File> selectedFiles = (ArrayList<File>)bundle.getSerializable("selectedFiles");
 
@@ -62,9 +60,6 @@ public class FileEditorActivity extends AppCompatActivity {
             OpenTextEditorBoundary openTextEditor = new OpenTextEditorInteractor(file);
             String content = openTextEditor.extractContent();
             textToEdit.setText(content);
-        // if received text from SavePopUpController
-        } else if (text != null) {
-            textToEdit.setText(text);
         // if received array list of files from JoinController
         } else if (selectedFiles != null) {
             JoinFiles joinFiles = new JoinFiles(selectedFiles);
