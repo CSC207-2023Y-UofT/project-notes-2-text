@@ -107,7 +107,7 @@ public class FileMenuController {
     /**
      * A helper method that intialize a new RenameController and construct a new Dialog.
      */
-    public void openDialog() {
+    private void openDialog() {
         RenameController renameFile = new RenameController(context, fileMenuUseCase);
 
         // Default method in AppCompatDialogFragment that displays the Dialog built.
