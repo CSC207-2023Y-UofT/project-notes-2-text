@@ -15,6 +15,10 @@ import com.example.notes2text.R;
 public class RegisterView extends AppCompatActivity {
 
 
+    /**
+     * Displays the UI for Register Page and listens for user input
+     * @param savedInstanceState Bundle containing the saved instance State of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +35,10 @@ public class RegisterView extends AppCompatActivity {
         });
     }
 
-    //Method that listens to the Register button
+    /**
+     * Method that listens to Register button click
+     * @param view The register button
+     */
     public void clickRegister(View view) {
 
         //Get username, email, password and password reconfirmation from a User

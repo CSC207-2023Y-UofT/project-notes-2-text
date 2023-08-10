@@ -13,14 +13,24 @@ public class RegisterUseCase {
     private  static final List<String> msg = Arrays.asList("User Registered! Please login", "UserID already exists", "UserID does not meet requirements",
             "Email already exists", "Please enter a valid email",  "Password does not meet requirements", "Passwords don't match");
 
-    //Constructor to initialize the attribute of a RegisterUseCase object
+    /**
+     * //Constructor to initialize the attribute of a RegisterUseCase object
+     * @param context The Android context that needs access to user repository.
+     */
     public RegisterUseCase(Context context){
         this.userRep = new UserRepImpl(context);
 
     }
-    /*
-    Register a User if user's info are valid.
-    Return a message that represents the registration status
+
+    /**
+     * Check to see if user input is valid to register as a user. If valid, register user and
+     * inform the user they have been registered.
+     * If user info is invalid, inform the user as to why user input is valid
+     * @param email The email from user input
+     * @param userid The userid from user input
+     * @param password1 The password from user input
+     * @param password2 The password confirmation from user input
+     * @return a string message that explains the outome of the registration attempt
      */
     public String registerUser(String email, String userid, String password1, String password2) {
         //Checks to see if a users registration info is valid
@@ -32,10 +42,15 @@ public class RegisterUseCase {
         return msg.get(status);
     }
 
-    /*
-    Check if a users registration info is valid
-    Return an integer representing the registration status
-    */
+    /**
+     * Check if a users registration info is valid
+     * @param emailid The emailid from user input
+     * @param userid The userid from user input
+     * @param password1 The password from user input
+     * @param password2 The password confirmation from user input
+     * @return an integer representing the registration status
+     */
+
     public int  checkUser(String emailid, String userid, String password1, String password2) {
         //Checks to see if username exists in the User Repository
         if (userRep.uniqueUsername(userid)) {
@@ -64,10 +79,10 @@ public class RegisterUseCase {
         return 0;
     }
 
-    /*
-    Returns true if a User enters a password that contains a capital letter,
-    lower case letter, a number, special character, does not contain any
-    empty white space and the password is between 6 and 12 characters long.
+    /**
+     * Check if password meets password requirements
+     * @param password The password from user input
+     * @return true if password meets password requiremtns
      */
     public boolean validPassword(String password){
         boolean capitalLetter = false;
@@ -103,9 +118,12 @@ public class RegisterUseCase {
         return capitalLetter && lcLetter && numeric && noWhiteSpace && specialCharacters
                 && length;
     }
-    /*
-    Returns true if a User enters a username that does not contain any
-    empty white space and the password is between 4 and 12 characters long.
+
+    /**
+     *  Check if a User enters a username that does not contain any
+     * empty white space and the password is between 4 and 12 characters long.
+     * @param username The username from user input
+     * @return true if username meets username requirements
      */
     public boolean validUsername(String username){
         boolean noWhiteSpace = true;

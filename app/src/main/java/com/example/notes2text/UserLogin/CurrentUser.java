@@ -1,6 +1,5 @@
 package com.example.notes2text.UserLogin;
 
-//Class that keeps track of the User that's logged in
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,19 +7,26 @@ import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+//Class that keeps track of the User that's logged in
 public class CurrentUser {
 
     private static User currentUser = null;
 
-    //Sets the currentUser to user
 
     private static final String StoreUsername = "";
 
+    /**
+     * //Sets the currentUser to user
+     * @param user The user that is logged in
+     */
     public static void setUser(User user){
         currentUser = user;
     }
 
-    //Returns the current user that is logged on
+    /**
+     * Return the current user that is logged on
+     * @return the current user that is logged on
+     */
     public static User getUser(){
         return currentUser;
     }

@@ -21,6 +21,10 @@ public class LoginView extends AppCompatActivity {
 
     UserRepImpl userRep;
 
+    /**
+     * Displays the UI for Login Page and listens for user input
+     * @param savedInstanceState Bundle containing the saved instance State of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,10 @@ public class LoginView extends AppCompatActivity {
 
         TextView signup = (TextView) findViewById(R.id.newuser);
         signup.setOnClickListener(new View.OnClickListener() {
-            //Method that listens to Register button click
+            /**
+             * Method that listens to Register button click
+             * @param view The Sign Up button
+             */
             @Override
             public void onClick(View view) {
                 //Navigates to RegisterView page
@@ -53,7 +60,10 @@ public class LoginView extends AppCompatActivity {
         });
     }
 
-    //Method that listens to Login button click
+    /**
+     * Method that listens to Login button click
+     * @param view The login button
+     */
     public void loginClick(View view){
         LoginUseCase loginAttempt = new LoginUseCase(this);
 

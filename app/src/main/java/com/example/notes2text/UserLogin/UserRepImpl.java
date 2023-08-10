@@ -8,29 +8,47 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class UserRepImpl extends SQLiteOpenHelper implements UserRepository {
 
     //Name of the User repository storing the email, username and password of all registered Users
-    public static final String DBNAME = "Notes2TextUsers.db";
+    public static final String DBNAME = "Notes2TextUsers";
 
 
-    //Creates a User repository called DBNAME
+    /**
+     * Creates a User repository called DBNAME
+     * @param context The Android context that uses the database
+     */
     public UserRepImpl(Context context) {
         super(context, DBNAME, null, 1);
     }
 
-    //Creates a table in database with name, email and password columns
+
+    /**
+     * Creates a database for the first time.
+     * @param MyDB The SQLDatabase database being created.
+     */
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create table user(name Text Primary key, email Text, password Text)");
 
     }
 
-    //Upgrades table constructed
+    /**
+     * Upgrade the database
+      * @param MyDB The SQLDatabase database being upgraded
+     * @param i Older version of the database
+     * @param i1 New version of the database
+     */
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
         MyDB.execSQL("drop table if exists user");
 
     }
 
-    //Add a user's info to the database
+    /**
+     * Add user info to a User Repository
+     * @param username username of a user
+     * @param email email of a user
+     * @param password password of a user
+     * @return true if user was added successfully
+     */
     public boolean addUser(String username, String email, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -42,17 +60,31 @@ public class UserRepImpl extends SQLiteOpenHelper implements UserRepository {
     }
 
     //Returns true if username exists in the DBNAME data, false otherwise
+
+    /**
+     * Check whether a username exists in the user repository database
+     * @param username username of a user
+     * @return true if username exists
+     */
     public boolean uniqueUsername(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from user where name = ?", new String[]{username});
         int count = cursor.getCount();
         cursor.close();
-        return count > 1;
+        return count > 0;
     }
 
     /*
     Returns true if a username and password combination exists in one of
     the rows in DBNAME database, false otherwise
+     */
+
+    /**
+     *  Check if a username and password combination exists in one of
+     *  the rows in DBNAME database, false otherwise
+     * @param username username of a possible user
+     * @param password password of a possible user
+     * @return true if username and password exists
      */
     public boolean checkUserPassword(String username, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -62,16 +94,25 @@ public class UserRepImpl extends SQLiteOpenHelper implements UserRepository {
         return count > 0;
     }
 
-    //Returns false if an email exists in the DBNAME database, true otherwise
+    /**
+     * Check if email exists in the user database
+     * @param email email of a user
+     * @return true if email exists in user database
+     */
     public boolean uniqueEmail(String email){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("SELECT * FROM user WHERE email = ?", new String[]{email});
         int count = cursor.getCount();
         cursor.close();
-        return count > 1;
+        return count > 0;
     }
 
-    //Returns the email address that is in the same row of a username in the DBNAME database
+
+    /**
+     * Get the email corresponding to the username
+     * @param username username of a user
+     * @return the email corresponding to the username
+     */
     public String getEmail(String username){
         String email = null;
         SQLiteDatabase MyDB = this.getWritableDatabase();

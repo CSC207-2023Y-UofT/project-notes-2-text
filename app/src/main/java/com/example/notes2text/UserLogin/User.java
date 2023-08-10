@@ -8,7 +8,12 @@ public class User {
     private String password;
     private String email;
 
-    //Constructor of a User to initialize attributes of an User object
+    /**
+     * Constructor of a User to initialize attributes of an User object
+     * @param email email of a user
+     * @param username username of a user
+     * @param password password of a user
+     */
     public User(String email, String username, String password){
         this.username = username;
         this.password = password;
