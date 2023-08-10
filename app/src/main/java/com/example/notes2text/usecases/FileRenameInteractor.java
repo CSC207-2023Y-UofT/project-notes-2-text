@@ -27,21 +27,40 @@ public class FileRenameInteractor {
         File directory = new File(directoryPath);
         if (keyFile.isDirectory()){
             // Does not need the ".extension" if its a directory path.
-            File newFile = new File(directory, fileName.trim() + extension);
-            keyFile.renameTo(newFile);
-            // Monitor path used in runtime.
-            Log.i("newFile path is", newFile.toString());
+            rename(keyFile, directory, fileName.trim() + extension);
         } else {
             // Needs the "." if it is a file.
-            File newFile = new File(directory, fileName.trim() + "." + extension);
-            keyFile.renameTo(newFile);
-            // Monitor path used in runtime.
-            Log.i("newFile path is", newFile.toString());
+            rename(keyFile, directory, fileName.trim() + "." + extension);
         }
-
 
         // Monitor path used in runtime.
         Log.i("Directory is", directory.toString());
         Log.i("Default path is", keyFile.toString());
     }
+
+    /**
+     * Helper method to rename the file.
+     *
+     * @param currentFile The file that the user want to rename.
+     * @param currentDirectory The directory that the file is in.
+     * @param filePath The new file name for the file.
+     */
+    private void rename(File currentFile, File currentDirectory, String filePath) {
+        File newFile = new File(currentDirectory, filePath);
+        // Test if the file with the new name already exist.
+        if (!newFile.exists()) {
+            // Rename the file to new name.
+            currentFile.renameTo(newFile);
+            // Monitor path used in runtime.
+            Log.i("newFile path is", newFile.toString());
+        } else {
+            /* If the file with same name already exist, add (new) to the front of file name to
+            avoid conflict */
+            File renamedNewFile = new File(currentDirectory, "(new)" + filePath);
+            currentFile.renameTo(renamedNewFile);
+            // Monitor path used in runtime.
+            Log.i("newFile path is", renamedNewFile.toString());
+        }
+    }
 }
+
