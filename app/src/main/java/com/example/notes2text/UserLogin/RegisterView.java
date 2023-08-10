@@ -73,7 +73,7 @@ public class RegisterView extends AppCompatActivity {
     }
 
     /**
-     * Prevents the user from going back to previous activity.
+     * Makes user go back to login page.
      */
     @Override
     public void onBackPressed() {
