@@ -2,6 +2,8 @@ package com.example.notes2text.usecases;
 
 import android.util.Log;
 
+import com.example.notes2text.adapters.DirectoryRefreshOutputBoundary;
+
 import java.io.File;
 
 public class FileRenameInteractor {
@@ -48,7 +50,7 @@ public class FileRenameInteractor {
     private void rename(File currentFile, File currentDirectory, String filePath) {
         File newFile = new File(currentDirectory, filePath);
         // Test if the file with the new name already exist.
-        if (!newFile.exists()) {
+        if (!newFile.exists() || newFile.equals(currentFile)) {
             // Rename the file to new name.
             currentFile.renameTo(newFile);
             // Monitor path used in runtime.

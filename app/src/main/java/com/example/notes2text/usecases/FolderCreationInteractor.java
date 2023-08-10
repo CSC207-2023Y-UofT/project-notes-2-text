@@ -4,6 +4,7 @@ package com.example.notes2text.usecases;
 import android.content.Context;
 
 import com.example.notes2text.adapters.DirectoryAccessOutputBoundary;
+import com.example.notes2text.adapters.DirectoryRefreshOutputBoundary;
 
 import java.io.File;
 
@@ -11,6 +12,7 @@ public class FolderCreationInteractor {
     private final FolderFactory folderMaker = new FolderFactory();
     private final DirectoryAccessOutputBoundary output;
     private final Context context;
+    private final DirectoryRefreshOutputBoundary refresher;
 
 
     /**
@@ -23,9 +25,10 @@ public class FolderCreationInteractor {
      * @param context A context, needed to use the methods in the Output Boundary.
      */
 
-    public FolderCreationInteractor (DirectoryAccessOutputBoundary output, Context context) {
+    public FolderCreationInteractor (DirectoryAccessOutputBoundary output, Context context, DirectoryRefreshOutputBoundary refresher) {
         this.output = output;
         this.context = context;
+        this.refresher = refresher;
     }
 
 
@@ -47,6 +50,8 @@ public class FolderCreationInteractor {
             try {
                 // Make new folder.
                 folderMaker.createFolder(file);
+                // New file in directory, refresh directory.
+                refresher.refreshDirectory(context, filePath);
                 output.FolderCreationSuccess(context);
             } catch (Exception e) {
                 // Catch potential syntax error for naming.

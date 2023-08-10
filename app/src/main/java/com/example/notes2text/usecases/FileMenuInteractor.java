@@ -7,6 +7,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.notes2text.adapters.ActivitySwitchController;
+import com.example.notes2text.adapters.DirectoryRefreshOutputBoundary;
 import com.example.notes2text.file_sharing.use_case.ShareObserver;
 
 import java.io.File;
@@ -60,17 +61,21 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     public boolean share(Context context, View view) {
         /* Implementation of Share function */
         // Wrap the file in an ArrayList as required by the sharing use case.
-        ArrayList<File> files = new ArrayList<>();
-        files.add(keyFile);
-        sharing.share(context, files);
-        Toast.makeText(context.getApplicationContext(), "File shared", Toast.LENGTH_SHORT).show();
-        return true;
+        if (keyFile.isDirectory()) {
+            Toast.makeText(context.getApplicationContext(), "Cannot share folder", Toast.LENGTH_SHORT).show();
+        } else {
+            ArrayList<File> files = new ArrayList<>();
+            files.add(keyFile);
+            sharing.share(context, files);
+        } return true;
     }
 
     @Override
-    public boolean rename(Context context, String fileName) {
+    public boolean rename(Context context, String fileName, DirectoryRefreshOutputBoundary refresher) {
         // Set the new file name with the rename use case class.
         fileRenamer.setNewFileName(keyFile, fileName);
+        // File renamed, refresh Directory to see changes.
+        refresher.refreshDirectory(context, keyFile.getParentFile().getAbsolutePath());
         // Notify the user.
         Toast.makeText(context.getApplicationContext(), "File renamed", Toast.LENGTH_SHORT).show();
         return true;

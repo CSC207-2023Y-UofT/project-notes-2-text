@@ -19,6 +19,7 @@ public class RenameController extends AppCompatDialogFragment {
     private EditText editTextFileName;
     private final Context context;
     private final FileMenuInputBoundary fileMenuUseCase;
+    private final DirectoryRefreshPresenter refresher;
 
     /**
      * Constructor for RenameController class.
@@ -31,6 +32,7 @@ public class RenameController extends AppCompatDialogFragment {
     public RenameController (Context context, FileMenuInputBoundary fileMenuUseCase) {
         this.context = context;
         this.fileMenuUseCase = fileMenuUseCase;
+        refresher = new DirectoryRefreshPresenter();
     }
 
     /**
@@ -61,7 +63,7 @@ public class RenameController extends AppCompatDialogFragment {
                 // Change the name of the file.
                 .setPositiveButton("ok", (dialogInterface, i) -> {
                     String newFileName = editTextFileName.getText().toString();
-                    fileMenuUseCase.rename(context, newFileName);
+                    fileMenuUseCase.rename(context, newFileName, refresher);
                 });
         // Dialogue closes.
 
