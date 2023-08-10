@@ -81,7 +81,7 @@ public class SavePopUpActivity extends AppCompatActivity {
         Intent switchToEditor = new Intent(SavePopUpActivity.this,
                 FileEditorActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("text", content);
+        bundle.putSerializable("file", newFile);
         switchToEditor.putExtras(bundle);
         switchToEditor.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         try {
@@ -94,3 +94,4 @@ public class SavePopUpActivity extends AppCompatActivity {
         }
     }
 }
+
