@@ -8,6 +8,10 @@ public class EditTextInteractor implements EditTextBoundary{
 
     private String content;
 
+    /**
+     * Constructor for EditTextInteractor
+     * @param text The text shown in the text box displayed to the user on the text editor page
+     */
     public EditTextInteractor(Spannable text) {
         this.content = text.toString();
     }
