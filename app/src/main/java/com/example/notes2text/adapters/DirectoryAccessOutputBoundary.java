@@ -5,8 +5,10 @@ import android.content.Context;
 public interface DirectoryAccessOutputBoundary {
     //Folder Creation
     void FolderCreationSuccess(Context context);
+    //Edited for two different failure messages for folder creation
+    void FolderCreationFailureSameName(Context context);
 
-    void FolderCreationFailure(Context context);
+    void FolderCreationFailureInvalid(Context context);
 
     void BackLayerSuccess(Context context);
 
