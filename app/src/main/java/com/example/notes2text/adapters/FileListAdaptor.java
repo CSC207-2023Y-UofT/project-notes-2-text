@@ -17,6 +17,9 @@ import com.example.notes2text.usecases.FileOpenInteractor;
 
 import java.io.File;
 
+/**
+ * A recycler view adapter to load lists of files in directory format.
+ */
 public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
     //Adjusted to use FileViewHolder rather than inner class viewholder.
 
@@ -24,8 +27,15 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
     protected File[] fileList;
 
 
+    //TODO: Create interface to segregate this from the file opener.
     FileOpenInteractor fileOpener = new FileOpenInteractor();
 
+    /**
+     * Creates a recyclerview.adapter for file display.
+     *
+     * @param context The application context. Required to interact with Android screen elements.
+     * @param fileList The list of files to display in the recycler view.
+     */
     public FileListAdaptor(Context context, File[] fileList){
         super();
         this.context = context;
@@ -33,6 +43,15 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
     }
 
     //A function that creates the ViewHolder required for the recyclerview for file list.
+
+    /**
+     *
+     * @param source The ViewGroup into which the new View will be added after it is bound to
+     *               an adapter position.
+     * @param ViewType The view type of the new View.
+     *
+     * @return FileViewHolder, the file holder.
+     */
     @NonNull
     @Override
     public FileViewHolder onCreateViewHolder(@NonNull ViewGroup source, int ViewType){
@@ -41,6 +60,13 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
         return new FileViewHolder(view);
     }
 
+    /**
+     * Binds file type view decisions, as well as implements on-click and hold behaviours to the
+     * view holder object.
+     * @param holder The ViewHolder which should be updated to represent the contents of the
+     *        item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
+     */
     //Binds elements to the created view holder, and attaches actions to them.
     @Override
     public void onBindViewHolder(@NonNull FileViewHolder holder, int position) {
@@ -144,6 +170,10 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
 
     }
 
+    /**
+     *
+     * @return the number of items in the recycler view.
+     */
     @Override
     public int getItemCount(){
         return fileList.length;

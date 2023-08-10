@@ -32,7 +32,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * An activity that
+ * Activity that handles the selection of files specifically for joining files together.
  */
 public class JoinController extends AppCompatActivity {
     //Required collaborators
@@ -45,6 +45,13 @@ public class JoinController extends AppCompatActivity {
     private String filePath;
     private ArrayList<File> fileList;
 
+
+    /**
+     * Sets up the recycler view to display the list of files in selection mode. Retrieves
+     * selected file list and open file path from caller through intent system. Binds toolbar items
+     * to appropriate functionality.
+     * @param savedInstanceState the previous state of the activity. Allows resuming of the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,11 +105,19 @@ public class JoinController extends AppCompatActivity {
         setToolbarMenu(fileListView);
     }
 
+    /**
+     * Binds the join toolbar to this activity.
+     * @throws NullPointerException if the join toolbar doesn't exist.
+     */
     private void setFragmentToolbar() throws NullPointerException {
         Toolbar selectionToolbar = findViewById(R.id.join_manager_toolbar);
         setSupportActionBar(selectionToolbar);
     }
 
+    /**
+     *  Sets actions to the toolbar menu for this activity.
+     * @param recyclerView: the recycler view which this activity uses.
+     */
     private void setToolbarMenu(RecyclerView recyclerView) {
         addMenuProvider(new MenuProvider() {
             @Override

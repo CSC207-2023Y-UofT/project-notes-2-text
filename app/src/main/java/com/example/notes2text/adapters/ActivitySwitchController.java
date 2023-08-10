@@ -18,14 +18,24 @@ import com.example.notes2text.fileselection.adapters.SelectionController;
 import java.io.File;
 import java.util.ArrayList;
 
-
+/**
+ * ActivitySwitchController controls the navigation bar that switches the displayed fragment between
+ * the file manager/directory, the OCR manager and the account settings fragments. It also
+ * redirects between the directory and the file selection fragments depending on whether files have been
+ * selected.
+ */
 public class ActivitySwitchController extends AppCompatActivity {
 
     ActivityViewBinding binding;
     String initialPath;
 
 
-
+    /**
+     * Reads the saved instance state and generates the switching behavior depending on information
+     * sent to this activity through the Intent system ("path" - file path, "selectedFiles" - files
+     * to be loaded into the selected files list in the selection fragment.
+     * @param savedInstanceState A bundle contained the saved state of the activity. Allows resuming the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +93,11 @@ public class ActivitySwitchController extends AppCompatActivity {
         });
     }
 
-        //Switched to public from private.
+    /**
+     * Transitions to the Fragment fragment. Replaces the contents of the frame with fragment.
+     * @param fragment The fragment to be displayed in the activity's frame.
+     */
+    //Switched to public from private.
         public void replaceFragment(Fragment fragment){
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

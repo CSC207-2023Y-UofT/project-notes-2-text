@@ -19,6 +19,11 @@ public class FileOpenInteractor {
 
     }
 
+    /**
+     * Gets the MIME type of file, for text documents or image type files. Else, returns N/A.
+     * @param file of which the MIME type is needed.
+     * @return the MIME type of the file.
+     */
     private String getFileType(File file){
         String fileName = file.getName();
         if (fileName.endsWith(".jpg") || fileName.endsWith(".png") || fileName.endsWith(".webp") || fileName.endsWith(".jpeg")
@@ -31,6 +36,12 @@ public class FileOpenInteractor {
         }
     }
 
+    /**
+     * Attempts to open fileToOpen. If image, opens in system gallery. If text file, opens in
+     * application text editor.
+     * @param context Application context.
+     * @param fileToOpen file to be opened.
+     */
     public void openFile(Context context, File fileToOpen){
         try{
             Intent intent = new Intent();

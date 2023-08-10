@@ -10,6 +10,12 @@ public class FileMenuFactory {
 
     }
 
+    /**
+     * Creates a popup menu for file management.
+     * @param context Application context.
+     * @param view the view element on which the popup is called.
+     * @return Returns the file popup menu.
+     */
     public PopupMenu create(Context context, View view){
         PopupMenu fileMenu = new PopupMenu(context, view);
         fileMenu.getMenu().add("OPEN");

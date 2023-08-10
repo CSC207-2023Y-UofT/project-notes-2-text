@@ -28,5 +28,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="file_type_icon">file type icon</string>
+    <string name="directory_permission">To grant file access permission, press the below button.</string>
+    <string name="directory_btn_text">DIRECTORY</string>
 
 </resources>

@@ -14,11 +14,27 @@ import com.example.notes2text.usecases.FileMenuFactory;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * A recycler view adapter for the join activity.
+ */
 public class JoinListAdapter extends SelectionListAdapter {
+    /**
+     * Creates the file list adapter for the join file selection activity.
+     * @param context Activity context
+     * @param fileList List of files to display through the recyclerview.
+     * @param selectionUseCase The selection use case input boundary.
+     */
     public JoinListAdapter(Context context, File[] fileList, SelectionInputBoundary selectionUseCase) {
         super(context, fileList, selectionUseCase);
     }
 
+    /**
+     * Generates the recycler view adapter for the join selection recycler view.
+     * @param context Activity context
+     * @param fileList List of files to display through the recyclerview.
+     * @param selectionUseCase The selection use case input boundary.
+     * @param inputFileList A list of selected files to start with.
+     */
     public JoinListAdapter(Context context, File[] fileList, SelectionInputBoundary selectionUseCase, ArrayList<File> inputFileList) {
         super(context, fileList, selectionUseCase, inputFileList);
     }
