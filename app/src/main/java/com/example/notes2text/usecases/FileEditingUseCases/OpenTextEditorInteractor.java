@@ -7,7 +7,10 @@ public class OpenTextEditorInteractor implements OpenTextEditorBoundary {
 
     String lastFileRoot;
 
-
+    /**
+     * Constructor for OpenTextEditorInteractor
+     * @param file File object of the selected text file to open
+     */
     public OpenTextEditorInteractor(File file) {
         this.lastFile = file;
         this.lastFileRoot = file.getAbsolutePath();
@@ -23,3 +26,4 @@ public class OpenTextEditorInteractor implements OpenTextEditorBoundary {
         return this.lastFile;
     }
 }
+
