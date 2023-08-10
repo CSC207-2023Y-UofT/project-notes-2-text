@@ -23,6 +23,7 @@ public class SelectionMenuController extends FileMenuController {
         super.fileMenu = menuFactory.create(context, view);
 
         //Generate the file menu's interactor.
+        // Maintains SOLID and modularity: fileMenuUseCase is an interface, and the specific interactor is overrideable.
         super.fileMenuUseCase = new SelectionMenuInteractor(super.fileMenu, menuFile, selectedList);
 
         //Bind actions to the file menu.

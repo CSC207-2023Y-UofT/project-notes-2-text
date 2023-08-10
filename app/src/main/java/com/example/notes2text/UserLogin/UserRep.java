@@ -1,4 +1,4 @@
-package com.example.notes2text.myapplication;
+package com.example.notes2text.UserLogin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ public class UserRep {
     }
 
     public void addUser(User newUser) {
-        users.put(newUser, newUser.password);
+        users.put(newUser, newUser.getPassword());
     }
 
     public User getUser(String username) {
@@ -35,7 +35,7 @@ public class UserRep {
 
     public User getUser2(String email){
         for (User user: users.keySet()) {
-            if (user.equals(user.email)){
+            if (user.equals(user.getEmail())){
                 return user;
             }
         }
