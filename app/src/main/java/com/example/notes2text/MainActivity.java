@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Prevents the user from going back to previous activity.
+     */
     public void onBackPressed(){
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);

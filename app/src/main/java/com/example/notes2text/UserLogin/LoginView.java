@@ -24,6 +24,7 @@ public class LoginView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Checks if a user was still logged in before the app was closed
         String name = CurrentUser.getCurrent(LoginView.this);
         if(!((name).length() == 0)){
             MyDB1 = new DBHelper(this);
@@ -78,14 +79,18 @@ public class LoginView extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
         }
 
-        }
+    }
+
+    /**
+     * When back button is pressed on login page, it goes to the android home screen
+     * instead of the previous activity.
+     */
     @Override
     public void onBackPressed() {
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startMain);
-        finish();
     }
 
-    }
+}

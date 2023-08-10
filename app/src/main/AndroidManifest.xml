@@ -51,18 +51,15 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".UserLogin.LoginView"
-            android:exported="true"
-            android:noHistory = "true">
-        <activity
             android:name=".adapters.FileEditingAdapters.SavePopUpActivity"
             android:exported="false" />
         <activity
             android:name=".adapters.FileEditingAdapters.FileEditorActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".UserLogin.LoginView"
+            android:exported="true"
+            android:noHistory = "true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

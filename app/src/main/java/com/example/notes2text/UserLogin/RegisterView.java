@@ -55,8 +55,7 @@ public class RegisterView extends AppCompatActivity {
             if (checkemail) {
                 Toast.makeText(this, "Emailid already exists.",
                         Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 boolean insert = MyDB1.insertData(userid, emailid, pswrd);
                 if (insert) {
                     Toast.makeText(this, "Registration Successful",
@@ -66,11 +65,20 @@ public class RegisterView extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             }
-        }
-        else{
-        Toast.makeText(this, "UserId exists. Please try again.",
-                Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "UserId exists. Please try again.",
+                    Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    /**
+     * Prevents the user from going back to previous activity.
+     */
+    @Override
+    public void onBackPressed() {
+        Intent startMain = new Intent(RegisterView.this, LoginView.class);
+        startActivity(startMain);
+        finish();
     }
 }
