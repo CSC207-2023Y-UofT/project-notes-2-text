@@ -56,7 +56,7 @@ public class JoinController extends AppCompatActivity {
 
         filePath = getIntent().getStringExtra("path");
 
-        if(filePath != null){
+        if(filePath == null){
             filePath = Environment.getExternalStorageDirectory().getPath();
         }
 
@@ -172,6 +172,4 @@ public class JoinController extends AppCompatActivity {
             }
         });
     }
-
-
 }

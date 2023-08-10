@@ -13,6 +13,7 @@ import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.directoryJoin.adapters.JoinController;
 import com.example.notes2text.usecases.FileEditingUseCases.EditTextBoundary;
 import com.example.notes2text.usecases.FileEditingUseCases.EditTextInteractor;
+import com.example.notes2text.usecases.FileEditingUseCases.JoinFileBoundary;
 import com.example.notes2text.usecases.FileEditingUseCases.JoinFiles;
 import com.example.notes2text.usecases.FileEditingUseCases.OpenTextEditorBoundary;
 import com.example.notes2text.usecases.FileEditingUseCases.OpenTextEditorInteractor;
@@ -62,7 +63,7 @@ public class FileEditorActivity extends AppCompatActivity {
             textToEdit.setText(content);
         // if received array list of files from JoinController
         } else if (selectedFiles != null) {
-            JoinFiles joinFiles = new JoinFiles(selectedFiles);
+            JoinFileBoundary joinFiles = new JoinFiles(selectedFiles);
             String joinedText = joinFiles.extractContent();
             textToEdit.setText(joinedText);
         }
@@ -160,7 +161,14 @@ public class FileEditorActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         ArrayList<File> fileToSend = new ArrayList<>();
         fileToSend.add(file);
+
+        String path = file.getAbsolutePath();
+        String fileName = file.getName();
+        String actualPath = path.replace(fileName, "");
+
         bundle.putSerializable("selectedFiles", fileToSend);
+        switchToJoin.putExtra("path", actualPath);
+
         switchToJoin.putExtras(bundle);
         switchToJoin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         try{
