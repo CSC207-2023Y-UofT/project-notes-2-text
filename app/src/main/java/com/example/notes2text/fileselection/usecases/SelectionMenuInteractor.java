@@ -8,7 +8,6 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.notes2text.adapters.ActivitySwitchController;
-import com.example.notes2text.fileselection.adapters.SelectionController;
 import com.example.notes2text.usecases.FileMenuInteractor;
 
 import java.io.File;

@@ -10,8 +10,13 @@ public class DirectoryAccessPresenter implements DirectoryAccessOutputBoundary{
     }
 
     @Override
-    public void FolderCreationFailure(Context context) {
+    public void FolderCreationFailureInvalid(Context context) {
         Toast.makeText(context, "Invalid file name", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void FolderCreationFailureSameName(Context context) {
+        Toast.makeText(context, "Folder already exists", Toast.LENGTH_SHORT).show();
     }
 
     @Override
