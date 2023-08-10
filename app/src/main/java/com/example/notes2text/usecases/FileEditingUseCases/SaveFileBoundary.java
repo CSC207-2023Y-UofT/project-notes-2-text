@@ -25,5 +25,4 @@ public interface SaveFileBoundary {
      *                txt file
      */
     void saveFile(Context context, File file, String newPath);
-
 }

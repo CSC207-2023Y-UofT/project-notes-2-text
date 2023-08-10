@@ -25,3 +25,4 @@ public interface EditTextBoundary {
      */
     String lowercase(int start, int end);
 }
+

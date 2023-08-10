@@ -38,3 +38,4 @@ public class EditTextInteractor implements EditTextBoundary{
         return altered;
     }
 }
+

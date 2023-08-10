@@ -26,3 +26,4 @@ public class OpenTextEditorInteractor implements OpenTextEditorBoundary {
         return this.lastFile;
     }
 }
+

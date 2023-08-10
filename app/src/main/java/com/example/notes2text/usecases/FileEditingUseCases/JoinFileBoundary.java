@@ -12,3 +12,4 @@ public interface JoinFileBoundary {
      */
     String extractContent();
 }
+

@@ -24,7 +24,4 @@ public class JoinFiles implements JoinFileBoundary {
         }
         return content.toString();
     }
-
-
-
 }

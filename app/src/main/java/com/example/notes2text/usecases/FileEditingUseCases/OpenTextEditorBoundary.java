@@ -19,5 +19,4 @@ public interface OpenTextEditorBoundary {
      * @return Returns the file object of the last opened text file
      */
     File getLastOpened();
-
 }

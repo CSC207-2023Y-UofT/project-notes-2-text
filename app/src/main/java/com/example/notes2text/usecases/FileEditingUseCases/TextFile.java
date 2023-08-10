@@ -71,4 +71,3 @@ public class TextFile {
         return this.rootAddress.replace(this.fileName, "");
     }
 }
-

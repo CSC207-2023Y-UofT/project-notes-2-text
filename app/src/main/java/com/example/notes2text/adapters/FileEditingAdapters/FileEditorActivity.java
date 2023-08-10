@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.notes2text.R;
 import com.example.notes2text.adapters.ActivitySwitchController;
+import com.example.notes2text.directoryJoin.adapters.JoinController;
 import com.example.notes2text.usecases.FileEditingUseCases.EditTextBoundary;
 import com.example.notes2text.usecases.FileEditingUseCases.EditTextInteractor;
 import com.example.notes2text.usecases.FileEditingUseCases.JoinFiles;
