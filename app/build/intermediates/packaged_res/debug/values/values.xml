@@ -30,6 +30,7 @@
     <string name="directoryButtonText">Directory</string>
     <string name="directory_fragment">Directory Fragment</string>
     <string name="enter_file_name">Enter file name</string>
+    <string name="enter_folder_name">Enter Folder Name</string>
     <string name="file_type_icon">file type icon</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>

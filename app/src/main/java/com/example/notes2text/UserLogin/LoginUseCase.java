@@ -4,6 +4,7 @@ import android.content.Context;
 
 public class LoginUseCase {
 
+
     //UserRepository that keeps tracks of all registered users
     private UserRepImpl userRep;
 

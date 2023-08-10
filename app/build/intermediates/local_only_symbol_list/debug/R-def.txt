@@ -53,6 +53,7 @@ id button7
 id button8
 id cancel_selection_button
 id create_folder_button
+id create_folder_name
 id directoryButton
 id editTextEmail
 id editTextTextMultiLine
@@ -119,6 +120,7 @@ layout activity_pop_up_password_view
 layout activity_pop_up_username_view
 layout activity_save_pop_up
 layout activity_view
+layout dialog_folder_create
 layout directory_access_view_fragment
 layout file_holder_view_model
 layout fragment_account_controller
@@ -148,6 +150,7 @@ string confirm
 string directoryButtonText
 string directory_fragment
 string enter_file_name
+string enter_folder_name
 string file_type_icon
 string hello_blank_fragment
 string home

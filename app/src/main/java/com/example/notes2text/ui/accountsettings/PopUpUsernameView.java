@@ -7,14 +7,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpUsernameController;
 import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpUsernamePresenter;
-import com.example.notes2text.usecases.UserUpdateInfo;
 import com.example.notes2text.R;
 
-public class PopUpUsernameView extends SettingsActivity {
+public class PopUpUsernameView extends AppCompatActivity {
 
-    UserUpdateInfo user = new UserUpdateInfo("ok", "ok", "ok");
     PopUpUsernameController controller = new PopUpUsernameController();
     PopUpUsernamePresenter presenter = new PopUpUsernamePresenter();
     @Override
@@ -25,7 +25,7 @@ public class PopUpUsernameView extends SettingsActivity {
         TextView text = (TextView) findViewById(R.id.CurrentUsername);
         EditText input = (EditText) findViewById(R.id.editTextTextPersonName);
 
-        presenter.showUsername(user, text);
+        presenter.showUsername(text);
 
         Button submit = (Button) findViewById(R.id.Submit);
 
@@ -35,7 +35,7 @@ public class PopUpUsernameView extends SettingsActivity {
                 Toast toast;
                 if(!(input.getText().toString().equals(""))){
 
-                    if (controller.buttonPressed(user, input, text)){
+                    if (controller.buttonPressed(getApplicationContext(), input, text)){
                         toast = Toast.makeText(PopUpUsernameView.this, "Username Change Successful", Toast.LENGTH_SHORT);
                         toast.show();
                     }

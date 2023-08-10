@@ -47,7 +47,7 @@ public class UserRepImpl extends SQLiteOpenHelper implements UserRepository {
         Cursor cursor = MyDB.rawQuery("Select * from user where name = ?", new String[]{username});
         int count = cursor.getCount();
         cursor.close();
-        return count < 1;
+        return count > 1;
     }
 
     /*
@@ -68,7 +68,7 @@ public class UserRepImpl extends SQLiteOpenHelper implements UserRepository {
         Cursor cursor = MyDB.rawQuery("SELECT * FROM user WHERE email = ?", new String[]{email});
         int count = cursor.getCount();
         cursor.close();
-        return count < 1;
+        return count > 1;
     }
 
     //Returns the email address that is in the same row of a username in the DBNAME database
@@ -80,7 +80,44 @@ public class UserRepImpl extends SQLiteOpenHelper implements UserRepository {
         if (cursor.moveToFirst() && i !=-1){
             email = cursor.getString(i);
         }
+        cursor.close();
         return email;
     }
+
+    public String getPassword(String username){
+        String password = null;
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select password from user WHERE name =?", new String[]{username});
+        int i = cursor.getColumnIndex("password");
+        if (cursor.moveToFirst() && i !=-1){
+            password = cursor.getString(i);
+        }
+        cursor.close();
+        return password;
+
     }
+
+    public void updateUsername(String username, String newUsername){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", newUsername);
+        MyDB.update("user", values, "name = ?", new String[]{username});
+    }
+
+    public void updatePassword(String password, String newPassword){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("password", newPassword);
+        MyDB.update("user", values, "password = ?", new String[]{password});
+    }
+
+    public void updateEmail(String email, String newEmail){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("email", newEmail);
+        MyDB.update("user", values, "email = ?", new String[]{email});
+    }
+
+}
+
 

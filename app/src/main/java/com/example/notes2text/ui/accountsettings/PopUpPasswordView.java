@@ -9,12 +9,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpPasswordController;
-import com.example.notes2text.usecases.UserUpdateInfo;
 import com.example.notes2text.R;
 
 public class PopUpPasswordView extends AppCompatActivity {
 
-    UserUpdateInfo user = new UserUpdateInfo("ok", "ok", "ok");
     PopUpPasswordController controller = new PopUpPasswordController();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +29,7 @@ public class PopUpPasswordView extends AppCompatActivity {
             public void onClick(View view) {
                 Toast toast;
                 if(!(input.getText().toString().equals("")) && !(input2.getText().toString().equals(""))){
-                    if (controller.buttonPressed(user, input, input2)){
+                    if (controller.buttonPressed(getApplicationContext(), input, input2)){
                         toast = Toast.makeText(PopUpPasswordView.this, "Password Change Successful", Toast.LENGTH_SHORT);
                         toast.show();
                     }

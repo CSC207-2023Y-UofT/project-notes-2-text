@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="23"
+        android:minSdkVersion="26"
         android:targetSdkVersion="29" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -64,7 +64,8 @@
             android:exported="false" />
         <activity
             android:name="com.example.notes2text.MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:noHistory="true" />
         <activity
             android:name="com.example.notes2text.adapters.FileEditingAdapters.SavePopUpActivity"
             android:exported="false" />

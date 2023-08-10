@@ -26,6 +26,7 @@ public class RegisterView extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RegisterView.this, LoginView.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -49,8 +50,7 @@ public class RegisterView extends AppCompatActivity {
         String outcome = userRegisterCase.registerUser(emailid, userid, pswrd, pswrd2);
         //Displays the registration status
         Toast.makeText(this, outcome,
-                        Toast.LENGTH_SHORT).show();
-
+                Toast.LENGTH_SHORT).show();
 
     }
 }

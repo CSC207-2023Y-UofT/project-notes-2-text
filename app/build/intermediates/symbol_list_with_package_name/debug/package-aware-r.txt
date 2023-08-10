@@ -2739,6 +2739,7 @@ id coordinator
 id cos
 id counterclockwise
 id create_folder_button
+id create_folder_name
 id currentState
 id custom
 id customPanel
@@ -3255,6 +3256,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_folder_create
 layout directory_access_view_fragment
 layout file_holder_view_model
 layout fragment_account_controller
@@ -3402,6 +3404,7 @@ string dest_title
 string directoryButtonText
 string directory_fragment
 string enter_file_name
+string enter_folder_name
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior

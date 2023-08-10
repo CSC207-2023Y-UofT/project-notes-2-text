@@ -38,7 +38,7 @@ public class RegisterUseCase {
     */
     public int  checkUser(String emailid, String userid, String password1, String password2) {
         //Checks to see if username exists in the User Repository
-        if (!userRep.uniqueUsername(userid)) {
+        if (userRep.uniqueUsername(userid)) {
             return 1;
         }
         //Checks to see if username meets username requirements
@@ -46,7 +46,7 @@ public class RegisterUseCase {
             return 2;
         }
         //Checks to see if email exists in the User Repository
-        if (!userRep.uniqueEmail(emailid)){
+        if (userRep.uniqueEmail(emailid)){
             return 3;
         }
         //Checks to see if an email was entered

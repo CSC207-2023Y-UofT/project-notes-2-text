@@ -3,7 +3,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" android:backgroundTint="#100F0F">
-        tools:context="com.example.notes2text.ui.accountsettings.SettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/accountsettings"
@@ -14,7 +13,7 @@
         android:backgroundTintMode="add">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/logout"
             android:layout_width="133dp"
             android:layout_height="63dp"
             android:backgroundTint="#F40333"
@@ -24,34 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.863" />
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="115dp"
-            android:layout_height="101dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.192"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.714"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="205dp"
-            android:layout_height="37dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Display Picture"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.276"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.576" />
+            app:layout_constraintVertical_bias="0.709" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/PopUpEmailView"
@@ -65,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.459" />
+            app:layout_constraintVertical_bias="0.521" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/PopUpPasswordView"
@@ -79,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.334" />
+            app:layout_constraintVertical_bias="0.369" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/PopUpUsernameView"
@@ -95,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.201" />
+            app:layout_constraintVertical_bias="0.217" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
@@ -111,17 +83,19 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="350dp"
-                android:layout_height="87dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="326dp"
+                android:layout_height="55dp"
                 android:fontFamily="sans-serif-light"
                 android:text="Account Settings"
                 android:textColor="#F4EFEF"
                 android:textSize="34sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.271"
+                app:layout_constraintHorizontal_bias="0.698"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.509" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

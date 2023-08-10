@@ -1,26 +1,20 @@
 package com.example.notes2text.adapters.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
+import com.example.notes2text.UserLogin.CurrentUser;
 import com.example.notes2text.ui.accountsettings.PopUpEmailView;
 import com.example.notes2text.ui.accountsettings.PopUpPasswordView;
 import com.example.notes2text.ui.accountsettings.PopUpUsernameView;
-import com.example.notes2text.ui.accountsettings.SettingsActivity;
-
-import java.io.File;
+import com.example.notes2text.UserLogin.LoginView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,15 +59,18 @@ public class AccountViewController extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account_view, container, false);
+        return inflater.inflate(R.layout.settings_activity, container, false);
     }
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
         Button UsernameView = (Button) view.findViewById(R.id.PopUpUsernameView);
 
         Button PasswordView = (Button) view.findViewById(R.id.PopUpPasswordView);
 
 
         Button EmailView = (Button) view.findViewById(R.id.PopUpEmailView);
+
+        Button Logout = (Button) view.findViewById(R.id.logout);
 
         UsernameView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +90,18 @@ public class AccountViewController extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity().getApplicationContext(), PopUpEmailView.class));
+            }
+        });
+
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CurrentUser.setUser(null);
+                CurrentUser.clearCurrent(getActivity().getApplicationContext());
+                Intent intent = new Intent(getActivity().getApplicationContext(), LoginView.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
     }
