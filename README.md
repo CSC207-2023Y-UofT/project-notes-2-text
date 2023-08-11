@@ -7,6 +7,9 @@ The program is dependent on the various components of Android components, thus r
 ### FileMenuFactory method:
 Used the factory method design pattern to implement the creation of popupmenus used when files are long-clicked. This allows the option of quickly extending the list of available file options in the future if necessary. The factory design pattern is particularly useful here since it prevents the need for repeated creations of the same popupmenu view object.
 
+### Abstract Factory:
+The abstract factory design pattern was used to implement the creation of viewholders for the various recyclerview adapters used in this program. This design pattern was appropriate since multiple different forms of view holders are needed for the directory system and the selection system, and it thus makes sense to have an abstract factory that is implemented by factories that produce each of the view holder types. This also introduces an abstraction layer in the usecase layer between viewholders, which are entities, and the recyclerview adapters, which are adaptors, better maintaining Clean Architecture in the implementation.
+
 
 ### Observer:
 The observer design pattern is used to accommodate the Android platform workflow for the File Sharing feature, as shown in ShareObserver. Because Android work by Activity instead of main.java, the classes for file sharing require the detection of the "share" button pressed, which is facilitated by the FileMenuInteractor. Since it is poor code style to initiate these classes in the FileMenuInteractor as it shouldn't know which classes are used for sharing, the ShareObserver is used instead to monitor when FileMenuInteractor detects the "share" button being pressed and initiate these classes for sharing in the ShareObserver instead. 
