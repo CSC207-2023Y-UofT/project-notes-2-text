@@ -11,3 +11,6 @@ Used the factory method design pattern to implement the creation of popupmenus u
 ### Observer:
 The observer design pattern is used to accommodate the Android platform workflow for the File Sharing feature, as shown in ShareObserver. Because Android work by Activity instead of main.java, the classes for file sharing require the detection of the "share" button pressed, which is facilitated by the FileMenuInteractor. Since it is poor code style to initiate these classes in the FileMenuInteractor as it shouldn't know which classes are used for sharing, the ShareObserver is used instead to monitor when FileMenuInteractor detects the "share" button being pressed and initiate these classes for sharing in the ShareObserver instead. 
 
+
+### Factory:
+The text editing sections of the app utilize a factory design pattern. The text editing sections work closely with the IO.File class and our own created TextFile class. The text editing sections use classes such as OpenTextEditorInteractor, SaveFile, JoinFile, EditTextInteractor, to do various tasks with the Textfile and IO.File entities. These include creating new instances of TextFile to extract the text from TextFile and to also create new instances of IO.File when saving files. 
