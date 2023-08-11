@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
@@ -34,6 +35,11 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
     //TODO: Create interface to segregate this from the file opener.
     FileOpenInteractor fileOpener = new FileOpenInteractor();
 
+
+    //Required for transaction of Activity.
+    private final FragmentManager fragManager;
+
+
     /**
      * Creates a recyclerview.adapter for file display.
      *
@@ -44,6 +50,7 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
         super();
         this.context = context;
         this.fileList = fileList;
+        this.fragManager = fragManager;
     }
 
     //A function that creates the ViewHolder required for the recyclerview for file list.
@@ -119,7 +126,7 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
             @Override
             public boolean onLongClick(View view) {
 
-                FileMenuController fileMenuController = new FileMenuController(context, view, new FileMenuFactory());
+                FileMenuController fileMenuController = new FileMenuController(context, view, new FileMenuFactory(), fragManager);
                 return fileMenuController.create(chosenFile);
             }
         });

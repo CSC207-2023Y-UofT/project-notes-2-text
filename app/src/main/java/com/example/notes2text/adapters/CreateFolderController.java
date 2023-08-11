@@ -33,7 +33,8 @@ public class CreateFolderController extends AppCompatDialogFragment {
     public CreateFolderController(Context context, File currentLayer) {
         //Initialize the folder creation use case class with its required presenter to display message.
         DirectoryAccessOutputBoundary output = new DirectoryAccessPresenter();
-        createFolder = new FolderCreationInteractor(output, context);
+        DirectoryRefreshPresenter refresher = new DirectoryRefreshPresenter();
+        createFolder = new FolderCreationInteractor(output, context, refresher);
         this.currentLayer = currentLayer;
     }
 

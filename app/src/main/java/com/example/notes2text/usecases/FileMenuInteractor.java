@@ -7,6 +7,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.notes2text.adapters.ActivitySwitchController;
+import com.example.notes2text.adapters.DirectoryRefreshOutputBoundary;
 import com.example.notes2text.file_sharing.use_case.ShareObserver;
 
 import java.io.File;
@@ -21,6 +22,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     private final ShareObserver sharing = new ShareObserver();
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
+    FileRenameInteractor fileRenamer = new FileRenameInteractor();
     public FileMenuInteractor(PopupMenu fileMenu, File keyFile){
         this.keyFile = keyFile;
         this.fileMenu = fileMenu;
@@ -63,15 +65,23 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     @Override
     public boolean share(Context context, View view) {
         /* Implementation of Share function */
-        ArrayList<File> files = new ArrayList<>();
-        files.add(keyFile);
-        sharing.share(context, files);
-        Toast.makeText(context.getApplicationContext(), "File shared", Toast.LENGTH_SHORT).show();
-        return true;
+        // Wrap the file in an ArrayList as required by the sharing use case.
+        if (keyFile.isDirectory()) {
+            Toast.makeText(context.getApplicationContext(), "Cannot share folder", Toast.LENGTH_SHORT).show();
+        } else {
+            ArrayList<File> files = new ArrayList<>();
+            files.add(keyFile);
+            sharing.share(context, files);
+        } return true;
     }
 
     @Override
-    public boolean rename(Context context, View view) {
+    public boolean rename(Context context, String fileName, DirectoryRefreshOutputBoundary refresher) {
+        // Set the new file name with the rename use case class.
+        fileRenamer.setNewFileName(keyFile, fileName);
+        // File renamed, refresh Directory to see changes.
+        refresher.refreshDirectory(context, keyFile.getParentFile().getAbsolutePath());
+        // Notify the user.
         Toast.makeText(context.getApplicationContext(), "File renamed", Toast.LENGTH_SHORT).show();
         return true;
     }

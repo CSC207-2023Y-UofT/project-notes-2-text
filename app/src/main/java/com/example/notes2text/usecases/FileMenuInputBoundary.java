@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.PopupMenu;
 
+import com.example.notes2text.adapters.DirectoryRefreshOutputBoundary;
+
 import java.io.File;
 
 /**
@@ -18,7 +20,7 @@ public interface FileMenuInputBoundary {
 
     public boolean share(Context context, View view);
 
-    public boolean rename(Context context, View view);
+    public boolean rename(Context context, String fileName, DirectoryRefreshOutputBoundary refresher);
 
     public boolean delete(Context context, View view);
 

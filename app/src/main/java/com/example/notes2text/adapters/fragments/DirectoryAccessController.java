@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -124,7 +125,9 @@ public class DirectoryAccessController extends Fragment {
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //Assign the custom adaptor to the View elements.
-            fileListView.setAdapter(new FileListAdaptor(requireActivity().getApplicationContext(), filesDirectory));
+            //Fragment Manager needed for transaction of activity for renaming file in FileListAdaptor.
+            FragmentManager fragManager = requireActivity().getSupportFragmentManager();
+            fileListView.setAdapter(new FileListAdaptor(getActivity().getApplicationContext(), filesDirectory, fragManager));
         }
 
         //Sets and maps actions to the toolbar.
@@ -166,6 +169,7 @@ public class DirectoryAccessController extends Fragment {
                     }
                     directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.create_folder_button) {
+
                     //create a new dialogue using openDialog when button is clicked.
                     openDialog();
                 }
@@ -173,6 +177,7 @@ public class DirectoryAccessController extends Fragment {
             }
         }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
     }
+
 
     /**
      * Helper method that create a new CreateFolderController, which inherits
