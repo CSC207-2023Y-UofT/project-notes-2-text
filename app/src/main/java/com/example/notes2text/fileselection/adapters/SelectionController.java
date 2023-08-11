@@ -31,7 +31,6 @@ import com.example.notes2text.fileselection.usecases.SelectionInteractor;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.

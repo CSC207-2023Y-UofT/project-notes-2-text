@@ -43,8 +43,6 @@ public class ActivitySwitchController extends AppCompatActivity {
         setContentView(binding.getRoot());
         //get the path from the intent that passed to this activity and bundle it.
         initialPath = getIntent().getStringExtra("path");
-//        Bundle bundle = new Bundle();
-//        bundle.putString("path", initialPath);
         ArrayList<File> initialFileList = new ArrayList<File>();
         try{
         Bundle bundle = getIntent().getExtras();
@@ -63,24 +61,11 @@ public class ActivitySwitchController extends AppCompatActivity {
             replaceFragment(sltnCntrl);
             Toast.makeText(getApplicationContext(), "ActivitySwitchController received files", Toast.LENGTH_SHORT).show();
         }
-//        DirectoryAccessController dirAcCntrl = DirectoryAccessController.newInstance(initialPath);
-//        //Create a new instance of the directory controller and send the arguments to it.
-////        DirectoryAccessController dirAcCntrl = new DirectoryAccessController();
-////        dirAcCntrl.setArguments(bundle);
-//        // On first load, open to directory view with the root address.
-//        replaceFragment(dirAcCntrl);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             int itemId = item.getItemId();
             if (itemId == R.id.directoryButton) {
-//                //Create a bundle containing the required information to send to the directory activity.
-//                //Required information: current root address, context.
-//                Bundle bundle2 = new Bundle();
-//                bundle2.putString("path", initialPath);
-//                //Create a new instance of the DirectoryAccess activity and pass the bundle to it.
-//                DirectoryAccessController dirAccess = new DirectoryAccessController();
-//                replaceFragment(dirAccess);
                 DirectoryAccessController directoryResume = DirectoryAccessController.newInstance(initialPath);
                 replaceFragment(directoryResume);
             } else if (itemId == R.id.OCRButton) {

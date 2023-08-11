@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.notes2text.R;
 import com.example.notes2text.entities.SelectionViewHolder;
 import com.example.notes2text.fileselection.usecases.SelectionInputBoundary;
-import com.example.notes2text.usecases.DirectoryUseCases.FileViewHolderFactory;
 import com.example.notes2text.usecases.DirectoryUseCases.SelectionViewHolderFactory;
 import com.example.notes2text.usecases.FileMenuFactory;
 import com.example.notes2text.usecases.DirectoryUseCases.ViewHolderAbsFactory;
