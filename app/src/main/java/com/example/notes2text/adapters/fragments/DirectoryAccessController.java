@@ -29,29 +29,24 @@ import com.example.notes2text.adapters.FileListAdaptor;
 import com.example.notes2text.fileselection.adapters.SelectionController;
 
 import java.io.File;
-import java.nio.file.Paths;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Registers input from the directory access screen. Implemented as a fragment: requires an activity to function properly.
  * Use the {@link DirectoryAccessController#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class DirectoryAccessController extends Fragment {
 
-    private boolean selectionToggle = false;
-
     //Required collaborators
-    private DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
+    private final DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
 
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_FILE_PATH = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String filePath;
-    private String mParam2;
 
     public DirectoryAccessController() {
         // Required empty public constructor
@@ -59,12 +54,12 @@ public class DirectoryAccessController extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * DirectoryAccessController using the provided parameters.
+     * This provides required information to initialize a working controller.
      *
-     * @param rootPath Parameter 1.
+     * @param rootPath The address whose contents the fragment should display.
      * @return A new instance of fragment DirectoryAccessController.
      */
-    // TODO: Rename and change types and number of parameters
     public static DirectoryAccessController newInstance(String rootPath) {
         DirectoryAccessController fragment = new DirectoryAccessController();
         Bundle args = new Bundle();
@@ -73,6 +68,11 @@ public class DirectoryAccessController extends Fragment {
         return fragment;
     }
 
+    /**
+     * Once a new fragment has been created, this extracts the necessary information from args to run the controller.
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,8 +92,16 @@ public class DirectoryAccessController extends Fragment {
     // NullPointerException thrown since it is a runtime error.
     //Called automatically after DirectoryAccessController.onCreateView. If files present in filePath,
     // sets the recyclerview to display the list of lists. Otherwise, shows the "no files" condition.
+
+    /**
+     *
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @throws NullPointerException This method will throw a null-pointer exception if initialized without an activity.
+     */
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) throws NullPointerException {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) throws NullPointerException {
         super.onViewCreated(view, savedInstanceState);
 
         // Retrieve the file path from the intent.
@@ -116,17 +124,10 @@ public class DirectoryAccessController extends Fragment {
             //Assign Linear layout to file list.
             fileListView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             //Assign the custom adaptor to the View elements.
-            fileListView.setAdapter(new FileListAdaptor(getActivity().getApplicationContext(), filesDirectory));
+            fileListView.setAdapter(new FileListAdaptor(requireActivity().getApplicationContext(), filesDirectory));
         }
 
-        //Add top menu and on click listener for top menu buttons.
-        // Put functionality of top menu items in separate use case.
-        // select listener goes in this class.
-//        Toolbar directoryToolbar = view.findViewById(R.id.file_manager_toolbar);
-//
-//        ((AppCompatActivity) getActivity()).setSupportActionBar(directoryToolbar);
-
-        //call method to
+        //Sets and maps actions to the toolbar.
         setFragmentToolbar(view);
 
         setToolbarMenu();
@@ -148,16 +149,17 @@ public class DirectoryAccessController extends Fragment {
                     //Switch to the selection screen if select_button is pressed on.
                     Toast.makeText(getActivity(), "Switch to Selection Screen", Toast.LENGTH_SHORT).show();
                     Fragment fragment = SelectionController.newInstance(filePath);
-                    ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
+                    ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
                 } else if (menuItem.getItemId() == R.id.back_button) {
                     //goes up a layer in the displayed files in the File List recycler view.
-                    String higherPath = filePath;
+                    String higherPath;
                     File currLayerFile = new File(filePath);
                     File parentLayerFile = currLayerFile.getParentFile();
                     try {
+                        assert parentLayerFile != null;
                         higherPath = parentLayerFile.getAbsolutePath();
                         Fragment fragment = DirectoryAccessController.newInstance(higherPath);
-                        ((ActivitySwitchController) getActivity()).replaceFragment(fragment);
+                        ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
                         directoryPresenter.BackLayerSuccess(getActivity());
                     } catch (NullPointerException e){
                         directoryPresenter.BackLayerFailure(getActivity());

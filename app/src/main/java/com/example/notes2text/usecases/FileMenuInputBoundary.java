@@ -6,6 +6,9 @@ import android.widget.PopupMenu;
 
 import java.io.File;
 
+/**
+ * Interface for file management menus.
+ */
 public interface FileMenuInputBoundary {
 
 
