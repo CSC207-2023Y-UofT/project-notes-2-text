@@ -1,5 +1,7 @@
 package com.example.notes2text.usecases.FileEditingUseCases;
 
+import com.example.notes2text.entities.FileEditingEntities.TextFile;
+
 import java.io.File;
 import java.util.ArrayList;
 
