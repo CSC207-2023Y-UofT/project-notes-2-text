@@ -17,6 +17,12 @@ public class SelectionMenuController extends FileMenuController {
         super(context, view, menuFactory);
     }
 
+    /**
+     * Creates a file menu for selection purposes and sets up redirection from menu items.
+     * @param menuFile
+     * @param selectedList
+     * @return
+     */
     public boolean create(File menuFile, ArrayList<File> selectedList){
         super.fileMenu = menuFactory.create(context, view);
 

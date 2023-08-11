@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
 import com.example.notes2text.entities.FileViewHolder;
+import com.example.notes2text.usecases.DirectoryUseCases.FileViewHolderFactory;
+import com.example.notes2text.usecases.DirectoryUseCases.ViewHolderAbsFactory;
 import com.example.notes2text.usecases.FileMenuFactory;
 import com.example.notes2text.usecases.FileOpenInteractor;
 
@@ -25,6 +27,8 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
 
     Context context;
     protected File[] fileList;
+
+    protected ViewHolderAbsFactory viewHolderCreator = new FileViewHolderFactory();
 
 
     //TODO: Create interface to segregate this from the file opener.
@@ -57,7 +61,8 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
     public FileViewHolder onCreateViewHolder(@NonNull ViewGroup source, int ViewType){
 
         View view = LayoutInflater.from(context).inflate(R.layout.file_holder_view_model, source, false);
-        return new FileViewHolder(view);
+//        return new FileViewHolder(view);
+        return (FileViewHolder) viewHolderCreator.create(view);
     }
 
     /**

@@ -37,6 +37,7 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  * Use the {@link SelectionController#newInstance} factory method to
  * create an instance of this fragment.
+ * Manages the Selection screen and sets up the file list recyclerview for selection.
  */
 public class SelectionController extends Fragment {
 
@@ -64,12 +65,11 @@ public class SelectionController extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * the selection fragment using the file path to open to.
      *
      * @param rootPath Parameter 1.
      * @return A new instance of fragment SelectionController.
      */
-    // TODO: Rename and change types and number of parameters
     public static SelectionController newInstance(String rootPath) {
         SelectionController fragment = new SelectionController();
         Bundle args = new Bundle();
@@ -79,6 +79,14 @@ public class SelectionController extends Fragment {
         return fragment;
     }
 
+    /**
+     * Use this factory method to create a new instance of
+     * the selection fragment using the file path to open to.
+     *
+     * @param rootPath File path to open the selection screen to.
+     * @param inputfileList File list to be added to the selected list on load up.
+     * @return A new instance of fragment SelectionController.
+     */
     public static SelectionController newInstance(String rootPath, ArrayList<File> inputfileList) {
         SelectionController fragment = new SelectionController();
         Bundle args = new Bundle();
@@ -88,6 +96,11 @@ public class SelectionController extends Fragment {
         return fragment;
     }
 
+    /**
+     * Sets up the file list and file path.
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,10 +112,24 @@ public class SelectionController extends Fragment {
                 fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
             } catch (ClassCastException classE){
                 Log.e("cast", classE.getMessage());
+
             }
         }
     }
 
+    /**
+     * Creates the selection view from the saved data, and using the specified inflater.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return The selection view.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -111,6 +138,14 @@ public class SelectionController extends Fragment {
     }
 
 
+    /**
+     * Sets up and binds actions to the screen.
+     *
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @throws NullPointerException
+     */
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) throws NullPointerException {
         super.onViewCreated(view, savedInstanceState);
