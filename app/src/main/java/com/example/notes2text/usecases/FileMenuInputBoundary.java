@@ -8,6 +8,9 @@ import com.example.notes2text.adapters.DirectoryRefreshOutputBoundary;
 
 import java.io.File;
 
+/**
+ * Interface for file management menus.
+ */
 public interface FileMenuInputBoundary {
 
 

@@ -18,6 +18,12 @@ public class JoinMenuController extends FileMenuController {
         super(context, view, menuFactory);
     }
 
+    /**
+     * Creates a file menu for the specified file, for join systems.
+     * @param menuFile the file to open the file menu on.
+     * @param selectedList A list of selected files.
+     * @return true if a file menu has been created successfully.
+     */
     public boolean create(File menuFile, ArrayList<File> selectedList) {
         super.fileMenu = menuFactory.create(context, view);
 

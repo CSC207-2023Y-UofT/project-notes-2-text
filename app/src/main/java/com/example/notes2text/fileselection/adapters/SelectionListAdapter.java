@@ -1,63 +1,60 @@
 package com.example.notes2text.fileselection.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;;import com.example.notes2text.R;
-import com.example.notes2text.adapters.ActivitySwitchController;
-import com.example.notes2text.adapters.FileListAdaptor;
-import com.example.notes2text.adapters.FileMenuController;
-import com.example.notes2text.entities.FileViewHolder;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.notes2text.R;
 import com.example.notes2text.entities.SelectionViewHolder;
 import com.example.notes2text.fileselection.usecases.SelectionInputBoundary;
-import com.example.notes2text.fileselection.usecases.SelectionInteractor;
-import com.example.notes2text.fileselection.usecases.SelectionMenuInteractor;
+import com.example.notes2text.usecases.DirectoryUseCases.SelectionViewHolderFactory;
 import com.example.notes2text.usecases.FileMenuFactory;
+import com.example.notes2text.usecases.DirectoryUseCases.ViewHolderAbsFactory;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SelectionListAdapter extends RecyclerView.Adapter<SelectionViewHolder> {
 
-    private ArrayList<File> selectedFiles;
     protected Context context;
     protected File[] fileList;
 
     protected SelectionInputBoundary selectionUseCase;
 
+    protected ViewHolderAbsFactory viewHolderFactory = new SelectionViewHolderFactory();
 
 
+    /**
+     * Produces a recyclerview adapter appropriate for displaying files and mapping selection action patterns.
+     * @param context Application context.
+     * @param fileList List of files to display.
+     * @param selectionUseCase The selection interactor implementation to use.
+     */
     public SelectionListAdapter(Context context, File[] fileList, SelectionInputBoundary selectionUseCase) {
         super();
         this.fileList = fileList;
         this.context = context;
-        selectedFiles = new ArrayList<>();
         this.selectionUseCase = selectionUseCase;
     }
     public SelectionListAdapter(Context context, File[] fileList, SelectionInputBoundary selectionUseCase, ArrayList<File> inputFileList) {
         super();
         this.fileList = fileList;
         this.context = context;
-        selectedFiles = new ArrayList<>();
         this.selectionUseCase = selectionUseCase;
         for (File file:inputFileList) {
             this.selectionUseCase.addItem(file);
         }
-        //Selected file list is stored within the usecase, not the adapter..
+        //Selected file list is stored within the usecase, not the adapter.
     }
 
     @NonNull
     @Override
     public SelectionViewHolder onCreateViewHolder(@NonNull ViewGroup source, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.selection_holder_view_model, source, false);
-        return new SelectionViewHolder(view);
+        return (SelectionViewHolder) viewHolderFactory.create(view);
     }
 
     @Override

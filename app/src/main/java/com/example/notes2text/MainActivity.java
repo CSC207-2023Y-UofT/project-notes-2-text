@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.notes2text.UserLogin.LoginView;
 import com.example.notes2text.adapters.ActivitySwitchController;
-import com.example.notes2text.adapters.DirectoryActivity;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {

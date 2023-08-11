@@ -1,13 +1,11 @@
 package com.example.notes2text.fileselection.usecases;
 
-import android.util.Log;
-
 import java.io.File;
 import java.util.ArrayList;
 
 public class SelectionInteractor implements SelectionInputBoundary {
 
-    private ArrayList<File> selectedFiles;
+    private final ArrayList<File> selectedFiles;
 
     public SelectionInteractor(){
         selectedFiles = new ArrayList<File>();
@@ -18,6 +16,10 @@ public class SelectionInteractor implements SelectionInputBoundary {
         return selectedFiles;
     }
 
+    /**
+     * Adds a file to the list of selected files.
+     * @param file to be added.
+     */
     @Override
     public void addItem(File file) {
         if(!(selectedFiles.contains(file))){
@@ -25,11 +27,13 @@ public class SelectionInteractor implements SelectionInputBoundary {
         }
     }
 
+    /**
+     * Removes a file from the list of selected files.
+     * @param file File to be removed.
+     */
     @Override
     public void removeItem(File file) {
-        if (selectedFiles.contains(file)){
-            selectedFiles.remove(file);
-        }
+        selectedFiles.remove(file);
     }
 
     @Override
@@ -37,6 +41,10 @@ public class SelectionInteractor implements SelectionInputBoundary {
         selectedFiles.clear();
     }
 
+    /**
+     * Moves the files in the selected files list to the new location.
+     * @param moveToAddress Address to move to.
+     */
     @Override
     public void move(String moveToAddress) {
 
@@ -47,9 +55,8 @@ public class SelectionInteractor implements SelectionInputBoundary {
             String fileName = selectedFile.getName();
             File destFile = new File(moveToAddress + "/" + fileName);
             selectedFile.renameTo(destFile);
-            selectedFiles.clear();
-
         }
+        selectedFiles.clear();
 
     }
 }

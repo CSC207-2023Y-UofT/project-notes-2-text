@@ -30,6 +30,10 @@
     <string name="file_type_icon">file type icon</string>
 
     <string name="rename_file">New File Name</string>
+
+    <string name="directory_permission">To grant file access permission, press the below button.</string>
+    <string name="directory_btn_text">DIRECTORY</string>
+
     <string name="enter_folder_name">Enter Folder Name</string>
 
 </resources>

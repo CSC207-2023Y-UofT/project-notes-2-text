@@ -18,4 +18,8 @@ public class SelectionPresenter {
     public void InheritFilesSuccess(Context context){
         Toast.makeText(context, "Inherited files from previous", Toast.LENGTH_SHORT).show();
     }
+
+    public void showFileAddress(Context context, String fileLocation, String fileName){
+        Toast.makeText(context, fileLocation + "/" + fileName, Toast.LENGTH_SHORT).show();
+    }
 }

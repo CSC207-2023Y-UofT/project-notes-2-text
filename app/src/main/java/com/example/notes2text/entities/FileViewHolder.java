@@ -11,8 +11,8 @@ import com.example.notes2text.R;
 
 public class FileViewHolder extends RecyclerView.ViewHolder {
 
-    TextView textElement;
-    ImageView imageElement;
+    public TextView textElement;
+    public ImageView imageElement;
 
     public FileViewHolder(@NonNull View holderView) {
         super(holderView);

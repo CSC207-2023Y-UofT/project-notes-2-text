@@ -43,6 +43,11 @@ public class FileMenuController {
 
     }
 
+    /**
+     * Creates a file menu popup for menuFile.
+     * @param menuFile the file on which to open the popup menu.
+     * @return true when the menu is successfully created and called.
+     */
     public boolean create(File menuFile){
         fileMenu = menuFactory.create(context, view);
 
@@ -64,23 +69,10 @@ public class FileMenuController {
         return true;
     }
 
-//    public boolean create(File menuFile, FileMenuInputBoundary fileMenuUseCase) {
-//        fileMenu = menuFactory.create(context, view);
-//
-//        this.fileMenuUseCase = fileMenuUseCase;
-//        fileMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                redirect(menuItem);
-//
-//                return true;
-//            }
-//        });
-//
-//        fileMenu.show();
-//        return true;
-//    }
-
+    /**
+     * Redirects to the appropriate use case function call for the menu item that is pressed.
+     * @param menuItem the pressed menu item.
+     */
     protected void redirect(MenuItem menuItem){
         if (menuItem.getTitle().equals("OPEN")){
             //open file or folder.
