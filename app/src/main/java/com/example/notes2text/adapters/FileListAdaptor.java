@@ -61,7 +61,6 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
     public FileViewHolder onCreateViewHolder(@NonNull ViewGroup source, int ViewType){
 
         View view = LayoutInflater.from(context).inflate(R.layout.file_holder_view_model, source, false);
-//        return new FileViewHolder(view);
         return (FileViewHolder) viewHolderCreator.create(view);
     }
 
