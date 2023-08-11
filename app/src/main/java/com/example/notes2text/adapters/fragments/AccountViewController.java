@@ -17,37 +17,12 @@ import com.example.notes2text.ui.accountsettings.PopUpUsernameView;
 import com.example.notes2text.UserLogin.LoginView;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccountViewController#newInstance} factory method to
- * create an instance of this fragment.
+ * Controller class for the AccountView fragment.
  */
 public class AccountViewController extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public AccountViewController() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AccountViewController.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AccountViewController newInstance(String param1, String param2) {
-        AccountViewController fragment = new AccountViewController();
-        return fragment;
     }
 
     @Override
@@ -63,6 +38,7 @@ public class AccountViewController extends Fragment {
     }
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
+        //View elements
         Button UsernameView = (Button) view.findViewById(R.id.PopUpUsernameView);
 
         Button PasswordView = (Button) view.findViewById(R.id.PopUpPasswordView);
@@ -72,6 +48,7 @@ public class AccountViewController extends Fragment {
 
         Button Logout = (Button) view.findViewById(R.id.logout);
 
+        //Set click listeners for the buttons to direct to pages that changes account info.
         UsernameView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +70,9 @@ public class AccountViewController extends Fragment {
             }
         });
 
+        //Set click listener for logout button. Clears any activities before it so that when
+        //the android back button is pressed after logging out, the user can't go to the
+        //AccountView page.
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

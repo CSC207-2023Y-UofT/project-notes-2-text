@@ -70,6 +70,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return email;
 
     }
+
+    /**
+     * Gets the user's password from the database.
+     *
+     * @param username  String of the user's username
+     * @return          Returns the user's password.
+     */
     public String getPassword(String username){
         String password = null;
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -82,6 +89,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * Updates the user's username in the database
+     *
+     * @param username      String of the user's old username
+     * @param newUsername   String of the user's new username
+     */
     public void updateUsername(String username, String newUsername){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -89,6 +102,12 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.update("user", values, "name = ?", new String[]{username});
     }
 
+    /**
+     * Updates the user's password in the database
+     *
+     * @param password      String of the user's old password
+     * @param newPassword   String of the user's new password
+     */
     public void updatePassword(String password, String newPassword){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -96,6 +115,12 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.update("user", values, "password = ?", new String[]{password});
     }
 
+    /**
+     * Updates the user's email in the database
+     *
+     * @param email      String of the user's old email
+     * @param newEmail   String of the user's new eamil
+     */
     public void updateEmail(String email, String newEmail){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues values = new ContentValues();

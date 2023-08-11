@@ -6,17 +6,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notes2text.UserLogin.UserUpdateInfo;
 
+/**
+ * Presenter class for changing the password.
+ */
 public class PopUpPasswordPresenter extends AppCompatActivity {
+
+    //Stores instance of the UserUpdateInfo class
     UserUpdateInfo user = new UserUpdateInfo();
 
 
     public PopUpPasswordPresenter(){}
 
+    /**
+     * Sets the EditText views to the empty string.
+     *
+     * @param input     Input of the current password the user entered..
+     * @param input2    Input of the password the user wants to change to.
+     * @return          Since password change was successful, it will return true.
+     */
     public boolean showPasswordChange(EditText input, EditText input2){
         input.setText("");
         input2.setText("");
         return true;
     }
+
+    /**
+     * Sets the EditText views to the empty string.
+     *
+     * @param input     Input of the current password the user entered..
+     * @param input2    Input of the password the user wants to change to.
+     * @return          Since password change was unsuccessful, it will return false.
+     */
     public boolean showPasswordFail( EditText input, EditText input2){
         input.setText("");
         input2.setText("");
