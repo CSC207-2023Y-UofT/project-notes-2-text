@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.directoryJoin.adapters.JoinController;
 import com.example.notes2text.usecases.FileMenuInteractor;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 
 public class JoinMenuInteractor extends FileMenuInteractor {
 
-    ArrayList<File> selectedList;
+    private final ArrayList<File> selectedList;
 
     public JoinMenuInteractor(PopupMenu fileMenu, File keyFile, ArrayList<File> selectedFiles) {
         super(fileMenu, keyFile);

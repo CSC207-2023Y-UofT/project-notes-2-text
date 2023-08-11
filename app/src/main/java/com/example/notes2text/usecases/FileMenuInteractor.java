@@ -27,6 +27,11 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
 
     }
 
+    /**
+     * Opens the file.
+     * @param context Application context.
+     * @param view View element of of the file in question.
+     */
     @Override
     public boolean open(Context context, View view) {
         if(keyFile.isDirectory()){

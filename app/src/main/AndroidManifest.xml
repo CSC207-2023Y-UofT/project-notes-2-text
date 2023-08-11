@@ -17,7 +17,9 @@
         tools:targetApi="31">
         <activity
             android:name=".directoryJoin.adapters.JoinController"
-            android:exported="false" />
+            android:exported="true">
+
+        </activity>
 
         <provider
             android:name=".file_sharing.use_case.MyFileProvider"
@@ -62,7 +64,6 @@
             android:noHistory = "true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
