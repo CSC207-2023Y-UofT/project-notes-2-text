@@ -39,7 +39,7 @@ import java.io.File;
 public class DirectoryAccessController extends Fragment {
 
     //Required collaborators
-    private final DirectoryAccessOutputBoundary DIRECTORY_PRESENTER = new DirectoryAccessPresenter();
+    private final DirectoryAccessOutputBoundary directoryPresenter = new DirectoryAccessPresenter();
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -163,11 +163,11 @@ public class DirectoryAccessController extends Fragment {
                         higherPath = parentLayerFile.getAbsolutePath();
                         Fragment fragment = DirectoryAccessController.newInstance(higherPath);
                         ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
-                        DIRECTORY_PRESENTER.BackLayerSuccess(getActivity());
+                        directoryPresenter.BackLayerSuccess(getActivity());
                     } catch (NullPointerException e){
-                        DIRECTORY_PRESENTER.BackLayerFailure(getActivity());
+                        directoryPresenter.BackLayerFailure(getActivity());
                     }
-                    DIRECTORY_PRESENTER.BackLayerSuccess(getActivity());
+                    directoryPresenter.BackLayerSuccess(getActivity());
                 } else if (menuItem.getItemId() == R.id.create_folder_button) {
 
                     //create a new dialogue using openDialog when button is clicked.

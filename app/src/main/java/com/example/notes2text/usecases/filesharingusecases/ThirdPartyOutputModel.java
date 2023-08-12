@@ -6,8 +6,8 @@ import android.net.Uri;
 import android.content.Context;
 
 public class ThirdPartyOutputModel{
-    private final ArrayList<Uri> FILE_URIS;
-    private final Context CONTEXT;
+    private final ArrayList<Uri> fileUris;
+    private final Context context;
 
     /**
      * Constructor for ThirdPartyOutputModel, creates a model to send information outward in layers.
@@ -16,8 +16,8 @@ public class ThirdPartyOutputModel{
      * @param shareFiles an ArrayList of Uris of the files that needs to be shared.
      */
     public ThirdPartyOutputModel(Context context, ArrayList<Uri> shareFiles){
-        this.FILE_URIS = shareFiles;
-        this.CONTEXT = context;
+        this.fileUris = shareFiles;
+        this.context = context;
     }
 
     /**
@@ -26,7 +26,7 @@ public class ThirdPartyOutputModel{
      * @return An ArrayList of content type Uris.
      */
     public ArrayList<Uri> getFileUris(){
-        return FILE_URIS;
+        return fileUris;
     }
 
     /**
@@ -35,6 +35,6 @@ public class ThirdPartyOutputModel{
      * @return A Context that can be used to access Android system functions.
      */
     public Context getContext() {
-        return CONTEXT;
+        return context;
     }
 }
