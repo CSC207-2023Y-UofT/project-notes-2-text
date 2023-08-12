@@ -4,23 +4,18 @@
 package com.example.notes2text.ui.accountsettings;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpEmailController;
 import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpEmailPresenter;
 import com.example.notes2text.R;
-import com.example.notes2text.adapters.ActivitySwitchController;
-import com.example.notes2text.adapters.fragments.AccountViewController;
 
 /**
  * View class for the changing email.

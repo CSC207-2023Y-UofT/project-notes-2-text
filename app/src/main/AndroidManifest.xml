@@ -16,14 +16,14 @@
         android:theme="@style/Theme.Notes2Text"
         tools:targetApi="31">
         <activity
-            android:name=".directoryJoin.adapters.JoinController"
+            android:name=".adapters.JoinDirectoryAdapters.JoinController"
             android:exported="true">
 
         </activity>
 
         <provider
-            android:name=".file_sharing.use_case.MyFileProvider"
-            android:authorities="com.example.notes2text.file_sharing.use_case.MyFileProvider"
+            android:name=".usecases.FileSharingUseCases.MyFileProvider"
+            android:authorities="com.example.notes2text.usecases.FileSharingUseCases.MyFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -32,7 +32,7 @@
         </provider>
 
         <activity
-            android:name=".adapters.ActivitySwitchController"
+            android:name=".adapters.DirectoryAdapters.ActivitySwitchController"
             android:exported="false" />
         <activity
             android:name=".ui.accountsettings.PopUpUsernameView"
@@ -44,7 +44,7 @@
             android:name=".ui.accountsettings.PopUpEmailView"
             android:exported="false" />
         <activity
-            android:name=".adapters.DirectoryActivity"
+            android:name=".adapters.DirectoryAdapters.DirectoryActivity"
             android:exported="false" />
         <activity
             android:name=".UserLogin.RegisterView"

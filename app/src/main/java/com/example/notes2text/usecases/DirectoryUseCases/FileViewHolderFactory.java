@@ -4,7 +4,7 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.notes2text.entities.FileViewHolder;
+import com.example.notes2text.entities.DirectoryEntities.FileViewHolder;
 
 public class FileViewHolderFactory implements ViewHolderAbsFactory {
     @Override

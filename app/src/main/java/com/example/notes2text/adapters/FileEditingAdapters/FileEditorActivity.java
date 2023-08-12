@@ -9,15 +9,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.notes2text.R;
-import com.example.notes2text.adapters.ActivitySwitchController;
-import com.example.notes2text.directoryJoin.adapters.JoinController;
+import com.example.notes2text.adapters.DirectoryAdapters.ActivitySwitchController;
+import com.example.notes2text.adapters.JoinDirectoryAdapters.JoinController;
 import com.example.notes2text.usecases.FileEditingUseCases.EditTextBoundary;
 import com.example.notes2text.usecases.FileEditingUseCases.EditTextInteractor;
 import com.example.notes2text.usecases.FileEditingUseCases.JoinFileBoundary;
 import com.example.notes2text.usecases.FileEditingUseCases.JoinFiles;
 import com.example.notes2text.usecases.FileEditingUseCases.OpenTextEditorBoundary;
 import com.example.notes2text.usecases.FileEditingUseCases.OpenTextEditorInteractor;
-import com.example.notes2text.usecases.FileEditingUseCases.TextFile;
+import com.example.notes2text.entities.FileEditingEntities.TextFile;
 import java.io.File;
 import java.util.ArrayList;
 
