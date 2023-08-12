@@ -19,7 +19,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     private PopupMenu fileMenu;
 
     /* Initialize an observer for initiating sharing function */
-    private final ShareObserver sharing = new ShareObserver();
+    private final ShareObserver SHARING = new ShareObserver();
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
     FileRenameInteractor fileRenamer = new FileRenameInteractor();
@@ -65,13 +65,14 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     @Override
     public boolean share(Context context, View view) {
         /* Implementation of Share function */
-        // Wrap the file in an ArrayList as required by the sharing use case.
         if (keyFile.isDirectory()) {
+            // Blocks user from sharing folders.
             Toast.makeText(context.getApplicationContext(), "Cannot share folder", Toast.LENGTH_SHORT).show();
         } else {
+            // Wrap the file in an ArrayList as required by the sharing use case.
             ArrayList<File> files = new ArrayList<>();
             files.add(keyFile);
-            sharing.share(context, files);
+            SHARING.share(context, files);
         } return true;
     }
 
@@ -80,6 +81,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
         // Set the new file name with the rename use case class.
         fileRenamer.setNewFileName(keyFile, fileName);
         // File renamed, refresh Directory to see changes.
+        // Null warning ignored as by logic method will never return null as there has to be a directory that user is viewing.
         refresher.refreshDirectory(context, keyFile.getParentFile().getAbsolutePath());
         // Notify the user.
         Toast.makeText(context.getApplicationContext(), "File renamed", Toast.LENGTH_SHORT).show();
