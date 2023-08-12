@@ -30,6 +30,9 @@ When calling the UserUpdateInfo use case class, the controller and presenter cla
 ### Singleton:
 The CurrentUser class only has one instance of itself and it can be accessed and changed by any other use case and adaptor classes through a getter and a setter.
 
+### Strategy:
+The RegisterUseCase and UserUpdateInfo use case classes both use the UserRequirement class to check if the input the user entered meets the requirements the user info is meant to have.
+
 
 ## Unit Testing Involving Context:
 Upon researching testing involving context, it is determined that unit testing is not viable for any classes involving context. As any Directory-related classes and method requires interaction with the Android System and thus requires the usage of Context throughout the actions. As Context is a part of the Android Environment, it cannot be accurately mocked and testing can only be done through Instrumented tests, which require running the app and will not be a unit test. 
