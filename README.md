@@ -24,6 +24,9 @@ The text editing sections of the app utilize a factory design pattern. The text 
 ### Facade:
 While file opening, sharing and moving were implemented as separate functionality through separate classes (due to the single responsiility principle), they were brought together under the facade of the filemenu interactor to simplify accessing them for file menus.
 
+## Dependency Injection:
+When calling the UserUpdateInfo use case class, the controller and presenter classes for the pop-up pages for account management injects the user database into the use case class through constructor injection. This makes sure the use case class doesn't directly depend on the database.
+
 
 ## Unit Testing Involving Context:
 Upon researching testing involving context, it is determined that unit testing is not viable for any classes involving context. As any Directory-related classes and method requires interaction with the Android System and thus requires the usage of Context throughout the actions. As Context is a part of the Android Environment, it cannot be accurately mocked and testing can only be done through Instrumented tests, which require running the app and will not be a unit test. 
