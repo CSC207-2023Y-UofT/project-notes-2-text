@@ -52,5 +52,4 @@ This principle is applied throughout the program with the use of various Output 
 
 ## Other notes:
 
-### Remaining warnings:
-< can be replaced with lambda > - not fixed since the functions this warning pops up on requires the functions to be defined as they are to also implement any hidden methods and variables required for correct functionality of the program.
+### Remaining warnings: There may be a few warnings left that were left unchanged for certain reasons - we have these explained in the code next to the lines that threw the warnings.
