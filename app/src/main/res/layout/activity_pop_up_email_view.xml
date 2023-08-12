@@ -32,12 +32,27 @@
 
 
         <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Email address must not contain any empty spaces"
+            android:textColor="#020202"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.188"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.392" />
+
+        <TextView
             android:id="@+id/CurrentEmail"
             android:layout_width="146dp"
             android:layout_height="28dp"
             android:backgroundTint="#F1F1F1"
             android:text="TextView"
-            android:textColor="#FAF8F8"
+            android:textColor="#0C0C0C"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +66,7 @@
             android:layout_width="267dp"
             android:layout_height="29dp"
             android:text="Current Email Address:"
-            android:textColor="#FFFFFF"
+            android:textColor="#090909"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +121,7 @@
             android:layout_width="267dp"
             android:layout_height="29dp"
             android:text="Type new email address here"
-            android:textColor="#FFFFFF"
+            android:textColor="#0B0A0A"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -122,13 +137,13 @@
             android:layout_height="57dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColor="#FDFCFC"
+            android:textColor="#0B0A0A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.201"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.431" />
+            app:layout_constraintVertical_bias="0.461" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

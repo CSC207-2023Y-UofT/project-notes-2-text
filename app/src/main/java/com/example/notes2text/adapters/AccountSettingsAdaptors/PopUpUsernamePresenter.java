@@ -1,10 +1,12 @@
 package com.example.notes2text.adapters.AccountSettingsAdaptors;
 
+import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.notes2text.UserLogin.UserRep;
 import com.example.notes2text.UserLogin.UserUpdateInfo;
 
 /**
@@ -13,9 +15,16 @@ import com.example.notes2text.UserLogin.UserUpdateInfo;
 public class PopUpUsernamePresenter extends AppCompatActivity {
 
     //Stores instance of the UserUpdateInfo class
-    UserUpdateInfo user = new UserUpdateInfo();
+    UserUpdateInfo user;
 
-    public PopUpUsernamePresenter(){}
+    /**
+     * Constructor for presenter
+     *
+     * @param context   Context of the current activity
+     */
+    public PopUpUsernamePresenter(Context context){
+        this.user = new UserUpdateInfo(new UserRep(context), context);
+    }
 
     /**
      * Sets the TextView to the user's username
@@ -23,7 +32,7 @@ public class PopUpUsernamePresenter extends AppCompatActivity {
      * @param text      The TextView that shows the current username.
      */
     public void showUsername(TextView text){
-        text.setText(user.getUsername());
+        text.setText(this.user.getUsername());
     }
 
     /**
@@ -34,7 +43,7 @@ public class PopUpUsernamePresenter extends AppCompatActivity {
      * @return          Since username change was successful, it will return true.
      */
     public boolean showNewUsername(TextView text, EditText input){
-        text.setText(user.getUsername());
+        text.setText(this.user.getUsername());
         input.setText("");
         return true;
     }

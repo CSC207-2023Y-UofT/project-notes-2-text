@@ -24,10 +24,10 @@ public class PopUpEmailView extends AppCompatActivity {
 
 
     //Controller for changing user's email.
-    PopUpEmailController controller = new PopUpEmailController();
+    PopUpEmailController controller;
 
     //Presenter for changing user's email.
-    PopUpEmailPresenter presenter = new PopUpEmailPresenter();
+    PopUpEmailPresenter presenter;
 
     /**
      * Creates the pop-up email view
@@ -43,6 +43,10 @@ public class PopUpEmailView extends AppCompatActivity {
         TextView text = (TextView) findViewById(R.id.CurrentEmail);
         EditText input = (EditText) findViewById(R.id.editTextEmail);
 
+        //Initializing the controllers and presenters
+        controller = new PopUpEmailController(getApplicationContext());
+        presenter = new PopUpEmailPresenter(getApplicationContext());
+
         //Shows the user's email
         presenter.showEmail(text);
 
@@ -56,13 +60,13 @@ public class PopUpEmailView extends AppCompatActivity {
                 //Checks if user entered something or not
                 if(!(input.getText().toString().equals(""))){
                     //If email change was successful a pop up message will mention it.
-                    if(controller.buttonPressed(getApplicationContext(), input, text)){
+                    if(controller.buttonPressed(input, text)){
                         toast = Toast.makeText(PopUpEmailView.this, "Email Address Change Successful", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                     //If email change was unsuccessful a pop up message will mention it.
                     else{
-                        toast = Toast.makeText(PopUpEmailView.this, "Email Address Already Being Used", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(PopUpEmailView.this, "Email Address Change Was Unsuccessful", Toast.LENGTH_SHORT);
                         toast.show();
                     }
 

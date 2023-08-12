@@ -1,43 +1,68 @@
 package com.example.notes2text.UserLogin;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
 
-public class UserTest extends TestCase {
+import org.junit.Test;
 
-    User testUser;
+/**
+ * Unit test class for User
+ */
+public class UserTest {
 
-    public void setUp() throws Exception {
-        testUser = new User("test@gmail.com", "TestUser", "testpassword");
+    /**
+     * Unit test for getUsername
+     */
+    @Test
+    public void getUsername() {
+        User user = new User("joe20", "Joe", "strong");
+        assertEquals("Joe", user.getUsername());
     }
 
-    public void testGetUsername() {
-        String username = testUser.getUsername();
-        assertEquals(username, "TestUser");
+    /**
+     * Unit test for getPassword
+     */
+    @Test
+    public void getPassword() {
+        User user = new User("joe20", "Joe", "strong");
+        assertEquals("strong", user.getPassword());
     }
 
-    public void testGetPassword() {
-        String username = testUser.getPassword();
-        assertEquals(username, "testpassword");
-
+    /**
+     * Unit test for getEmail
+     */
+    @Test
+    public void getEmail() {
+        User user = new User("joe20", "Joe", "strong");
+        assertEquals("joe20", user.getEmail());
     }
 
-    public void testGetEmail() {
-        String username = testUser.getEmail();
-        assertEquals(username, "test@gmail.com");
+    /**
+     * Unit test for setUsername
+     */
+    @Test
+    public void setUsername() {
+        User user = new User("joe20", "Joe", "strong");
+        user.setUsername("Bill");
+        assertEquals("Bill", user.getUsername());
     }
 
-    public void testSetUsername() {
-        testUser.setUsername("newusername");
-        assertEquals("newusername", testUser.getUsername());
+    /**
+     * Unit test for setPassword
+     */
+    @Test
+    public void setPassword() {
+        User user = new User("joe20", "Joe", "strong");
+        user.setPassword("weak");
+        assertEquals("weak", user.getPassword());
     }
 
-    public void testSetPassword() {
-        testUser.setPassword("newpassword");
-        assertEquals("newpassword", testUser.getPassword());
-    }
-
-    public void testSetEmail() {
-        testUser.setEmail("newemail@gmail.com");
-        assertEquals("newemail@gmail.com", testUser.getEmail());
+    /**
+     * Unit test for setEmail
+     */
+    @Test
+    public void setEmail() {
+        User user = new User("joe20", "Joe", "strong");
+        user.setUsername("chris100");
+        assertEquals("chris100", user.getUsername());
     }
 }

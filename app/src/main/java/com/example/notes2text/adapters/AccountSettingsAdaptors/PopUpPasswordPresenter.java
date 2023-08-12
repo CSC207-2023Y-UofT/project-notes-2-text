@@ -4,18 +4,17 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.notes2text.UserLogin.UserUpdateInfo;
-
 /**
  * Presenter class for changing the password.
  */
 public class PopUpPasswordPresenter extends AppCompatActivity {
 
-    //Stores instance of the UserUpdateInfo class
-    UserUpdateInfo user = new UserUpdateInfo();
-
-
-    public PopUpPasswordPresenter(){}
+    /**
+     * Constructor for presenter
+     *
+     */
+    public PopUpPasswordPresenter(){
+    }
 
     /**
      * Sets the EditText views to the empty string.

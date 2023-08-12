@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpEmailController;
+import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpEmailPresenter;
 import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpUsernameController;
 import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpUsernamePresenter;
 import com.example.notes2text.R;
@@ -22,10 +24,10 @@ import com.example.notes2text.R;
 public class PopUpUsernameView extends AppCompatActivity {
 
     //Controller for changing user's username.
-    PopUpUsernameController controller = new PopUpUsernameController();
+    PopUpUsernameController controller;
 
     //Presenter for changing user's username.
-    PopUpUsernamePresenter presenter = new PopUpUsernamePresenter();
+    PopUpUsernamePresenter presenter;
 
     /**
      * Creates the pop-up username view
@@ -41,6 +43,10 @@ public class PopUpUsernameView extends AppCompatActivity {
         TextView text = (TextView) findViewById(R.id.CurrentUsername);
         EditText input = (EditText) findViewById(R.id.editTextTextPersonName);
 
+        //Initializing the controllers and presenters
+        controller = new PopUpUsernameController(getApplicationContext());
+        presenter = new PopUpUsernamePresenter(getApplicationContext());
+
         //Shows the user's username.
         presenter.showUsername(text);
 
@@ -54,13 +60,13 @@ public class PopUpUsernameView extends AppCompatActivity {
                 //Checks if user entered something or not
                 if(!(input.getText().toString().equals(""))){
                     //If username change was successful a pop up message will mention it.
-                    if (controller.buttonPressed(getApplicationContext(), input, text)){
+                    if (controller.buttonPressed(input, text)){
                         toast = Toast.makeText(PopUpUsernameView.this, "Username Change Successful", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                     //If username change was unsuccessful a pop up message will mention it.
                     else{
-                        toast = Toast.makeText(PopUpUsernameView.this, "Username Already Being Used", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(PopUpUsernameView.this, "Username Change Was Unsuccessful", Toast.LENGTH_SHORT);
                         toast.show();
                     }
 
