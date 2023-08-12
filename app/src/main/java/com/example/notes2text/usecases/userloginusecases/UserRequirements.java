@@ -51,7 +51,6 @@ public class UserRequirements {
         boolean noWhiteSpace = true;
         boolean length = false;
         char c;
-        char empty = ' ';
         int i;
         for (i = 0; i < username.length(); i++){
             c = username.charAt(i);

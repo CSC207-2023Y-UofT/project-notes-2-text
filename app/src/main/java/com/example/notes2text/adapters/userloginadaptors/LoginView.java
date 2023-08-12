@@ -13,7 +13,6 @@ import com.example.notes2text.MainActivity;
 import com.example.notes2text.R;
 import com.example.notes2text.entities.userloginentities.CurrentUser;
 import com.example.notes2text.usecases.userloginusecases.LoginUseCase;
-import com.example.notes2text.entities.userloginentities.User;
 import com.example.notes2text.usecases.userloginusecases.UserFactory;
 import com.example.notes2text.ui.userloginframeworks.UserRep;
 
@@ -33,18 +32,13 @@ public class LoginView extends AppCompatActivity {
         if(!((name).length() == 0)){
             userRep = new UserRep(this);
             UserFactory userFactory = new UserFactory();
-            User user = userFactory.createUser(userRep.getEmail(name), name, userRep.getPassword(name));
-            CurrentUser.setUser(user);
+            CurrentUser.setUser(userFactory.createUser(userRep.getEmail(name), name, userRep.getPassword(name)));
             Intent intent = new Intent(LoginView.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
 
         setContentView(R.layout.activity_main3);
-
-        TextView login = (TextView) findViewById(R.id.login);
-        TextView user = (TextView) findViewById(R.id.username);
-        TextView password = (TextView) findViewById(R.id.password);
 
         TextView signup = (TextView) findViewById(R.id.newuser);
         signup.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +60,6 @@ public class LoginView extends AppCompatActivity {
      * @param view The login button
      */
     public void loginClick(View view){
-        LoginUseCase loginAttempt = new LoginUseCase(this);
 
         //Get username and password input from user
         EditText username = findViewById(R.id.username);

@@ -51,11 +51,10 @@ public class PopUpUsernamePresenter extends AppCompatActivity {
     /**
      * Tells user that the change was unsuccessful.
      *
-     * @param text      The TextView that shows the current username.
      * @param input     The input the user tried to change the username to.
      * @return          Since username change was unsuccessful, it will return false.
      */
-    public boolean showUsernameError(TextView text, EditText input){
+    public boolean showUsernameError(EditText input){
         input.setText("");
         return false;
     }

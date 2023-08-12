@@ -51,8 +51,15 @@ public class PopUpEmailView extends AppCompatActivity {
         presenter.showEmail(text);
 
         Button submit = (Button) findViewById(R.id.Submit);
+        Button back = (Button) findViewById(R.id.Back);
 
-        //Set click listener for the Confirm button
+        //Set click listener for the buttons
+        back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
