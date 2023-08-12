@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import android.net.Uri;
 import android.content.Intent;
+import android.util.Log;
 
 
 public class ThirdPartySender implements ThirdPartyOutputBoundary {
@@ -21,6 +22,10 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
      */
     public void intentShare(ThirdPartyOutputModel outputModel){
         ArrayList<Uri> fileUris = outputModel.getFileUris();
+        for (Uri uri : fileUris) {
+            // Check for the Uri used for sharing. Ensure consistency with that provided by FileProvider.
+            Log.i("File Uri for Sharing", String.valueOf(uri));
+        }
 
         Intent sendIntent = new Intent();
 
@@ -29,9 +34,8 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
         sendIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
         sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, fileUris);
 
-        // Grants per-use permission for other app to receive files.
-        sendIntent.addFlags(
-                Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        // Check the flag of sendIntent, look for 268435456 (Constant for FLAG_ACTIVITY_NEW_TASK).
+        Log.i("sendIntent flag", String.valueOf(sendIntent.getFlags()));
 
         // Send any type of file.
         sendIntent.setType("*/*");
@@ -40,6 +44,9 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
         be granted using FLAG_ACTIVITY_NEW_TASK. */
         Intent chooserIntent = Intent.createChooser(sendIntent, null);
         chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Check the flag of chooserIntent, look for 268435456 (Constant for FLAG_ACTIVITY_NEW_TASK).
+        Log.i("chooserIntent flag", String.valueOf(sendIntent.getFlags()));
 
         // Create the Share Sheet.
         outputModel.getContext().startActivity(chooserIntent);

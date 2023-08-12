@@ -11,6 +11,11 @@ import android.util.Log;
 public class ThirdParShareUseCase {
     private final ThirdPartyOutputBoundary outputBoundary;
 
+    /**
+     * Constructor for ThirdParShareUseCase.
+     *
+     * @param outputBoundary Used for send the information needed for using sharesheet outward.
+     */
     public ThirdParShareUseCase(ThirdPartyOutputBoundary outputBoundary) {
         this.outputBoundary = outputBoundary;
     }
@@ -29,6 +34,9 @@ public class ThirdParShareUseCase {
         ArrayList<String> filePaths = new ArrayList<>();
         for (File file : files) {
             filePaths.add(file.getAbsolutePath());
+
+            // Monitor the file path used for file conversion.
+            Log.i("File conversion filepath", file.getAbsolutePath());
         }
         for (String filePath : filePaths) {
             File newFile = new File(filePath);
@@ -38,8 +46,8 @@ public class ThirdParShareUseCase {
                     "com.example.notes2text.usecases.FileSharingUseCases.MyFileProvider", newFile);
             fileUris.add(uri);
 
-            // Monitor the Uri obtained.
-            Log.v("File conversion result", String.valueOf(uri));
+            // Monitor the Uri obtained. Look for content type uri.
+            Log.i("File conversion result", String.valueOf(uri));
         }
 
         // Make a new outputModel with the new uris and the original context to pass a layer outward.
