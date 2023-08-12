@@ -10,10 +10,10 @@ import com.example.notes2text.adapters.DirectoryAdapters.DirectoryRefreshOutputB
 import java.io.File;
 
 public class FolderCreationInteractor {
-    private final FolderFactory folderMaker = new FolderFactory();
-    private final DirectoryAccessOutputBoundary output;
-    private final Context context;
-    private final DirectoryRefreshOutputBoundary refresher;
+    private final FolderFactory FOLDER_MAKER = new FolderFactory();
+    private final DirectoryAccessOutputBoundary OUTPUT;
+    private final Context CONTEXT;
+    private final DirectoryRefreshOutputBoundary REFRESHER;
 
 
     /**
@@ -27,9 +27,9 @@ public class FolderCreationInteractor {
      */
 
     public FolderCreationInteractor (DirectoryAccessOutputBoundary output, Context context, DirectoryRefreshOutputBoundary refresher) {
-        this.output = output;
-        this.context = context;
-        this.refresher = refresher;
+        this.OUTPUT = output;
+        this.CONTEXT = context;
+        this.REFRESHER = refresher;
     }
 
 
@@ -53,20 +53,20 @@ public class FolderCreationInteractor {
             // No folder with the same name, attempt to make new folder.
             try {
                 // Make new folder.
-                folderMaker.createFolder(file);
+                FOLDER_MAKER.createFolder(file);
                 // New file in directory, refresh directory.
-                refresher.refreshDirectory(context, filePath);
-                output.FolderCreationSuccess(context);
+                REFRESHER.refreshDirectory(CONTEXT, filePath);
+                OUTPUT.FolderCreationSuccess(CONTEXT);
             } catch (SecurityException e) {
                 // Catch potential SecurityException error for folder creation.
                 Log.e("Folder creation exception", e.getMessage());
                 // Alert user.
-                output.FolderCreationFailureInvalid(context);
+                OUTPUT.FolderCreationFailureInvalid(CONTEXT);
             }
         }else {
             // When the folder with same name already exists.
             Log.w("Folder Creation Failed", "Folder already exist at: " + file.getAbsolutePath());
-            output.FolderCreationFailureSameName(context);
+            OUTPUT.FolderCreationFailureSameName(CONTEXT);
         }
     }
 }

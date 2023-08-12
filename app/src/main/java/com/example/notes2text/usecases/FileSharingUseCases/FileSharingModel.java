@@ -7,8 +7,8 @@ import android.content.Context;
 
 
 public class FileSharingModel {
-    private final ArrayList<File> files;
-    private final Context context;
+    private final ArrayList<File> FILES;
+    private final Context CONTEXT;
 
     /**
      * Constructor for FileSharingModel. Initialize a model to pass information inward.
@@ -17,8 +17,8 @@ public class FileSharingModel {
      * @param shareFile An ArrayList of IO.Files to be shared.
      */
     public FileSharingModel(Context context, ArrayList<File> shareFile) {
-        this.files = shareFile;
-        this.context = context;
+        this.FILES = shareFile;
+        this.CONTEXT = context;
     }
 
     /**
@@ -27,7 +27,7 @@ public class FileSharingModel {
      * @return An ArrayList of IO.File to be shared.
      */
     public ArrayList<File> getFile() {
-        return files;
+        return FILES;
     }
 
     /**
@@ -36,6 +36,6 @@ public class FileSharingModel {
      * @return A Context that can be used to access Android system functions.
      */
     public Context getContext() {
-        return context;
+        return CONTEXT;
     }
 }

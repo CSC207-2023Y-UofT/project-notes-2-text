@@ -18,9 +18,9 @@ import com.example.notes2text.usecases.DirectoryUseCases.FileMenuInputBoundary;
 
 public class RenameController extends AppCompatDialogFragment {
     private EditText editTextFileName;
-    private final Context context;
-    private final FileMenuInputBoundary fileMenuUseCase;
-    private final DirectoryRefreshPresenter refresher;
+    private final Context CONTEXT;
+    private final FileMenuInputBoundary FILE_MENU_USECASE;
+    private final DirectoryRefreshPresenter REFRESHER;
 
     /**
      * Constructor for RenameController class.
@@ -31,9 +31,9 @@ public class RenameController extends AppCompatDialogFragment {
      *                        and alerting the user.
      */
     public RenameController (Context context, FileMenuInputBoundary fileMenuUseCase) {
-        this.context = context;
-        this.fileMenuUseCase = fileMenuUseCase;
-        refresher = new DirectoryRefreshPresenter();
+        this.CONTEXT = context;
+        this.FILE_MENU_USECASE = fileMenuUseCase;
+        REFRESHER = new DirectoryRefreshPresenter();
     }
 
     /**
@@ -69,7 +69,7 @@ public class RenameController extends AppCompatDialogFragment {
                     // Monitor user input.
                     Log.i("Rename Dialog action", "ok");
                     Log.i("Rename Dialog input", newFileName);
-                    fileMenuUseCase.rename(context, newFileName, refresher);
+                    FILE_MENU_USECASE.rename(CONTEXT, newFileName, REFRESHER);
                 });
         // Dialogue closes.
 

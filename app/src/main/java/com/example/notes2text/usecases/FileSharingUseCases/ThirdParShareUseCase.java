@@ -9,7 +9,7 @@ import android.util.Log;
 
 
 public class ThirdParShareUseCase {
-    private final ThirdPartyOutputBoundary outputBoundary;
+    private final ThirdPartyOutputBoundary OUTPUT_BOUNDARY;
 
     /**
      * Constructor for ThirdParShareUseCase.
@@ -17,7 +17,7 @@ public class ThirdParShareUseCase {
      * @param outputBoundary Used for send the information needed for using sharesheet outward.
      */
     public ThirdParShareUseCase(ThirdPartyOutputBoundary outputBoundary) {
-        this.outputBoundary = outputBoundary;
+        this.OUTPUT_BOUNDARY = outputBoundary;
     }
 
 
@@ -54,6 +54,6 @@ public class ThirdParShareUseCase {
         // Make a new outputModel with the new uris and the original context to pass a layer outward.
         ThirdPartyOutputModel outputUri = new ThirdPartyOutputModel(inputFiles.getContext(),
                 fileUris);
-        outputBoundary.intentShare(outputUri);
+        OUTPUT_BOUNDARY.intentShare(outputUri);
     }
 }
