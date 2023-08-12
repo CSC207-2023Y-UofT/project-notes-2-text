@@ -25,7 +25,7 @@ The text editing sections of the app utilize a factory design pattern. The text 
 While file opening, sharing and moving were implemented as separate functionality through separate classes (due to the single responsiility principle), they were brought together under the facade of the filemenu interactor to simplify accessing them for file menus.
 
 
-### Unit Testing Involving Context:
+## Unit Testing Involving Context:
 Upon researching testing involving context, it is determined that unit testing is not viable for any classes involving context. As any Directory-related classes and method requires interaction with the Android System and thus requires the usage of Context throughout the actions. As Context is a part of the Android Environment, it cannot be accurately mocked and testing can only be done through Instrumented tests, which require running the app and will not be a unit test. 
 ![image](https://github.com/CSC207-2023Y-UofT/project-notes-2-text/assets/133291994/3159dc9b-92f2-4db1-bc8c-5c72cbdc58b8) (Image taken from https://developer.android.com/training/testing/fundamentals) 
 Due to this limitation, we opted to instead use Android's Log feature to record critical values used throughout these classes, and thus can monitor the action of the classes at runtime. 
