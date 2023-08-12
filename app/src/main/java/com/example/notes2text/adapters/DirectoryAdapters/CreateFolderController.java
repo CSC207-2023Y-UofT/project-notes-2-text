@@ -6,6 +6,7 @@ import com.example.notes2text.usecases.DirectoryUseCases.FolderCreationInteracto
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -19,8 +20,8 @@ import java.io.File;
 
 public class CreateFolderController extends AppCompatDialogFragment {
     private EditText editTextFolderName;
-    private final FolderCreationInteractor createFolder;
-    private final File currentLayer;
+    private final FolderCreationInteractor CREATE_FOLDER;
+    private final File CURRENT_LAYER;
 
     /**
      * Constructor for the controller class. Obtains context to initiate a new FolderCreationInterator.
@@ -34,8 +35,8 @@ public class CreateFolderController extends AppCompatDialogFragment {
         //Initialize the folder creation use case class with its required presenter to display message.
         DirectoryAccessOutputBoundary output = new DirectoryAccessPresenter();
         DirectoryRefreshPresenter refresher = new DirectoryRefreshPresenter();
-        createFolder = new FolderCreationInteractor(output, context, refresher);
-        this.currentLayer = currentLayer;
+        CREATE_FOLDER = new FolderCreationInteractor(output, context, refresher);
+        this.CURRENT_LAYER = currentLayer;
     }
 
     /**
@@ -66,13 +67,21 @@ public class CreateFolderController extends AppCompatDialogFragment {
 
                 // Button for cancelling folder creation.
                 .setNegativeButton("cancel", (dialogInterface, i) -> {
+                    // Monitor action user took with the AlertDialog
+                    Log.i("Folder creation action", "cancel");
                 })
 
                 // Button for confirming folder creation.
                 .setPositiveButton("create", (dialogInterface, i) -> {
                     String folderName = editTextFolderName.getText().toString();
-                    String filePath = currentLayer.getAbsolutePath();
-                    createFolder.create(folderName, filePath);
+                    String filePath = CURRENT_LAYER.getAbsolutePath();
+
+                    // Monitor the info to be send inward.
+                    Log.i("Folder creation action", "create");
+                    Log.i("Folder creation Dialog input", folderName);
+                    Log.i("Directory obtained for folder creation", filePath);
+
+                    CREATE_FOLDER.create(folderName, filePath);
                 });
         // Obtain the user input.
         editTextFolderName = view.findViewById(R.id.create_folder_name);

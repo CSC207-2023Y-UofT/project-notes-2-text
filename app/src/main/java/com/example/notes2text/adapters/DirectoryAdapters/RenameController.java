@@ -3,6 +3,7 @@ package com.example.notes2text.adapters.DirectoryAdapters;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -17,9 +18,9 @@ import com.example.notes2text.usecases.DirectoryUseCases.FileMenuInputBoundary;
 
 public class RenameController extends AppCompatDialogFragment {
     private EditText editTextFileName;
-    private final Context context;
-    private final FileMenuInputBoundary fileMenuUseCase;
-    private final DirectoryRefreshPresenter refresher;
+    private final Context CONTEXT;
+    private final FileMenuInputBoundary FILE_MENU_USECASE;
+    private final DirectoryRefreshPresenter REFRESHER;
 
     /**
      * Constructor for RenameController class.
@@ -30,9 +31,9 @@ public class RenameController extends AppCompatDialogFragment {
      *                        and alerting the user.
      */
     public RenameController (Context context, FileMenuInputBoundary fileMenuUseCase) {
-        this.context = context;
-        this.fileMenuUseCase = fileMenuUseCase;
-        refresher = new DirectoryRefreshPresenter();
+        this.CONTEXT = context;
+        this.FILE_MENU_USECASE = fileMenuUseCase;
+        REFRESHER = new DirectoryRefreshPresenter();
     }
 
     /**
@@ -59,11 +60,16 @@ public class RenameController extends AppCompatDialogFragment {
                 .setTitle("Rename File")
                 // Empty as it simply closes, no action performed.
                 .setNegativeButton("cancel", (dialogInterface, i) -> {
+                    // Monitor action user took with AlertDialog.
+                    Log.i("Rename Dialog action", "cancel");
                 })
                 // Change the name of the file.
                 .setPositiveButton("ok", (dialogInterface, i) -> {
                     String newFileName = editTextFileName.getText().toString();
-                    fileMenuUseCase.rename(context, newFileName, refresher);
+                    // Monitor user input.
+                    Log.i("Rename Dialog action", "ok");
+                    Log.i("Rename Dialog input", newFileName);
+                    FILE_MENU_USECASE.rename(CONTEXT, newFileName, REFRESHER);
                 });
         // Dialogue closes.
 
