@@ -45,29 +45,27 @@ public class ActivitySwitchController extends AppCompatActivity {
         //get the path from the intent that passed to this activity and bundle it.
         initialPath = getIntent().getStringExtra("path");
         ArrayList<File> initialFileList = new ArrayList<>();
+        //Initialization required for certain outcome of if-else logic.
         try{
         Bundle bundle = getIntent().getExtras();
         initialFileList = (ArrayList<File>) bundle.getSerializable("selectedFiles");
+        // This is safe: the cast is required, and selectedFiles is only ever used with a list of files.
         } catch (ClassCastException e){
             initialFileList = new ArrayList<>();
         }
         if (initialFileList == null){
-            DirectoryAccessController dirAcCntrl = DirectoryAccessController.newInstance(initialPath);
-            replaceFragment(dirAcCntrl);
+            DirectoryAccessController directoryAccessController = DirectoryAccessController.newInstance(initialPath);
+            replaceFragment(directoryAccessController);
             Log.i("switch", "directory controller");
         } else if (initialFileList.isEmpty()) {
-            SelectionController sltnCntrl = SelectionController.newInstance(initialPath);
-            replaceFragment(sltnCntrl);
+            SelectionController selectionController = SelectionController.newInstance(initialPath);
+            replaceFragment(selectionController);
             Log.i("switch", "selection controller");
         } else{
-            SelectionController sltnCntrl = SelectionController.newInstance(initialPath, initialFileList);
-            replaceFragment(sltnCntrl);
+            SelectionController selectionController = SelectionController.newInstance(initialPath, initialFileList);
+            replaceFragment(selectionController);
             Toast.makeText(getApplicationContext(), "ActivitySwitchController received files", Toast.LENGTH_SHORT).show();
-            try{
             Log.i("switch", "selection controller with files");
-            } catch (Exception e){
-                Log.i("inherit files", "file names unavailable");
-            }
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
