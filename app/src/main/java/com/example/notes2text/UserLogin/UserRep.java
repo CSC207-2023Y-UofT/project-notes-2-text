@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserRep {
+    //Instance variable
     private static UserRep instance;
     private Map<User, String> users = new HashMap<>();
 
