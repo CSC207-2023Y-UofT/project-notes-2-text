@@ -61,4 +61,7 @@ This principle is applied throughout the program with the use of various Output 
 
 ## Other notes:
 
-### Remaining warnings: There may be a few warnings left that were left unchanged for certain reasons - we have these explained in the code next to the lines that threw the warnings.
+Java.io.file is an entity in this project rather than an external framework, due to it's crucial role in file management and in interacting with the android directory. A novel introduced file class would be unable to interact with the android system sufficiently to edit the actual files within the system, and creating a file class to only solve a java.io.file object would introduce an unnecessary middle man.
+
+### Remaining warnings: 
+There may be a few warnings left that were left unchanged for certain reasons - we have these explained in the code next to the lines that threw the warnings.
