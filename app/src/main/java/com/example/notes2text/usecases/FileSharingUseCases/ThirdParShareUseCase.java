@@ -38,9 +38,8 @@ public class ThirdParShareUseCase {
                     "com.example.notes2text.usecases.FileSharingUseCases.MyFileProvider", newFile);
             fileUris.add(uri);
 
-            /* Since this method cannot be unit tested, Log is used to monitor output at runtime
-            with Android Logcat instead. */
-            Log.v("File conversion", String.valueOf(uri));
+            // Monitor the Uri obtained.
+            Log.v("File conversion result", String.valueOf(uri));
         }
 
         // Make a new outputModel with the new uris and the original context to pass a layer outward.

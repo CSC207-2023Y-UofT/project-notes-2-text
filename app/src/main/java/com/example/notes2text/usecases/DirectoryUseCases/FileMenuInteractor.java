@@ -65,10 +65,11 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     @Override
     public boolean share(Context context, View view) {
         /* Implementation of Share function */
-        // Wrap the file in an ArrayList as required by the sharing use case.
         if (keyFile.isDirectory()) {
+            // Blocks user from sharing folders.
             Toast.makeText(context.getApplicationContext(), "Cannot share folder", Toast.LENGTH_SHORT).show();
         } else {
+            // Wrap the file in an ArrayList as required by the sharing use case.
             ArrayList<File> files = new ArrayList<>();
             files.add(keyFile);
             sharing.share(context, files);

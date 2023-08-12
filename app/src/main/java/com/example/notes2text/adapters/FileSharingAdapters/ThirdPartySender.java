@@ -33,8 +33,8 @@ public class ThirdPartySender implements ThirdPartyOutputBoundary {
         sendIntent.addFlags(
                 Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
-        // Send any type of text file.
-        sendIntent.setType("text/*");
+        // Send any type of file.
+        sendIntent.setType("*/*");
 
         /* Made separate intent variable for creating chooser for ShareSheet, as permission need to
         be granted using FLAG_ACTIVITY_NEW_TASK. */
