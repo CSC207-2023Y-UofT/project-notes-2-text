@@ -16,16 +16,21 @@ import java.io.File;
  */
 public class SavePopUpActivity extends AppCompatActivity {
 
+    // text box used for the user to set the file name
     private EditText fileName;
+
+    /* filePath is the file path of the original text file without the file name (used to indicate
+    where to store the newly saved file) */
     private String filePath;
+
+    // newly edited text to add to new file
     private String content;
 
+    // file object of text file to save
+    private File file;
+
     /**
-     * Initiate local variables. fileName is the text box used for the user to set the file name.
-     * filePath is the file path of the original text file without the file name (used to indicate
-     * where to store the newly saved file).
-     * content is the newly edited text.
-     *
+     * Initiate local variables
      * @param savedInstanceState Intent from FileEditorActivity
      */
     @Override
@@ -38,6 +43,10 @@ public class SavePopUpActivity extends AppCompatActivity {
         filePath = getIntent().getStringExtra("path");
         content = getIntent().getStringExtra("text");
 
+        Bundle bundle = getIntent().getExtras();
+        file = (File)bundle.getSerializable("file");
+
+
     }
 
     /**
@@ -49,6 +58,7 @@ public class SavePopUpActivity extends AppCompatActivity {
                 FileEditorActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("text", content);
+        bundle.putSerializable("file", file);
         switchToEditor.putExtras(bundle);
         switchToEditor.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         try {
