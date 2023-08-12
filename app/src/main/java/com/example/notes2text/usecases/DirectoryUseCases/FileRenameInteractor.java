@@ -38,13 +38,8 @@ public class FileRenameInteractor {
         Log.i("Default path is", keyFile.toString());
     }
 
-    /**
-     * Helper method to rename the file.
-     *
-     * @param currentFile The file that the user want to rename.
-     * @param currentDirectory The directory that the file is in.
-     * @param filePath The new file name for the file.
-     */
+
+    //Helper method to rename the file.
     private void rename(File currentFile, File currentDirectory, String filePath) {
         File newFile = new File(currentDirectory, filePath);
         // Test if the file with the new name already exist.
