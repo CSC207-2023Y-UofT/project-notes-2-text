@@ -24,8 +24,11 @@ The text editing sections of the app utilize a factory design pattern. The text 
 ### Facade:
 While file opening, sharing and moving were implemented as separate functionality through separate classes (due to the single responsiility principle), they were brought together under the facade of the filemenu interactor to simplify accessing them for file menus.
 
-## Dependency Injection:
+### Dependency Injection:
 When calling the UserUpdateInfo use case class, the controller and presenter classes for the pop-up pages for account management injects the user database into the use case class through constructor injection. This makes sure the use case class doesn't directly depend on the database.
+
+###Singleton:
+The CurrentUser class only has one instance of itself and it can be accessed and changed by any other use case and adaptor classes through a getter and a setter.
 
 
 ## Unit Testing Involving Context:
