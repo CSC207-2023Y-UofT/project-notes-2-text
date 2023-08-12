@@ -96,9 +96,7 @@ public class FileMenuController {
 
     }
 
-    /**
-     * A helper method that intialize a new RenameController and construct a new Dialog.
-     */
+     /* A helper method that intialize a new RenameController and construct a new Dialog.*/
     private void openDialog() {
         RenameController renameFile = new RenameController(context, fileMenuUseCase);
 

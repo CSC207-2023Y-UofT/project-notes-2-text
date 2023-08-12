@@ -2,6 +2,7 @@ package com.example.notes2text.usecases.DirectoryUseCases;
 
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.notes2text.adapters.DirectoryAdapters.DirectoryAccessOutputBoundary;
 import com.example.notes2text.adapters.DirectoryAdapters.DirectoryRefreshOutputBoundary;
@@ -45,6 +46,9 @@ public class FolderCreationInteractor {
     public void create(String fileName, String filePath) {
         File file = new File(filePath, fileName);
 
+        // Monitor the path for the directory which the folder will be added to.
+        Log.i ("Directory Path", filePath);
+
         if (!file.exists()) {
             // No folder with the same name, attempt to make new folder.
             try {
@@ -53,12 +57,15 @@ public class FolderCreationInteractor {
                 // New file in directory, refresh directory.
                 refresher.refreshDirectory(context, filePath);
                 output.FolderCreationSuccess(context);
-            } catch (Exception e) {
-                // Catch potential syntax error for naming.
+            } catch (SecurityException e) {
+                // Catch potential SecurityException error for folder creation.
+                Log.e("Folder creation exception", e.getMessage());
+                // Alert user.
                 output.FolderCreationFailureInvalid(context);
             }
         }else {
             // When the folder with same name already exists.
+            Log.w("Folder Creation Failed", "Folder already exist at: " + file.getAbsolutePath());
             output.FolderCreationFailureSameName(context);
         }
     }
