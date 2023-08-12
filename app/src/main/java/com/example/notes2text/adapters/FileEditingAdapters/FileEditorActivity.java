@@ -33,6 +33,10 @@ public class FileEditorActivity extends AppCompatActivity {
 
     private File file;
 
+    private String path;
+
+    private File firstFile;
+
     /**
      * Extracts the text from the selected text file and displays it on the File editor.
      * Initiates the instance variables.
@@ -60,9 +64,13 @@ public class FileEditorActivity extends AppCompatActivity {
         if (file != null) {
             OpenTextEditorBoundary openTextEditor = new OpenTextEditorInteractor(file);
             String content = openTextEditor.extractContent();
+            path = file.getAbsolutePath();
+            firstFile = file;
             textToEdit.setText(content);
-        // if received array list of files from JoinController
+            // if received array list of files from JoinController
         } else if (selectedFiles != null) {
+            firstFile = selectedFiles.get(0);
+            path = firstFile.getAbsolutePath();
             JoinFileBoundary joinFiles = new JoinFiles(selectedFiles);
             String joinedText = joinFiles.extractContent();
             textToEdit.setText(joinedText);
@@ -129,25 +137,46 @@ public class FileEditorActivity extends AppCompatActivity {
      */
     public void buttonSave(View view) {
         // passes the file path when switching to save screen
-        String path = file.getAbsolutePath();
-        String fileName = file.getName();
-        String actualPath = path.replace(fileName, "");
-        String text = textToEdit.getText().toString();
+        if (file != null) {
+            String fileName = file.getName();
+            String actualPath = path.replace(fileName, "");
+            String text = textToEdit.getText().toString();
 
-        Intent switchToSave = new Intent(FileEditorActivity.this,
-                SavePopUpActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("text", text);
-        bundle.putSerializable("path", actualPath);
-        switchToSave.putExtras(bundle);
-        switchToSave.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        try {
-            startActivity(switchToSave);
-        } catch (Exception e) {
-            String exceptionMessage = e.getMessage();
-            assert exceptionMessage != null;
-            int mid = exceptionMessage.length()/2;
-            Toast.makeText(this, exceptionMessage.substring(mid), Toast.LENGTH_LONG).show();
+            Intent switchToSave = new Intent(FileEditorActivity.this,
+                    SavePopUpActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("text", text);
+            bundle.putSerializable("path", actualPath);
+            switchToSave.putExtras(bundle);
+            switchToSave.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try {
+                startActivity(switchToSave);
+            } catch (Exception e) {
+                String exceptionMessage = e.getMessage();
+                assert exceptionMessage != null;
+                int mid = exceptionMessage.length() / 2;
+                Toast.makeText(this, exceptionMessage.substring(mid), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            String fileName = firstFile.getName();
+            String actualPath = path.replace(fileName, "");
+            String text = textToEdit.getText().toString();
+
+            Intent switchToSave = new Intent(FileEditorActivity.this,
+                    SavePopUpActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("text", text);
+            bundle.putSerializable("path", actualPath);
+            switchToSave.putExtras(bundle);
+            switchToSave.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try {
+                startActivity(switchToSave);
+            } catch (Exception e) {
+                String exceptionMessage = e.getMessage();
+                assert exceptionMessage != null;
+                int mid = exceptionMessage.length() / 2;
+                Toast.makeText(this, exceptionMessage.substring(mid), Toast.LENGTH_LONG).show();
+            }
         }
     }
 
