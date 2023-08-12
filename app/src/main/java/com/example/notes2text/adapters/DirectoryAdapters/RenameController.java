@@ -38,7 +38,7 @@ public class RenameController extends AppCompatDialogFragment {
 
     /**
      * A default method in AppCompatDialogFragment that can be used to create a new Dialog. Overrode
-     * to add specific actions to perform according to user's interaction witht he Dialog.
+     * to add specific actions to perform according to user's interaction with the Dialog.
      *
      * @param savedInstanceState The last saved instance state of the Fragment,
      * or null if this is a freshly created Fragment.

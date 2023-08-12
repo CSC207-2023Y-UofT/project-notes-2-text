@@ -12,7 +12,6 @@ import java.io.File;
 
 public class FileOpenInteractor {
 
-    File file;
 
     public FileOpenInteractor(){
         super();
@@ -57,8 +56,6 @@ public class FileOpenInteractor {
                 try {
                     context.startActivity(docIntent);
                 } catch (Exception e){
-//                    String exceptionMessage = e.getMessage();
-//                    int mid = exceptionMessage.length()/2;
                     Toast.makeText(context.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             } else if (fileType.equals("image/*")) {
