@@ -3,6 +3,7 @@ package com.example.notes2text.adapters.DirectoryAdapters;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -59,10 +60,15 @@ public class RenameController extends AppCompatDialogFragment {
                 .setTitle("Rename File")
                 // Empty as it simply closes, no action performed.
                 .setNegativeButton("cancel", (dialogInterface, i) -> {
+                    // Monitor action user took with AlertDialog.
+                    Log.i("Rename Dialog action", "cancel");
                 })
                 // Change the name of the file.
                 .setPositiveButton("ok", (dialogInterface, i) -> {
                     String newFileName = editTextFileName.getText().toString();
+                    // Monitor user input.
+                    Log.i("Rename Dialog action", "ok");
+                    Log.i("Rename Dialog input", newFileName);
                     fileMenuUseCase.rename(context, newFileName, refresher);
                 });
         // Dialogue closes.
