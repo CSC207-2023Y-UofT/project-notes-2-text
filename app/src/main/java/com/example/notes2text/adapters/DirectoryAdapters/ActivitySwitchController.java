@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.notes2text.R;
@@ -43,23 +44,30 @@ public class ActivitySwitchController extends AppCompatActivity {
         setContentView(binding.getRoot());
         //get the path from the intent that passed to this activity and bundle it.
         initialPath = getIntent().getStringExtra("path");
-        ArrayList<File> initialFileList = new ArrayList<File>();
+        ArrayList<File> initialFileList = new ArrayList<>();
         try{
         Bundle bundle = getIntent().getExtras();
         initialFileList = (ArrayList<File>) bundle.getSerializable("selectedFiles");
         } catch (ClassCastException e){
-            initialFileList = new ArrayList<File>();
+            initialFileList = new ArrayList<>();
         }
         if (initialFileList == null){
             DirectoryAccessController dirAcCntrl = DirectoryAccessController.newInstance(initialPath);
             replaceFragment(dirAcCntrl);
+            Log.i("switch", "directory controller");
         } else if (initialFileList.isEmpty()) {
             SelectionController sltnCntrl = SelectionController.newInstance(initialPath);
             replaceFragment(sltnCntrl);
+            Log.i("switch", "selection controller");
         } else{
             SelectionController sltnCntrl = SelectionController.newInstance(initialPath, initialFileList);
             replaceFragment(sltnCntrl);
             Toast.makeText(getApplicationContext(), "ActivitySwitchController received files", Toast.LENGTH_SHORT).show();
+            try{
+            Log.i("switch", "selection controller with files");
+            } catch (Exception e){
+                Log.i("inherit files", "file names unavailable");
+            }
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -88,5 +96,6 @@ public class ActivitySwitchController extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.activity_view_frame, fragment);
             fragmentTransaction.commit();
+            Log.i("replaced", "fragment replaced");
         }
 }

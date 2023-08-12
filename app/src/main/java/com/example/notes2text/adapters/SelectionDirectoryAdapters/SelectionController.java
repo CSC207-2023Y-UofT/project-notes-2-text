@@ -52,7 +52,7 @@ public class SelectionController extends Fragment {
     // Bundle navigation keys to locate and retrieve parameters.
     // the fragment initialization parameters, e.g. ARG_FILEPATH
     private static final String ARG_FILEPATH = "filepath";
-    private static final String ARG_FILELIST = "initialfileList";
+    private static final String ARG_FILE_LIST = "initialFileList";
 
     // Parameter types
     private String filePath;
@@ -73,7 +73,7 @@ public class SelectionController extends Fragment {
         SelectionController fragment = new SelectionController();
         Bundle args = new Bundle();
         args.putString(ARG_FILEPATH, rootPath);
-        args.putSerializable(ARG_FILELIST, new ArrayList<File>());
+        args.putSerializable(ARG_FILE_LIST, new ArrayList<File>());
         fragment.setArguments(args);
         return fragment;
     }
@@ -83,14 +83,14 @@ public class SelectionController extends Fragment {
      * the selection fragment using the file path to open to.
      *
      * @param rootPath File path to open the selection screen to.
-     * @param inputfileList File list to be added to the selected list on load up.
+     * @param inputFileList File list to be added to the selected list on load up.
      * @return A new instance of fragment SelectionController.
      */
-    public static SelectionController newInstance(String rootPath, ArrayList<File> inputfileList) {
+    public static SelectionController newInstance(String rootPath, ArrayList<File> inputFileList) {
         SelectionController fragment = new SelectionController();
         Bundle args = new Bundle();
         args.putString(ARG_FILEPATH, rootPath);
-        args.putSerializable(ARG_FILELIST, inputfileList);
+        args.putSerializable(ARG_FILE_LIST, inputFileList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -108,7 +108,8 @@ public class SelectionController extends Fragment {
             try {
                 //this is type-safe.
                 //Bundles can only use Serializable to store lists of files.
-                fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILELIST);
+                fileList = (ArrayList<File>) getArguments().getSerializable(ARG_FILE_LIST);
+                // This cast is required and it is type-safe according to what has been pushed into serializable.
             } catch (ClassCastException classE){
                 Log.e("cast", classE.getMessage());
 
@@ -143,7 +144,7 @@ public class SelectionController extends Fragment {
      * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
      * @param savedInstanceState If non-null, this fragment is being re-constructed
      * from a previous saved state as given here.
-     * @throws NullPointerException
+     * @throws NullPointerException may be thrown if this fragment is not provided a context from an activity.
      */
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) throws NullPointerException {

@@ -2,6 +2,7 @@ package com.example.notes2text.adapters.DirectoryAdapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,7 +106,12 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
                     String path = chosenFile.getAbsolutePath();
                     intent.putExtra("path",path);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
+                    try {
+                        context.startActivity(intent);
+                        Log.i("activity started", "Folder entry activity");
+                    } catch (Exception e){
+                        Log.e("Intent exception", "Folder entry intent unsuccessful");
+                    }
 
                 } else {
                     //Determine the type of the file in question.

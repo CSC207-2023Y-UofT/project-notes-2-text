@@ -127,7 +127,7 @@ public class DirectoryAccessController extends Fragment {
             //Assign the custom adaptor to the View elements.
             //Fragment Manager needed for transaction of activity for renaming file in FileListAdaptor.
             FragmentManager fragManager = requireActivity().getSupportFragmentManager();
-            fileListView.setAdapter(new FileListAdaptor(getActivity().getApplicationContext(), filesDirectory, fragManager));
+            fileListView.setAdapter(new FileListAdaptor(requireActivity().getApplicationContext(), filesDirectory, fragManager));
         }
 
         //Sets and maps actions to the toolbar.

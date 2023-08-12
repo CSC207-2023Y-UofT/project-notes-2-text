@@ -1,6 +1,7 @@
 package com.example.notes2text.adapters.DirectoryAdapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -65,6 +66,7 @@ public class FileMenuController {
             }
         });
 
+        Log.i("fileMenu", "File menu created.");
         fileMenu.show();
         return true;
     }
@@ -97,7 +99,7 @@ public class FileMenuController {
     }
 
     /**
-     * A helper method that intialize a new RenameController and construct a new Dialog.
+     * A helper method that initialize a new RenameController and construct a new Dialog.
      */
     private void openDialog() {
         RenameController renameFile = new RenameController(context, fileMenuUseCase);

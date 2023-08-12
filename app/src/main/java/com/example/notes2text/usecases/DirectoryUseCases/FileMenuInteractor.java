@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class FileMenuInteractor implements FileMenuInputBoundary {
 
-    private File keyFile;
-    private PopupMenu fileMenu;
+    private final File keyFile;
+    private final PopupMenu fileMenu;
 
     /* Initialize an observer for initiating sharing function */
     private final ShareObserver sharing = new ShareObserver();
@@ -101,6 +101,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     public File getKeyFile(){
         return keyFile;
     }
+
     public PopupMenu getFileMenu(){
         return fileMenu;
     }

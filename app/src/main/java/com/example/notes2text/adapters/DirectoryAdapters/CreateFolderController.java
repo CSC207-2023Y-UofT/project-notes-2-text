@@ -23,7 +23,7 @@ public class CreateFolderController extends AppCompatDialogFragment {
     private final File currentLayer;
 
     /**
-     * Constructor for the controller class. Obtains context to initiate a new FolderCreationInterator.
+     * Constructor for the controller class. Obtains context to initiate a new FolderCreationInteractor.
      * The Interactor will be used for making the folder according to user input.
      *
      * @param context A Context, needed for initiating a new FolderCreationInteractor.
