@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpPasswordController;
+import com.example.notes2text.adapters.accountsettingsadaptors.PopUpPasswordController;
 import com.example.notes2text.R;
 
 public class PopUpPasswordView extends AppCompatActivity {

@@ -2,6 +2,10 @@ package com.example.notes2text.UserLogin;
 
 import static org.junit.Assert.*;
 
+import com.example.notes2text.entities.userloginentities.CurrentUser;
+import com.example.notes2text.entities.userloginentities.User;
+import com.example.notes2text.usecases.userloginusecases.UserFactory;
+
 import org.junit.Test;
 
 /**

@@ -2,6 +2,8 @@ package com.example.notes2text.UserLogin;
 
 import static org.junit.Assert.*;
 
+import com.example.notes2text.entities.userloginentities.User;
+
 import org.junit.Test;
 
 /**
