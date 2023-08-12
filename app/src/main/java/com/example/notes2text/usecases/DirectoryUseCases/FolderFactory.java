@@ -10,6 +10,7 @@ public class FolderFactory {
      * @param file IO.File, representing the folder to be made.
      */
     public void createFolder(File file) {
+        // Return value ignored as not helpful for implementation.
         file.mkdir();
     }
 }

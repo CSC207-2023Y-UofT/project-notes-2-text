@@ -45,6 +45,7 @@ public class FileRenameInteractor {
         // Test if the file with the new name already exist.
         if (!newFile.exists() || newFile.equals(currentFile)) {
             // Rename the file to new name.
+            // Return value ignored as not helpful for implementation.
             currentFile.renameTo(newFile);
             // Monitor path used in runtime.
             Log.i("newFile path is", newFile.toString());

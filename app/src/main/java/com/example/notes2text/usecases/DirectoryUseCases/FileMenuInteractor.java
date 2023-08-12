@@ -81,6 +81,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
         // Set the new file name with the rename use case class.
         fileRenamer.setNewFileName(keyFile, fileName);
         // File renamed, refresh Directory to see changes.
+        // Null warning ignored as by logic method will never return null as there has to be a directory that user is viewing.
         refresher.refreshDirectory(context, keyFile.getParentFile().getAbsolutePath());
         // Notify the user.
         Toast.makeText(context.getApplicationContext(), "File renamed", Toast.LENGTH_SHORT).show();
