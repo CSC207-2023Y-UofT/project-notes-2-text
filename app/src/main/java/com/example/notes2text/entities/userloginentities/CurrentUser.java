@@ -1,12 +1,10 @@
 /**
  * Use case for storing the current user logged in.
  */
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.entities.userloginentities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class CurrentUser {
 

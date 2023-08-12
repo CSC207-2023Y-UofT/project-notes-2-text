@@ -1,9 +1,8 @@
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.adapters.userloginadaptors;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,9 +11,11 @@ import android.widget.Toast;
 
 import com.example.notes2text.MainActivity;
 import com.example.notes2text.R;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import com.example.notes2text.entities.userloginentities.CurrentUser;
+import com.example.notes2text.usecases.userloginusecases.LoginUseCase;
+import com.example.notes2text.entities.userloginentities.User;
+import com.example.notes2text.usecases.userloginusecases.UserFactory;
+import com.example.notes2text.ui.userloginframeworks.UserRep;
 
 public class LoginView extends AppCompatActivity {
 

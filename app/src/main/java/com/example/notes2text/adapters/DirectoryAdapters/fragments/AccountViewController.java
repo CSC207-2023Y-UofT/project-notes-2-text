@@ -10,11 +10,11 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 import com.example.notes2text.R;
-import com.example.notes2text.UserLogin.CurrentUser;
+import com.example.notes2text.entities.userloginentities.CurrentUser;
 import com.example.notes2text.ui.accountsettings.PopUpEmailView;
 import com.example.notes2text.ui.accountsettings.PopUpPasswordView;
 import com.example.notes2text.ui.accountsettings.PopUpUsernameView;
-import com.example.notes2text.UserLogin.LoginView;
+import com.example.notes2text.adapters.userloginadaptors.LoginView;
 
 /**
  * Controller class for the AccountView fragment.

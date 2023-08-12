@@ -1,6 +1,10 @@
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.usecases.userloginusecases;
 
 import android.content.Context;
+
+import com.example.notes2text.entities.userloginentities.CurrentUser;
+import com.example.notes2text.entities.userloginentities.User;
+import com.example.notes2text.ui.userloginframeworks.UserRep;
 
 public class LoginUseCase {
 

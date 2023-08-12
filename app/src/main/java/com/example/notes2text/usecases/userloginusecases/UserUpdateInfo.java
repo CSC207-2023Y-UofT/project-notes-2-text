@@ -1,10 +1,9 @@
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.usecases.userloginusecases;
 
-import android.content.ContentValues;
 import android.content.Context;
 
-import com.example.notes2text.UserLogin.CurrentUser;
-import com.example.notes2text.UserLogin.User;
+import com.example.notes2text.entities.userloginentities.CurrentUser;
+import com.example.notes2text.entities.userloginentities.User;
 
 /**
  * Use case for changing account info.

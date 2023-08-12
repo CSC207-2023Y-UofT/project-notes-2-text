@@ -5,8 +5,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.notes2text.UserLogin.UserRep;
-import com.example.notes2text.UserLogin.UserUpdateInfo;
+import com.example.notes2text.ui.userloginframeworks.UserRep;
+import com.example.notes2text.usecases.userloginusecases.UserUpdateInfo;
 
 /**
  * Controller class for changing the password.

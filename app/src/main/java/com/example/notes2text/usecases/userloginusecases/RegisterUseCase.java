@@ -1,6 +1,8 @@
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.usecases.userloginusecases;
 
 import android.content.Context;
+
+import com.example.notes2text.ui.userloginframeworks.UserRep;
 
 import java.util.Arrays;
 import java.util.List;

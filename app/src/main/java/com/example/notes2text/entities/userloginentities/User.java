@@ -1,4 +1,4 @@
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.entities.userloginentities;
 
 public class User {
 
@@ -25,7 +25,7 @@ public class User {
      *
      * @return  String of user's username
      */
-    protected String getUsername(){
+    public String getUsername(){
         return this.username;
     }
 
@@ -34,7 +34,7 @@ public class User {
      *
      * @return  String of user's password
      */
-    protected String getPassword(){
+    public String getPassword(){
         return this.password;
     }
 
@@ -43,7 +43,7 @@ public class User {
      *
      * @return  String of user's email
      */
-    protected String getEmail(){
+    public String getEmail(){
         return this.email;
     }
 
@@ -52,7 +52,7 @@ public class User {
      *
      * @param newUsername   String of the user's new username
      */
-    protected void setUsername(String newUsername){
+    public void setUsername(String newUsername){
         this.username = newUsername;
     }
 
@@ -61,7 +61,7 @@ public class User {
      *
      * @param newPassword   String of the user's new password
      */
-    protected void setPassword(String newPassword){
+    public void setPassword(String newPassword){
         this.password = newPassword;
     }
 
@@ -70,7 +70,7 @@ public class User {
      *
      * @param newEmail   String of the user's new email
      */
-    protected void setEmail(String newEmail){
+    public void setEmail(String newEmail){
         this.email= newEmail;
     }
 }

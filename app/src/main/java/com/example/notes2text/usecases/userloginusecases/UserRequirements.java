@@ -1,4 +1,4 @@
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.usecases.userloginusecases;
 
 public class UserRequirements {
     /**

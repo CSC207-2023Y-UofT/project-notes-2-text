@@ -1,4 +1,6 @@
-package com.example.notes2text.UserLogin;
+package com.example.notes2text.usecases.userloginusecases;
+
+import com.example.notes2text.entities.userloginentities.User;
 
 // Creates Users
 public class UserFactory {

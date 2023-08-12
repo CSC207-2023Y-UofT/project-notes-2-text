@@ -47,7 +47,7 @@
             android:name=".adapters.DirectoryAdapters.DirectoryActivity"
             android:exported="false" />
         <activity
-            android:name=".UserLogin.RegisterView"
+            android:name=".adapters.userloginadaptors.RegisterView"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -59,7 +59,7 @@
             android:name=".adapters.FileEditingAdapters.FileEditorActivity"
             android:exported="false" />
         <activity
-            android:name=".UserLogin.LoginView"
+            android:name=".adapters.userloginadaptors.LoginView"
             android:exported="true"
             android:noHistory = "true">
             <intent-filter>
