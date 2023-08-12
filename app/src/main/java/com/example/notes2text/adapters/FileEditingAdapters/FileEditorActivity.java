@@ -66,6 +66,14 @@ public class FileEditorActivity extends AppCompatActivity {
         // if user cancels saving file
         if (text != null) {
             textToEdit.setText(text);
+        // if received array list of files from JoinController
+        } else if (selectedFiles != null) {
+            // Extract content from selected files and join them together to display to user
+            firstFile = selectedFiles.get(0);
+            path = firstFile.getAbsolutePath();
+            JoinFileBoundary joinFiles = new JoinFiles(selectedFiles);
+            String joinedText = joinFiles.extractContent();
+            textToEdit.setText(joinedText);  
         // if received file from ActivitySwitchController or SavePopUpActivity
         } else if (file != null) {
             OpenTextEditorBoundary openTextEditor = new OpenTextEditorInteractor(file);
@@ -74,14 +82,6 @@ public class FileEditorActivity extends AppCompatActivity {
             path = file.getAbsolutePath();
             firstFile = file;
             textToEdit.setText(content);
-        // if received array list of files from JoinController
-        } else if (selectedFiles != null) {
-            // Extract content from selected files and join them together to display to user
-            firstFile = selectedFiles.get(0);
-            path = firstFile.getAbsolutePath();
-            JoinFileBoundary joinFiles = new JoinFiles(selectedFiles);
-            String joinedText = joinFiles.extractContent();
-            textToEdit.setText(joinedText);
         }
     }
 
