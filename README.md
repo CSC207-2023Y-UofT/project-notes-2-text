@@ -21,6 +21,8 @@ The observer design pattern is used to accommodate the Android platform workflow
 ### Factory:
 The text editing sections of the app utilize a factory design pattern. The text editing sections work closely with the IO.File class and our own created TextFile class. The text editing sections use classes such as OpenTextEditorInteractor, SaveFile, JoinFile, EditTextInteractor, to do various tasks with the Textfile and IO.File entities. These include creating new instances of TextFile to extract the text from TextFile and to also create new instances of IO.File when saving files. 
 
+This design pattern was also used in the UserFactory. This design pattern allows us to reuse code and create Users without using their constructors. By using this design pattern, it allows us to easily add a different type of user, in the case we need to.
+
 ### Facade:
 While file opening, sharing and moving were implemented as separate functionality through separate classes (due to the single responsiility principle), they were brought together under the facade of the filemenu interactor to simplify accessing them for file menus.
 
@@ -28,7 +30,7 @@ While file opening, sharing and moving were implemented as separate functionalit
 When calling the UserUpdateInfo use case class, the controller and presenter classes for the pop-up pages for account management injects the user database into the use case class through constructor injection. This makes sure the use case class doesn't directly depend on the database.
 
 ### Singleton:
-The CurrentUser class only has one instance of itself and it can be accessed and changed by any other use case and adaptor classes through a getter and a setter.
+This design pattern can be found in the UserRep class and the CurrentUser class. The UserRep follows this pattern as we only want to create one user repository for all downloaded apps. The one instance of the user repository can be accessed and modified from any program. The modifications made on the use repository from program will be updated such that all applications that use this repository will see those changes. The CurrentUser class keeps track of the current user which will always be one. The singleton design pattern enforces this - the CurrentUser class is accessed and adjusted globally using the same set of getter and setter.
 
 ### Strategy:
 The RegisterUseCase and UserUpdateInfo use case classes both use the UserRequirement class to check if the input the user entered meets the requirements the user info is meant to have.
