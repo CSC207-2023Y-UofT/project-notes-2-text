@@ -6,6 +6,7 @@ import com.example.notes2text.usecases.DirectoryUseCases.FolderCreationInteracto
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -66,12 +67,20 @@ public class CreateFolderController extends AppCompatDialogFragment {
 
                 // Button for cancelling folder creation.
                 .setNegativeButton("cancel", (dialogInterface, i) -> {
+                    // Monitor action user took with the AlertDialog
+                    Log.i("Folder creation action", "cancel");
                 })
 
                 // Button for confirming folder creation.
                 .setPositiveButton("create", (dialogInterface, i) -> {
                     String folderName = editTextFolderName.getText().toString();
                     String filePath = currentLayer.getAbsolutePath();
+
+                    // Monitor the info to be send inward.
+                    Log.i("Folder creation action", "create");
+                    Log.i("Folder creation Dialog input", folderName);
+                    Log.i("Directory obtained for folder creation", filePath);
+
                     createFolder.create(folderName, filePath);
                 });
         // Obtain the user input.
