@@ -9,17 +9,23 @@ import android.util.Log;
 
 
 public class ThirdParShareUseCase {
-    private final ThirdPartyOutputBoundary outputBoundary;
+    private final ThirdPartyOutputBoundary OUTPUT_BOUNDARY;
 
+    /**
+     * Constructor for ThirdParShareUseCase.
+     *
+     * @param outputBoundary Used for send the information needed for using sharesheet outward.
+     */
     public ThirdParShareUseCase(ThirdPartyOutputBoundary outputBoundary) {
-        this.outputBoundary = outputBoundary;
+        this.OUTPUT_BOUNDARY = outputBoundary;
     }
 
 
     /**
      * Using the list of IO.File and the Context contained in the FileSharingModel to obtain
      * a list of content Uri. Using the list of Uri and the original Context, construct
-     * and return an instance of ThirdPartyOutputModel.
+     * an instance of ThirdPartyOutputModel.
+     *
      * @param inputFiles A model containing a list of IO.File, and a Context.
      */
     public void share(FileSharingModel inputFiles) {
@@ -29,6 +35,9 @@ public class ThirdParShareUseCase {
         ArrayList<String> filePaths = new ArrayList<>();
         for (File file : files) {
             filePaths.add(file.getAbsolutePath());
+
+            // Monitor the file path used for file conversion.
+            Log.i("File conversion filepath", file.getAbsolutePath());
         }
         for (String filePath : filePaths) {
             File newFile = new File(filePath);
@@ -38,14 +47,13 @@ public class ThirdParShareUseCase {
                     "com.example.notes2text.usecases.FileSharingUseCases.MyFileProvider", newFile);
             fileUris.add(uri);
 
-            /* Since this method cannot be unit tested, Log is used to monitor output at runtime
-            with Android Logcat instead. */
-            Log.v("File conversion", String.valueOf(uri));
+            // Monitor the Uri obtained. Look for content type uri.
+            Log.i("File conversion result", String.valueOf(uri));
         }
 
         // Make a new outputModel with the new uris and the original context to pass a layer outward.
         ThirdPartyOutputModel outputUri = new ThirdPartyOutputModel(inputFiles.getContext(),
                 fileUris);
-        outputBoundary.intentShare(outputUri);
+        OUTPUT_BOUNDARY.intentShare(outputUri);
     }
 }

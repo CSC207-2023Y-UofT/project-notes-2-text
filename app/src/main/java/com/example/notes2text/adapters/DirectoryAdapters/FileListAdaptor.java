@@ -37,7 +37,7 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
 
 
     //Required for transaction of Activity.
-    private final FragmentManager fragManager;
+    private final FragmentManager FRAG_MANAGER;
 
 
     /**
@@ -50,7 +50,7 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
         super();
         this.context = context;
         this.fileList = fileList;
-        this.fragManager = fragManager;
+        this.FRAG_MANAGER = fragManager;
     }
 
     //A function that creates the ViewHolder required for the recyclerview for file list.
@@ -126,7 +126,7 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileViewHolder> {
             @Override
             public boolean onLongClick(View view) {
 
-                FileMenuController fileMenuController = new FileMenuController(context, view, new FileMenuFactory(), fragManager);
+                FileMenuController fileMenuController = new FileMenuController(context, view, new FileMenuFactory(), FRAG_MANAGER);
                 return fileMenuController.create(chosenFile);
             }
         });
