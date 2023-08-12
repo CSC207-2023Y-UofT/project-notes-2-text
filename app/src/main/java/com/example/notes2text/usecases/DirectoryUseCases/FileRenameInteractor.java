@@ -55,11 +55,8 @@ public class FileRenameInteractor {
             Log.i("newFile path is", newFile.toString());
         } else {
             /* If the file with same name already exist, add (new) to the front of file name to
-            avoid conflict */
-            File renamedNewFile = new File(currentDirectory, "(new)" + filePath);
-            currentFile.renameTo(renamedNewFile);
-            // Monitor path used in runtime.
-            Log.i("newFile path is", renamedNewFile.toString());
+            avoid conflict. Use recursion to keep checking for conflicts. */
+            rename(currentFile, currentDirectory, "(new)" + filePath);
         }
     }
 }
