@@ -47,7 +47,7 @@ public class FolderCreationInteractor {
         File file = new File(filePath, fileName);
 
         // Monitor the path for the directory which the folder will be added to.
-        Log.i ("Directory Path", filePath);
+        Log.i ("Directory Path", "Folder made in: " + filePath);
 
         if (!file.exists()) {
             // No folder with the same name, attempt to make new folder.
