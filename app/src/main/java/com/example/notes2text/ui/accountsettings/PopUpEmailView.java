@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpEmailController;
-import com.example.notes2text.adapters.AccountSettingsAdaptors.PopUpEmailPresenter;
+import com.example.notes2text.adapters.accountsettingsadaptors.PopUpEmailController;
+import com.example.notes2text.adapters.accountsettingsadaptors.PopUpEmailPresenter;
 import com.example.notes2text.R;
 
 /**

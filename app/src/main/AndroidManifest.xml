@@ -16,14 +16,14 @@
         android:theme="@style/Theme.Notes2Text"
         tools:targetApi="31">
         <activity
-            android:name=".adapters.JoinDirectoryAdapters.JoinController"
+            android:name=".adapters.joindirectoryadapters.JoinController"
             android:exported="true">
 
         </activity>
 
         <provider
-            android:name=".usecases.FileSharingUseCases.MyFileProvider"
-            android:authorities="com.example.notes2text.usecases.FileSharingUseCases.MyFileProvider"
+            android:name=".usecases.filesharingusecases.MyFileProvider"
+            android:authorities="com.example.notes2text.usecases.filesharingusecases.MyFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -32,7 +32,7 @@
         </provider>
 
         <activity
-            android:name=".adapters.DirectoryAdapters.ActivitySwitchController"
+            android:name=".adapters.directoryadapters.ActivitySwitchController"
             android:exported="false" />
         <activity
             android:name=".ui.accountsettings.PopUpUsernameView"
@@ -44,7 +44,7 @@
             android:name=".ui.accountsettings.PopUpEmailView"
             android:exported="false" />
         <activity
-            android:name=".adapters.DirectoryAdapters.DirectoryActivity"
+            android:name=".adapters.directoryadapters.DirectoryActivity"
             android:exported="false" />
         <activity
             android:name=".adapters.userloginadaptors.RegisterView"
@@ -53,10 +53,10 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".adapters.FileEditingAdapters.SavePopUpActivity"
+            android:name=".adapters.fileeditingadapters.SavePopUpActivity"
             android:exported="false" />
         <activity
-            android:name=".adapters.FileEditingAdapters.FileEditorActivity"
+            android:name=".adapters.fileeditingadapters.FileEditorActivity"
             android:exported="false" />
         <activity
             android:name=".adapters.userloginadaptors.LoginView"
