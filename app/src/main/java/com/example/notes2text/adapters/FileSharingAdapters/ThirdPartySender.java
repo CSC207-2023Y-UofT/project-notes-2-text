@@ -13,13 +13,6 @@ import android.util.Log;
 public class ThirdPartySender implements ThirdPartyOutputBoundary {
 
 
-    /**
-     * Using the list of content Uri in the given outputModel, create a new Intent
-     * to access the share sheet function. Only sends text file of any type. OutputModel
-     * is returned so that context may be used to check the results of the action.
-     *
-     * @param outputModel A model containing a list of Uri, and a Context.
-     */
     public void intentShare(ThirdPartyOutputModel outputModel){
         ArrayList<Uri> fileUris = outputModel.getFileUris();
         for (Uri uri : fileUris) {

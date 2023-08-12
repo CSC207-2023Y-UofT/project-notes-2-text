@@ -24,7 +24,8 @@ public class ThirdParShareUseCase {
     /**
      * Using the list of IO.File and the Context contained in the FileSharingModel to obtain
      * a list of content Uri. Using the list of Uri and the original Context, construct
-     * and return an instance of ThirdPartyOutputModel.
+     * an instance of ThirdPartyOutputModel.
+     *
      * @param inputFiles A model containing a list of IO.File, and a Context.
      */
     public void share(FileSharingModel inputFiles) {
