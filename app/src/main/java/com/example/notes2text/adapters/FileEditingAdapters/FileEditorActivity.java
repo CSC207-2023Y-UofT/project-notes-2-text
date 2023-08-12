@@ -27,19 +27,24 @@ import java.util.ArrayList;
  */
 public class FileEditorActivity extends AppCompatActivity {
 
+    // Text box that displays txt file content that can be edited
     private EditText textToEdit;
 
+    // Original state of text before any changes
     private Spannable original;
 
+    // File to open
     private File file;
+
+    // Path of the file
+    private String path;
+
+    // First file in the array when joining files (i.e., the first selected file)
+    private File firstFile;
 
     /**
      * Extracts the text from the selected text file and displays it on the File editor.
      * Initiates the instance variables.
-     * textToEdit is the text box that displays the content from the selected text file which the
-     * user can edit.
-     * original is the unedited text from the selected text file
-     * file is the file object of the selected text file
      * @param savedInstanceState Intent from ActivitySwitchController
      */
     @Override
@@ -51,18 +56,29 @@ public class FileEditorActivity extends AppCompatActivity {
         original = textToEdit.getText();
 
         Bundle bundle = getIntent().getExtras();
-        // Receiving file from ActivitySwitchController
-        file = (File)bundle.getSerializable("file");
-        // Receiving array of selected files from JoinController
-        ArrayList<File> selectedFiles = (ArrayList<File>)bundle.getSerializable("selectedFiles");
+        // Receiving file from ActivitySwitchController or SavePopUpActivity
+        file = (File) bundle.getSerializable("file");
+        // Receiving array of selected files from JoinController to join files
+        ArrayList<File> selectedFiles = (ArrayList<File>) bundle.getSerializable("selectedFiles");
+        // Receiving text from SavePopUpActivity when user cancels saving file
+        String text = (String) bundle.getSerializable("text");
 
-        // if received file from ActivitySwitchController
-        if (file != null) {
+        // if user cancels saving file
+        if (text != null) {
+            textToEdit.setText(text);
+        // if received file from ActivitySwitchController or SavePopUpActivity
+        } else if (file != null) {
             OpenTextEditorBoundary openTextEditor = new OpenTextEditorInteractor(file);
+            // Extract content from file to display to user
             String content = openTextEditor.extractContent();
+            path = file.getAbsolutePath();
+            firstFile = file;
             textToEdit.setText(content);
         // if received array list of files from JoinController
         } else if (selectedFiles != null) {
+            // Extract content from selected files and join them together to display to user
+            firstFile = selectedFiles.get(0);
+            path = firstFile.getAbsolutePath();
             JoinFileBoundary joinFiles = new JoinFiles(selectedFiles);
             String joinedText = joinFiles.extractContent();
             textToEdit.setText(joinedText);
@@ -91,6 +107,7 @@ public class FileEditorActivity extends AppCompatActivity {
      */
     public void buttonLowercase(View view) {
         Spannable text = new SpannableStringBuilder(textToEdit.getText());
+        // get index of text that is selected
         int starting = textToEdit.getSelectionStart();
         int ending = textToEdit.getSelectionEnd();
 
@@ -114,13 +131,11 @@ public class FileEditorActivity extends AppCompatActivity {
      * @param view When user clicks the home button
      */
     public void buttonHome(View view) {
-        Intent switchToHome = new Intent(FileEditorActivity.this,
-                ActivitySwitchController.class);
-        TextFile currentFile = new TextFile(file);
-        // Passing file path without the file name to ActivitySwitchController to open right folder
-        String location = currentFile.getLocation();
-        switchToHome.putExtra("path", location);
-        startActivity(switchToHome);
+        if (file != null) {
+            returnToDirectory(file);
+        } else if (firstFile != null) {
+            returnToDirectory(firstFile);
+        }
     }
 
     /**
@@ -128,26 +143,12 @@ public class FileEditorActivity extends AppCompatActivity {
      * @param view When user clicks the save button
      */
     public void buttonSave(View view) {
-        // passes the file path when switching to save screen
-        String path = file.getAbsolutePath();
-        String fileName = file.getName();
-        String actualPath = path.replace(fileName, "");
-        String text = textToEdit.getText().toString();
-
-        Intent switchToSave = new Intent(FileEditorActivity.this,
-                SavePopUpActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("text", text);
-        bundle.putSerializable("path", actualPath);
-        switchToSave.putExtras(bundle);
-        switchToSave.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        try {
-            startActivity(switchToSave);
-        } catch (Exception e) {
-            String exceptionMessage = e.getMessage();
-            assert exceptionMessage != null;
-            int mid = exceptionMessage.length()/2;
-            Toast.makeText(this, exceptionMessage.substring(mid), Toast.LENGTH_LONG).show();
+        // When saving standard text file
+        if (file != null) {
+            goToSavePopUpActivity(file);
+        // When saving a joined text file
+        } else if (firstFile != null)  {
+            goToSavePopUpActivity(firstFile);
         }
     }
 
@@ -156,21 +157,24 @@ public class FileEditorActivity extends AppCompatActivity {
      * @param view When user clicks the join button
      */
     public void buttonJoin(View view) {
+        // Create intent to switch between activities
         Intent switchToJoin = new Intent(FileEditorActivity.this,
                 JoinController.class);
         Bundle bundle = new Bundle();
         ArrayList<File> fileToSend = new ArrayList<>();
         fileToSend.add(file);
 
-        String path = file.getAbsolutePath();
-        String fileName = file.getName();
-        String actualPath = path.replace(fileName, "");
+        // Get path of file without file name
+        String actualPath = getPathNoName(file);
 
+        /* Pass the path of file without file name and the currently opened file object in an array
+            to JoinController */
         bundle.putSerializable("selectedFiles", fileToSend);
         switchToJoin.putExtra("path", actualPath);
-
         switchToJoin.putExtras(bundle);
         switchToJoin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Initiate the switching of activities
         try{
             startActivity(switchToJoin);
         } catch (Exception e) {
@@ -179,5 +183,46 @@ public class FileEditorActivity extends AppCompatActivity {
             int mid = exceptionMessage.length()/2;
             Toast.makeText(this, exceptionMessage.substring(mid), Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void returnToDirectory(File file) {
+        // Indicate current activity and which activity to switch to
+        Intent switchToHome = new Intent(FileEditorActivity.this,
+                ActivitySwitchController.class);
+        TextFile currentFile = new TextFile(file);
+        // Passing file path without the file name to ActivitySwitchController to open right folder
+        String location = currentFile.getLocation();
+        switchToHome.putExtra("path", location);
+        // Switch to ActivitySwitchController
+        startActivity(switchToHome);
+    }
+
+    private void goToSavePopUpActivity(File file) {
+        String actualPath = getPathNoName(file);
+        String text = textToEdit.getText().toString();
+
+        Intent switchToSave = new Intent(FileEditorActivity.this,
+                SavePopUpActivity.class);
+        // Pass text on screen and path to SavePopUpActivity
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("text", text);
+        bundle.putSerializable("path", actualPath);
+        bundle.putSerializable("file", file);
+        switchToSave.putExtras(bundle);
+        switchToSave.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            startActivity(switchToSave);
+        } catch (Exception e) {
+            String exceptionMessage = e.getMessage();
+            assert exceptionMessage != null;
+            int mid = exceptionMessage.length() / 2;
+            Toast.makeText(this, exceptionMessage.substring(mid), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String getPathNoName(File file) {
+        // Get the path of current file without the name of file
+        String fileName = file.getName();
+        return path.replace(fileName, "");
     }
 }
