@@ -27,7 +27,7 @@ While file opening, sharing and moving were implemented as separate functionalit
 ### Dependency Injection:
 When calling the UserUpdateInfo use case class, the controller and presenter classes for the pop-up pages for account management injects the user database into the use case class through constructor injection. This makes sure the use case class doesn't directly depend on the database.
 
-###Singleton:
+### Singleton:
 The CurrentUser class only has one instance of itself and it can be accessed and changed by any other use case and adaptor classes through a getter and a setter.
 
 
