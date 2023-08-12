@@ -14,27 +14,42 @@ public class UserUpdateInfo {
     //User instance of the current user.
     User user = CurrentUser.getUser();
 
+    //Instance of UserRequirements class
+    UserRequirements requirements = new UserRequirements();
+
     //Instance of the database that stores all the suers
-    DBHelper MyDB1;
+    UserRepository repo;
+
+    //Context of app's current activity
+    Context context;
+
+    /**
+     * Constructor for UserUpdateInfo
+     *
+     * @param repo      Database of all the users
+     * @param context   Context of the current activity
+     */
+    public UserUpdateInfo(UserRepository repo, Context context){
+        this.repo = repo;
+        this.context = context;
+    }
 
     /**
      * Changes to the username the user wants. If the new username is acceptable, user's username
      * will be changed to that, and if it isn't valid then it stays the same.
      *
-     * @param context       Context of the current activity.
      * @param newUsername   String of the username the user wants to change to.
      * @return              If username change was successful, it will return true or false
      *                      otherwise.
      */
-    public boolean changeUsername(Context context, String newUsername){
-        MyDB1 = new DBHelper(context);
-        if(MyDB1.uniqueUsername(newUsername)){
+    public boolean changeUsername(String newUsername){
+        if(this.repo.uniqueUsername(newUsername) || !requirements.validUsername(newUsername)){
             return false;
         }
-        MyDB1.updateUsername(user.getUsername(), newUsername);
+        this.repo.updateUsername(user.getUsername(), newUsername);
         user.setUsername(newUsername);
         CurrentUser.setUser(user);
-        CurrentUser.setCurrent(context, user.getUsername());
+        CurrentUser.setCurrent(this.context, user.getUsername());
         return true;
     }
 
@@ -42,14 +57,15 @@ public class UserUpdateInfo {
      * Changes to the password the user wants. If the new password is acceptable, user's password
      * will be changed to that, and if it isn't valid then it stays the same.
      *
-     * @param context       Context of the current activity.
      * @param newPassword   String of the password the user wants to change to.
      * @return              If password change was successful, it will return true or false
      *                      otherwise.
      */
-    public boolean changePassword(Context context, String newPassword){
-        MyDB1 = new DBHelper(context);
-        MyDB1.updatePassword(user.getPassword(), newPassword);
+    public boolean changePassword(String newPassword){
+        if(!requirements.validPassword(newPassword)){
+            return false;
+        }
+        this.repo.updatePassword(user.getUsername(), newPassword);
         user.setPassword(newPassword);
         CurrentUser.setUser(user);
         return true;
@@ -59,17 +75,15 @@ public class UserUpdateInfo {
      * Changes to the email the user wants. If the new username is acceptable, user's email
      * will be changed to that, and if it isn't valid then it stays the same.
      *
-     * @param context       Context of the current activity.
      * @param newEmail      String of the email the user wants to change to.
      * @return              If email change was successful, it will return true or false
      *                      otherwise.
      */
-    public boolean changeEmail(Context context, String newEmail){
-        MyDB1 = new DBHelper(context);
-        if(MyDB1.uniqueEmail(newEmail)){
+    public boolean changeEmail(String newEmail){
+        if(this.repo.uniqueEmail(newEmail) || newEmail.contains(" ")){
             return false;
         }
-        MyDB1.updateEmail(user.getEmail(), newEmail);
+        this.repo.updateEmail(user.getEmail(), newEmail);
         user.setEmail(newEmail);
         CurrentUser.setUser(user);
         return true;

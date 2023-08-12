@@ -17,7 +17,7 @@ import com.example.notes2text.R;
 public class PopUpPasswordView extends AppCompatActivity {
 
     //Controller for changing user's password.
-    PopUpPasswordController controller = new PopUpPasswordController();
+    PopUpPasswordController controller;
 
     /**
      * Creates the pop-up password view
@@ -28,6 +28,9 @@ public class PopUpPasswordView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_up_password_view);
+
+        //Initializing the controller
+        controller = new PopUpPasswordController(getApplicationContext());
 
         //View elements
         EditText input = (EditText) findViewById(R.id.editTextTextPassword);
@@ -43,13 +46,13 @@ public class PopUpPasswordView extends AppCompatActivity {
                 //Checks if user entered something or not for both EditViews.
                 if(!(input.getText().toString().equals("")) && !(input2.getText().toString().equals(""))){
                     //If password change was successful a pop up message will mention it.
-                    if (controller.buttonPressed(getApplicationContext(), input, input2)){
+                    if (controller.buttonPressed(input, input2)){
                         toast = Toast.makeText(PopUpPasswordView.this, "Password Change Successful", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                     //If password change was unsuccessful a pop up message will mention it.
                     else{
-                        toast = Toast.makeText(PopUpPasswordView.this, "Password Change Failed", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(PopUpPasswordView.this, "Password Change Was Unsuccessful", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }

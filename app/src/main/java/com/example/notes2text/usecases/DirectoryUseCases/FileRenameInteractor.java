@@ -38,28 +38,21 @@ public class FileRenameInteractor {
         Log.i("Default path is", keyFile.toString());
     }
 
-    /**
-     * Helper method to rename the file.
-     *
-     * @param currentFile The file that the user want to rename.
-     * @param currentDirectory The directory that the file is in.
-     * @param filePath The new file name for the file.
-     */
+
+    //Helper method to rename the file.
     private void rename(File currentFile, File currentDirectory, String filePath) {
         File newFile = new File(currentDirectory, filePath);
         // Test if the file with the new name already exist.
         if (!newFile.exists() || newFile.equals(currentFile)) {
             // Rename the file to new name.
+            // Return value ignored as not helpful for implementation.
             currentFile.renameTo(newFile);
             // Monitor path used in runtime.
             Log.i("newFile path is", newFile.toString());
         } else {
             /* If the file with same name already exist, add (new) to the front of file name to
-            avoid conflict */
-            File renamedNewFile = new File(currentDirectory, "(new)" + filePath);
-            currentFile.renameTo(renamedNewFile);
-            // Monitor path used in runtime.
-            Log.i("newFile path is", renamedNewFile.toString());
+            avoid conflict. Use recursion to keep checking for conflicts. */
+            rename(currentFile, currentDirectory, "(new)" + filePath);
         }
     }
 }
