@@ -15,7 +15,7 @@ public class UserUpdateInfo {
     User user = CurrentUser.getUser();
 
     //Instance of the database that stores all the suers
-    DBHelper MyDB1;
+    UserRep MyDB1;
 
     /**
      * Changes to the username the user wants. If the new username is acceptable, user's username
@@ -27,7 +27,7 @@ public class UserUpdateInfo {
      *                      otherwise.
      */
     public boolean changeUsername(Context context, String newUsername){
-        MyDB1 = new DBHelper(context);
+        MyDB1 = new UserRep(context);
         if(MyDB1.uniqueUsername(newUsername)){
             return false;
         }
@@ -48,7 +48,7 @@ public class UserUpdateInfo {
      *                      otherwise.
      */
     public boolean changePassword(Context context, String newPassword){
-        MyDB1 = new DBHelper(context);
+        MyDB1 = new UserRep(context);
         MyDB1.updatePassword(user.getPassword(), newPassword);
         user.setPassword(newPassword);
         CurrentUser.setUser(user);
@@ -65,7 +65,7 @@ public class UserUpdateInfo {
      *                      otherwise.
      */
     public boolean changeEmail(Context context, String newEmail){
-        MyDB1 = new DBHelper(context);
+        MyDB1 = new UserRep(context);
         if(MyDB1.uniqueEmail(newEmail)){
             return false;
         }

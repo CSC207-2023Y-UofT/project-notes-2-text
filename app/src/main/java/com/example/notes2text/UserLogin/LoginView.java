@@ -18,18 +18,22 @@ import android.preference.PreferenceManager;
 
 public class LoginView extends AppCompatActivity {
 
-    DBHelper MyDB1;
 
+    UserRep userRep;
 
+    /**
+     * Displays the UI for Login Page and listens for user input
+     * @param savedInstanceState Bundle containing the saved instance State of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Checks if a user was still logged in before the app was closed
         String name = CurrentUser.getCurrent(LoginView.this);
         if(!((name).length() == 0)){
-            MyDB1 = new DBHelper(this);
+            userRep = new UserRep(this);
             UserFactory userFactory = new UserFactory();
-            CurrentUser.setUser(userFactory.createUser(MyDB1.getEmail(name),name,MyDB1.getPassword(name)));
+            User user = userFactory.createUser(userRep.getEmail(name), name, userRep.getPassword(name));
+            CurrentUser.setUser(user);
             Intent intent = new Intent(LoginView.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -43,54 +47,62 @@ public class LoginView extends AppCompatActivity {
 
         TextView signup = (TextView) findViewById(R.id.newuser);
         signup.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that listens to Register button click
+             * @param view The Sign Up button
+             */
             @Override
             public void onClick(View view) {
+                //Navigates to RegisterView page
                 Intent intent = new Intent(LoginView.this, RegisterView.class);
                 startActivity(intent);
             }
         });
     }
 
+    /**
+     * Method that listens to Login button click
+     * @param view The login button
+     */
     public void loginClick(View view){
-        LoginUseCase loginAttempt = new LoginUseCase();
+        LoginUseCase loginAttempt = new LoginUseCase(this);
+
+        //Get username and password input from user
         EditText username = findViewById(R.id.username);
         EditText password = findViewById(R.id.password);
-
         String user = username.getText().toString();
         String pswrd = password.getText().toString();
 
 
-        MyDB1 = new DBHelper(this);
-        boolean checkuserpassword = MyDB1.checkUserPassword(user, pswrd);
-
-        if (checkuserpassword){
-            String email = MyDB1.getEmail(user);
+        LoginUseCase userLogin = new LoginUseCase(this);
+        //Result of log in attempt
+        boolean loggedIn = userLogin.loginUser(user, pswrd);
+        //Log in was successful
+        if (loggedIn){
+            //Show success message
             Toast.makeText(this, "Login Successful",
-                Toast.LENGTH_SHORT).show();
-            UserFactory userFactory = new UserFactory();
-            CurrentUser.setUser(userFactory.createUser(email,user,pswrd));
-            CurrentUser.setCurrent(getApplicationContext(), user);
+                    Toast.LENGTH_SHORT).show();
+
+            //Navigates to home page of the app
             Intent intent = new Intent(LoginView.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
+        //Invalid username and password combination
         else{
+            //Show error message
             Toast.makeText(this, "Incorrect Login. Please try again.",
-                Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();
         }
 
     }
-
-    /**
-     * When back button is pressed on login page, it goes to the android home screen
-     * instead of the previous activity.
-     */
     @Override
     public void onBackPressed() {
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startMain);
+        finish();
     }
 
 }
