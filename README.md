@@ -48,3 +48,9 @@ While there is no direct usage of this principle, we kept the principle in mind 
 
 ### Dependency Inversion Principle
 This principle is applied throughout the program with the use of various Output Boundaries. One example of such is the ThirdPartyOutputBoundary, this allows the sharing use case to not depend on a lower level class, ThirdPartySender. This way changes in how Android ShareSheet needs to be implemented in ThirdPartySender have no effect on the logic present in the high-level use case. 
+
+
+## Other notes:
+
+### Remaining warnings:
+< can be replaced with lambda > - not fixed since the functions this warning pops up on requires the functions to be defined as they are to also implement any hidden methods and variables required for correct functionality of the program.
