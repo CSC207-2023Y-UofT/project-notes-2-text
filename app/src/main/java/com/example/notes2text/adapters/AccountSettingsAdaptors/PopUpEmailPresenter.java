@@ -1,10 +1,11 @@
 package com.example.notes2text.adapters.AccountSettingsAdaptors;
-
+import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.notes2text.UserLogin.UserRep;
 import com.example.notes2text.UserLogin.UserUpdateInfo;
 
 /**
@@ -13,9 +14,16 @@ import com.example.notes2text.UserLogin.UserUpdateInfo;
 public class PopUpEmailPresenter extends AppCompatActivity {
 
     //Stores instance of the UserUpdateInfo class
-    UserUpdateInfo user = new UserUpdateInfo();
+    UserUpdateInfo user;
 
-    public PopUpEmailPresenter(){}
+    /**
+     * Constructor for presenter
+     *
+     * @param context   Context of the current activity
+     */
+    public PopUpEmailPresenter(Context context){
+        this.user = new UserUpdateInfo(new UserRep(context), context);
+    }
 
     /**
      * Sets the TextView to the user's email
@@ -23,7 +31,7 @@ public class PopUpEmailPresenter extends AppCompatActivity {
      * @param text      The TextView that shows the current email.
      */
     public void showEmail(TextView text){
-        text.setText(user.getEmail());
+        text.setText(this.user.getEmail());
     }
 
     /**
@@ -34,7 +42,7 @@ public class PopUpEmailPresenter extends AppCompatActivity {
      * @return          Since email change was successful, it will return true.
      */
     public boolean showNewEmail(TextView text, EditText input){
-        text.setText(user.getEmail());
+        text.setText(this.user.getEmail());
         input.setText("");
         return true;
     }

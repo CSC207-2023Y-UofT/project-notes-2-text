@@ -84,6 +84,7 @@ public class LoginView extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
 
             //Navigates to home page of the app
+            CurrentUser.setCurrent(getApplicationContext(), user);
             Intent intent = new Intent(LoginView.this, MainActivity.class);
             startActivity(intent);
             finish();

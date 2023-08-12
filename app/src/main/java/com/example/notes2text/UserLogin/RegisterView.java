@@ -62,4 +62,14 @@ public class RegisterView extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
 
     }
+
+    /** Prevents the user from going back to previous activity.
+     * Makes user go back to login page.
+     */
+    @Override
+    public void onBackPressed() {
+        Intent startMain = new Intent(RegisterView.this, LoginView.class);
+        startActivity(startMain);
+        finish();
+    }
 }
