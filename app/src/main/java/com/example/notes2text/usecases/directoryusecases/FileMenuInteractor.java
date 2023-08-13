@@ -19,7 +19,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
     private final PopupMenu fileMenu;
 
     /* Initialize an observer for initiating sharing function */
-    private final ShareObserver SHARING = new ShareObserver();
+    private final ShareObserver shareObserver = new ShareObserver();
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
     FileRenameInteractor fileRenamer = new FileRenameInteractor();
@@ -72,7 +72,7 @@ public class FileMenuInteractor implements FileMenuInputBoundary {
             // Wrap the file in an ArrayList as required by the sharing use case.
             ArrayList<File> files = new ArrayList<>();
             files.add(keyFile);
-            SHARING.share(context, files);
+            shareObserver.share(context, files);
         } return true;
     }
 

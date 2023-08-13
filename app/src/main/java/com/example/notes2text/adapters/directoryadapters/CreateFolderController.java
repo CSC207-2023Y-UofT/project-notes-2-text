@@ -20,8 +20,8 @@ import java.io.File;
 
 public class CreateFolderController extends AppCompatDialogFragment {
     private EditText editTextFolderName;
-    private final FolderCreationInteractor CREATE_FOLDER;
-    private final File CURRENT_LAYER;
+    private final FolderCreationInteractor folderCreator;
+    private final File currentLayer;
 
     /**
      * Constructor for the controller class. Obtains context to initiate a new FolderCreationInteractor.
@@ -35,8 +35,8 @@ public class CreateFolderController extends AppCompatDialogFragment {
         //Initialize the folder creation use case class with its required presenter to display message.
         DirectoryAccessOutputBoundary output = new DirectoryAccessPresenter();
         DirectoryRefreshPresenter refresher = new DirectoryRefreshPresenter();
-        CREATE_FOLDER = new FolderCreationInteractor(output, context, refresher);
-        this.CURRENT_LAYER = currentLayer;
+        folderCreator = new FolderCreationInteractor(output, context, refresher);
+        this.currentLayer = currentLayer;
     }
 
     /**
@@ -74,14 +74,14 @@ public class CreateFolderController extends AppCompatDialogFragment {
                 // Button for confirming folder creation.
                 .setPositiveButton("create", (dialogInterface, i) -> {
                     String folderName = editTextFolderName.getText().toString();
-                    String filePath = CURRENT_LAYER.getAbsolutePath();
+                    String filePath = currentLayer.getAbsolutePath();
 
                     // Monitor the info to be send inward.
                     Log.i("Folder creation action", "create");
                     Log.i("Folder creation Dialog input", folderName);
                     Log.i("Directory obtained for folder creation", filePath);
 
-                    CREATE_FOLDER.create(folderName, filePath);
+                    folderCreator.create(folderName, filePath);
                 });
         // Obtain the user input.
         editTextFolderName = view.findViewById(R.id.create_folder_name);
