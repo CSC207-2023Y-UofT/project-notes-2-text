@@ -1,6 +1,7 @@
 package com.example.notes2text.adapters.directoryadapters.fragments;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -161,9 +162,20 @@ public class DirectoryAccessController extends Fragment {
                     try {
                         assert parentLayerFile != null;
                         higherPath = parentLayerFile.getAbsolutePath();
+
                         Fragment fragment = DirectoryAccessController.newInstance(higherPath);
                         ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
                         directoryPresenter.BackLayerSuccess(getActivity());
+
+                        String highestPath = Environment.getExternalStorageDirectory().getPath();
+                        if (!filePath.equals(highestPath)) {
+                            Fragment fragment = DirectoryAccessController.newInstance(higherPath);
+                            ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
+                            directoryPresenter.BackLayerSuccess(getActivity());
+                        } else{
+                            Toast.makeText(getActivity(), "Highest layer reached", Toast.LENGTH_SHORT).show();
+                        }
+
                     } catch (NullPointerException e){
                         directoryPresenter.BackLayerFailure(getActivity());
                     }
