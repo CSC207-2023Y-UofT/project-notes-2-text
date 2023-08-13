@@ -65,5 +65,10 @@ This principle is applied throughout the program with the use of various Output 
 
 Java.io.file is an entity in this project rather than an external framework, due to it's crucial role in file management and in interacting with the android directory. A novel introduced file class would be unable to interact with the android system sufficiently to edit the actual files within the system, and creating a file class to only solve a java.io.file object would introduce an unnecessary middle man.
 
+When selecting files, click on the files directly for now. The checkboxes are flavor for easy view comprehension and do not select the files themselves.
+
 ### Remaining warnings: 
 There may be a few warnings left that were left unchanged for certain reasons - we have these explained in the code next to the lines that threw the warnings.
+
+### Android Studio Issues:
+If you get the error "SDK Location not found" or the project does not run or compile for some reason, try quitting android studio and reopening the project a few times. There is a common issue with Android Studio sometimes not auto-generating some required files on first import.
