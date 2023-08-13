@@ -13,8 +13,7 @@ public class PopUpPasswordPresenter extends AppCompatActivity {
      * Constructor for presenter
      *
      */
-    public PopUpPasswordPresenter(){
-    }
+    public PopUpPasswordPresenter(){}
 
     /**
      * Sets the EditText views to the empty string.

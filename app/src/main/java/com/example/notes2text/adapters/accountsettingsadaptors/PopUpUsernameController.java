@@ -45,7 +45,7 @@ public class PopUpUsernameController extends AppCompatActivity {
                 return this.presenter.showNewUsername(text, input);
             }
         }
-        return this.presenter.showUsernameError(text, input);
+        return this.presenter.showUsernameError(input);
     }
 
 

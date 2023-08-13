@@ -44,6 +44,6 @@ public class PopUpEmailController extends AppCompatActivity {
                 return this.presenter.showNewEmail(text, input);
             }
         }
-        return this.presenter.showEmailError(text, input);
+        return this.presenter.showEmailError(input);
     }
 }

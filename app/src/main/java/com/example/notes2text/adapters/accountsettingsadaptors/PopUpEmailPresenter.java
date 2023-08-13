@@ -50,11 +50,10 @@ public class PopUpEmailPresenter extends AppCompatActivity {
     /**
      * Tells user that the change was unsuccessful.
      *
-     * @param text  Passes the TextView that shows the current email.
      * @param input Passes the input the user tried to change the email to.
      * @return      Since email change was unsuccessful, it will return false.
      */
-    public boolean showEmailError(TextView text, EditText input){
+    public boolean showEmailError(EditText input){
         input.setText("");
         return false;
     }
