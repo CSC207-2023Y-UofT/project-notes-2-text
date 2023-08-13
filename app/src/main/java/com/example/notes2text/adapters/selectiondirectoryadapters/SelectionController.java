@@ -240,6 +240,7 @@ public class SelectionController extends Fragment {
                             Fragment fragment = SelectionController.newInstance(higherPath, goBackFileList);
                             ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
                             directoryPresenter.BackLayerSuccess(getActivity());
+                            Log.i("selection", "Went back a layer on the selection controller");
                         } else{
                             Toast.makeText(getActivity(), "Highest layer reached", Toast.LENGTH_SHORT).show();
                         }

@@ -160,6 +160,7 @@ public class JoinController extends AppCompatActivity {
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             directoryPresenter.BackLayerSuccess(getApplicationContext());
+                            Log.i("join", "Went back a layer on the join controller");
                         } else{
                             Toast.makeText(getApplicationContext(), "Highest layer reached", Toast.LENGTH_SHORT).show();
                         }
