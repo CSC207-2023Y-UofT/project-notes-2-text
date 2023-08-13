@@ -1,5 +1,9 @@
 # project-notes-2-text
 
+## Project Specification
+
+A file manager and note-taking Android application that helps students organize their notes by allowing them to manage and share their files, edit notes, and view images. Their files are protected through a user login and management system.
+
 ## HOW TO RUN THE PROGRAM:
 The program is dependent on the various components of Android platform, thus requiring running the program in an Android system environment. This can be achieved in IntelliJ by using AVD manager or in Android Studio by simply selecting devices to choose an emulator or connect to a physical device. As our app has a target SDK of API level of 29, and a minimal SDK of API level of 26, the device should be configured with API 29, or Android version 10.0. The Gradle JDK is JetBrains Runtime version 17.0.6. Then the app can be run by using the "run" function in the IDE of choice and should open in the emulator/physical device connected. 
 
