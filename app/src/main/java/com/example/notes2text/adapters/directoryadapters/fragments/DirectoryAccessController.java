@@ -163,10 +163,6 @@ public class DirectoryAccessController extends Fragment {
                         assert parentLayerFile != null;
                         higherPath = parentLayerFile.getAbsolutePath();
 
-                        Fragment fragment = DirectoryAccessController.newInstance(higherPath);
-                        ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
-                        directoryPresenter.BackLayerSuccess(getActivity());
-
                         String highestPath = Environment.getExternalStorageDirectory().getPath();
                         if (!filePath.equals(highestPath)) {
                             Fragment fragment = DirectoryAccessController.newInstance(higherPath);
