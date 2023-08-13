@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -234,9 +235,14 @@ public class SelectionController extends Fragment {
                         //assumes the adapter is a selectionAdapter. Actually goes back, so this is probably fine.
                         assert selectionAdapter != null;
                         ArrayList<File> goBackFileList = selectionAdapter.getSelectedFiles();
-                        Fragment fragment = SelectionController.newInstance(higherPath, goBackFileList);
-                        ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
-                        directoryPresenter.BackLayerSuccess(getActivity());
+                        String highestPath = Environment.getExternalStorageDirectory().getPath();
+                        if (!filePath.equals(highestPath)) {
+                            Fragment fragment = SelectionController.newInstance(higherPath, goBackFileList);
+                            ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
+                            directoryPresenter.BackLayerSuccess(getActivity());
+                        } else{
+                            Toast.makeText(getActivity(), "Highest layer reached", Toast.LENGTH_SHORT).show();
+                        }
 //                        selectionPresenter.InheritFilesSuccess(getActivity());
                         //If the above line is commented out, and the file inheritance message is
                         // still shown, the files are being passed along correctly.

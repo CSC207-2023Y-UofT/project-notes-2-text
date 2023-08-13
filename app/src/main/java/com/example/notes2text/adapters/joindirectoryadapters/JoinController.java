@@ -150,15 +150,19 @@ public class JoinController extends AppCompatActivity {
                         //assumes the adapter is a selectionAdapter. Actually goes back, so this is probably fine.
                         assert selectionAdapter != null;
                         ArrayList<File> goBackFileList = selectionAdapter.getSelectedFiles();
-                        //TODO: Implement back button functionality.
-                        Intent intent = new Intent(getApplicationContext(), JoinController.class);
-                        intent.putExtra("path", higherPath);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("selectedFiles", goBackFileList);
-                        intent.putExtras(bundle);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        directoryPresenter.BackLayerSuccess(getApplicationContext());
+                        String highestPath = Environment.getExternalStorageDirectory().getPath();
+                        if (!filePath.equals(highestPath)) {
+                            Intent intent = new Intent(getApplicationContext(), JoinController.class);
+                            intent.putExtra("path", higherPath);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("selectedFiles", goBackFileList);
+                            intent.putExtras(bundle);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            directoryPresenter.BackLayerSuccess(getApplicationContext());
+                        } else{
+                            Toast.makeText(getApplicationContext(), "Highest layer reached", Toast.LENGTH_SHORT).show();
+                        }
                     } catch (NullPointerException e){
                         directoryPresenter.BackLayerFailure(getApplicationContext());
                     }
