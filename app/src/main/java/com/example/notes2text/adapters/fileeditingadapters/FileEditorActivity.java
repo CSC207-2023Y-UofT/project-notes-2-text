@@ -59,6 +59,10 @@ public class FileEditorActivity extends AppCompatActivity {
         // Receiving file from ActivitySwitchController or SavePopUpActivity
         file = (File) bundle.getSerializable("file");
         // Receiving array of selected files from JoinController to join files
+        /* (ArrayList<File>) bundle.getSerializable("selectedFiles") is producing a warning 
+        for an unchecked cast. This is unaddressed as in the JoinController (which sends the array 
+        to FileEditorActivityonly text files can be added to the array list. Other objects such as 
+        folders cannot be added to the array.*/
         ArrayList<File> selectedFiles = (ArrayList<File>) bundle.getSerializable("selectedFiles");
         // Receiving text from SavePopUpActivity when user cancels saving file
         String text = (String) bundle.getSerializable("text");
