@@ -2,6 +2,7 @@ package com.example.notes2text.adapters.directoryadapters.fragments;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -168,6 +169,7 @@ public class DirectoryAccessController extends Fragment {
                             Fragment fragment = DirectoryAccessController.newInstance(higherPath);
                             ((ActivitySwitchController) requireActivity()).replaceFragment(fragment);
                             directoryPresenter.BackLayerSuccess(getActivity());
+                            Log.i("directory", "Went back a layer on the directory controller");
                         } else{
                             Toast.makeText(getActivity(), "Highest layer reached", Toast.LENGTH_SHORT).show();
                         }
